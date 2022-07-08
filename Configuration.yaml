@@ -58,8 +58,12 @@ rules:
     - 'IP-CIDR,220.181.174.162/32,ANHXOAI4G,no-resolve'
     - 'IP-CIDR,220.181.174.226/32,ANHXOAI4G,no-resolve'
     - 'IP-CIDR,220.181.174.34/32,ANHXOAI4G,no-resolve'
+    - 'DOMAIN,injections.adguard.org,DIRECT'
+    - 'DOMAIN,local.adguard.org,DIRECT'
+    - 'DOMAIN-SUFFIX,local,DIRECT'
     - 'IP-CIDR,127.0.0.0/8,DIRECT'
     - 'IP-CIDR,172.16.0.0/12,DIRECT'
     - 'IP-CIDR,192.168.0.0/16,DIRECT'
     - 'IP-CIDR,10.0.0.0/8,DIRECT'
     - 'IP-CIDR,17.0.0.0/8,DIRECT'
+
