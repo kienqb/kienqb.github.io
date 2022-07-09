@@ -15,9 +15,9 @@ dns:
     fallback: ['tls://1.0.0.1:853', 'https://cloudflare-dns.com/dns-query', 'https://dns.google/dns-query']
     fallback-filter: { geoip: true, ipcidr: [240.0.0.0/4, 0.0.0.0/32] }
 proxies:
-    - { name: '🇻🇳HN1 - nền TikTok', type: vmess, server: hn1.anhxoai4g.xyz, port: 80, uuid: 74bbea51-c970-4648-bb4c-1963410d67e5, alterId: 0, cipher: auto, udp: true, network: ws, ws-path: /, ws-headers: { Host: video.mocha.com.vn } }
-    - { name: '🇻🇳HN2 - nền TikTok', type: vmess, server: vn2.anhxoai4g.xyz, port: 80, uuid: 74bbea51-c970-4648-bb4c-1963410d67e5, alterId: 0, cipher: auto, udp: true, network: ws, ws-path: /, ws-headers: { Host: video.mocha.com.vn } }
-    - { name: '🇻🇳HN3 - nền TikTok', type: vmess, server: vn3.anhxoai4g.xyz, port: 80, uuid: 74bbea51-c970-4648-bb4c-1963410d67e5, alterId: 0, cipher: auto, udp: true, network: ws, ws-path: /, ws-headers: { Host: video.mocha.com.vn } }
+    - { name: '🇻🇳HN1 - nền TikTok', type: vmess, server: hn1.anhxoai4g.xyz, port: 80, uuid: 74bbea51-c970-4648-bb4c-1963410d67e5, alterId: 0, cipher: auto, udp: true, network: ws, ws-path: /, ws-headers: { Host: a2047.r.akamai.net } }
+    - { name: '🇻🇳HN2 - nền TikTok', type: vmess, server: vn2.anhxoai4g.xyz, port: 80, uuid: 74bbea51-c970-4648-bb4c-1963410d67e5, alterId: 0, cipher: auto, udp: true, network: ws, ws-path: /, ws-headers: { Host: a2047.r.akamai.net } }
+    - { name: '🇻🇳HN3 - nền TikTok', type: vmess, server: vn3.anhxoai4g.xyz, port: 80, uuid: 74bbea51-c970-4648-bb4c-1963410d67e5, alterId: 0, cipher: auto, udp: true, network: ws, ws-path: /, ws-headers: { Host: a2047.r.akamai.net } }
     - { name: '🇻🇳HN4 - nền Liên Quân', type: vmess, server: vn4.anhxoai4g.xyz, port: 80, uuid: 74bbea51-c970-4648-bb4c-1963410d67e5, alterId: 0, cipher: auto, udp: true, network: ws, ws-path: /, ws-headers: { Host: dl.ops.kgvn.garenanow.com } }
     - { name: '🇻🇳HN4 TLS - nền Liên Quân', type: vmess, server: vn4.anhxoai4g.xyz, port: 443, uuid: 74bbea51-c970-4648-bb4c-1963410d67e5, alterId: 0, cipher: auto, udp: true, tls: true, skip-cert-verify: true, servername: dl.ops.kgvn.garenanow.com, network: ws, ws-path: /, ws-headers: { Host: v.tiktok.com } }
     - { name: '🇻🇳HN5 - nền Liên Quân', type: vmess, server: vn1.anhxoai4g.xyz, port: 80, uuid: 74bbea51-c970-4648-bb4c-1963410d67e5, alterId: 0, cipher: auto, udp: true, network: ws, ws-path: /, ws-headers: { Host: dl.ops.kgvn.garenanow.com } }
