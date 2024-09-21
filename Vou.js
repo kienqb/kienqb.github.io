@@ -16,7 +16,7 @@ async function saveVoucherCode() {
     newTab.document.body.appendChild(container);
 
     const API_URL =
-        'https://raw.githubusercontent.com/kienqb/kienqb.github.io/refs/heads/main/Voucher.js ';
+        'https://raw.githubusercontent.com/kienqb/kienqb.github.io/refs/heads/main/Voucher';
 
     // const API_URL =
     //     'http://localhost:8080/api/v1/shopeexu/all_voucher?status=1';
