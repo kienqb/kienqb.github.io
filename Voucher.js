@@ -1,0 +1,1 @@
+{"status":"success","data":{"results":1,"allVoucher":[{"_id":"66b799cf576903cc584527ed","voucher_name":"Mã iphone","voucher_code":"0909IPHONE15","voucher_promotionid":980924747780096,"signature":"4a46be0c86c39003a41e0730a3f0cb4e676fdc7113c40bf7d57b0f547dfbc1b5","status":1,"createTime":"2024-08-10T16:48:15.351Z"}]}}
