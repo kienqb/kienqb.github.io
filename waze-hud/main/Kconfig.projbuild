@@ -1,0 +1,38 @@
+menu "Waze HUD firmware"
+
+config WAZE_HUD_DISPLAY_CYD_28
+    bool
+    default y
+    help
+        This branch is dedicated to the classic ESP32 Cheap Yellow Display.
+        It uses the ILI9341 SPI pin map, software landscape rotation and
+        320x240 output.
+
+config WAZE_HUD_MOCK_MODE
+    bool "Enable renderer mock mode"
+    default n
+    help
+        Cycle deterministic renderer scenarios without requiring a phone.
+        Minimum speed remains mock-only; lane guidance also exercises the
+        real HLP/1 direction-mask representation.
+
+config WAZE_HUD_DEFAULT_BRIGHTNESS
+    int "Default backlight brightness (percent)"
+    range 10 100
+    default 70
+    help
+        Must align with the HLP configuration slider's 5 percent step.
+
+config WAZE_HUD_HEADLESS_DIAGNOSTIC
+    bool "Disable LCD/UI for watchdog isolation"
+    default n
+    help
+        Keep BLE, HLP, state and configuration active while skipping display
+        initialization and the UI task. Intended only for hardware diagnosis.
+
+config WAZE_HUD_UI_TASK_CORE
+    int "UI task core"
+    range 0 1
+    default 1
+
+endmenu

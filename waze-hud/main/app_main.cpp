@@ -1,0 +1,444 @@
+#include "bluetooth/ble_transport.h"
+#include "config/device_config.h"
+#include "display/display_driver.h"
+#include "display/hud_renderer.h"
+#include "sdkconfig.h"
+#if CONFIG_WAZE_HUD_DISPLAY_CYD_28
+#include "esp_adc/adc_oneshot.h"
+#endif
+#include "driver/gpio.h"
+#include "esp_check.h"
+#include "esp_heap_caps.h"
+#include "esp_log.h"
+#include "esp_system.h"
+#include "esp_timer.h"
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
+#include "nvs_flash.h"
+#include "nvs.h"
+#include "protocol/hlp_protocol.h"
+#include "state/hud_state_store.h"
+#include "system/system_status.h"
+#include <algorithm>
+#include <cstdio>
+#include <cstring>
+
+namespace waze_hud {
+namespace {
+constexpr char kTag[] = "APP";
+uint32_t bootSequence = 0;
+#if CONFIG_WAZE_HUD_DISPLAY_35_480X320 || CONFIG_WAZE_HUD_DISPLAY_CYD_28
+constexpr gpio_num_t kOrientationButton = GPIO_NUM_0;
+#else
+constexpr gpio_num_t kOrientationButton = GPIO_NUM_14;
+#endif
+constexpr TickType_t kLongPressTicks = pdMS_TO_TICKS(1200);
+constexpr TickType_t kDoublePressTicks = pdMS_TO_TICKS(350);
+
+#if CONFIG_WAZE_HUD_DISPLAY_CYD_28
+// CYD GPIO34 LDR: larger ADC readings mean less ambient light.
+constexpr uint8_t lightBrightness(int raw, uint8_t current) {
+    return raw >= 1800 ? 30 : raw <= 1400 ? 70 : current;
+}
+static_assert(lightBrightness(1800, 70) == 30 && lightBrightness(1400, 30) == 70 &&
+              lightBrightness(1600, 30) == 30 && lightBrightness(1600, 70) == 70);
+
+adc_oneshot_unit_handle_t initLightSensor() {
+    adc_oneshot_unit_handle_t adc = nullptr;
+    adc_oneshot_unit_init_cfg_t unit{};
+    unit.unit_id = ADC_UNIT_1;
+    if (adc_oneshot_new_unit(&unit, &adc) != ESP_OK) return nullptr;
+    adc_oneshot_chan_cfg_t channel{};
+    channel.atten = ADC_ATTEN_DB_0;
+    channel.bitwidth = ADC_BITWIDTH_DEFAULT;
+    if (adc_oneshot_config_channel(adc, ADC_CHANNEL_6, &channel) != ESP_OK) {
+        adc_oneshot_del_unit(adc);
+        return nullptr;
+    }
+    return adc;
+}
+
+bool sampleLight(adc_oneshot_unit_handle_t adc, int &raw) {
+    int sum = 0;
+    for (int i = 0; i < 8; ++i) {
+        int sample = 0;
+        if (adc_oneshot_read(adc, ADC_CHANNEL_6, &sample) != ESP_OK) return false;
+        sum += sample;
+    }
+    raw = sum / 8;
+    return true;
+}
+#endif
+
+#if CONFIG_WAZE_HUD_DISPLAY_CYD_28
+constexpr gpio_num_t kLedRed = GPIO_NUM_4;
+constexpr gpio_num_t kLedGreen = GPIO_NUM_16;
+constexpr gpio_num_t kLedBlue = GPIO_NUM_17;
+constexpr TickType_t kOverspeedBlinkTicks = pdMS_TO_TICKS(250);
+
+void setRgbLed(bool red, bool green, bool blue) {
+    // The CYD RGB LED is common-anode/active-low.
+    gpio_set_level(kLedRed, red ? 0 : 1);
+    gpio_set_level(kLedGreen, green ? 0 : 1);
+    gpio_set_level(kLedBlue, blue ? 0 : 1);
+}
+
+void overspeedLedTask(void *) {
+    bool illuminated = false;
+    for (;;) {
+        const HudState state = HudStateStore::instance().snapshot();
+        const DeviceSettings settings = DeviceConfig::instance().snapshot();
+        const int threshold = std::max(0, state.speedLimitKmh +
+                                           static_cast<int>(settings.overspeedOffsetKmh));
+        const int effectiveSpeed = adjustedSpeed(state.speedKmh, settings);
+        const bool overspeed = state.connected && state.hasProducerState &&
+                               state.navigationActive && !state.signalStale &&
+                               state.speedLimitKmh > 0 && effectiveSpeed > threshold;
+        if (overspeed) {
+            illuminated = !illuminated;
+            setRgbLed(illuminated, false, false);
+        } else {
+            setRgbLed(false, false, false);
+            illuminated = false;
+        }
+        vTaskDelay(kOverspeedBlinkTicks);
+    }
+}
+
+esp_err_t startOverspeedLed() {
+    gpio_config_t config{};
+    config.pin_bit_mask = (1ULL << static_cast<unsigned>(kLedRed)) |
+                          (1ULL << static_cast<unsigned>(kLedGreen)) |
+                          (1ULL << static_cast<unsigned>(kLedBlue));
+    config.mode = GPIO_MODE_OUTPUT;
+    ESP_RETURN_ON_ERROR(gpio_config(&config), kTag, "RGB LED setup failed");
+    setRgbLed(false, false, false);
+    const BaseType_t created = xTaskCreate(overspeedLedTask, "overspeed_led", 2048,
+                                           nullptr, 2, nullptr);
+    return created == pdPASS ? ESP_OK : ESP_ERR_NO_MEM;
+}
+#endif
+
+void recordBootReason() {
+    nvs_handle_t nvs;
+    if (nvs_open("boot_diag", NVS_READWRITE, &nvs) != ESP_OK) return;
+    (void)nvs_get_u32(nvs, "boots", &bootSequence);
+    ++bootSequence;
+    const uint32_t reason = static_cast<uint32_t>(esp_reset_reason());
+    char key[8];
+    std::snprintf(key, sizeof(key), "r_%02lu", static_cast<unsigned long>(reason));
+    uint32_t reasonCount = 0;
+    (void)nvs_get_u32(nvs, key, &reasonCount);
+    if (reasonCount != UINT32_MAX) ++reasonCount;
+    (void)nvs_set_u32(nvs, "boots", bootSequence);
+    (void)nvs_set_u32(nvs, "last_reason", reason);
+    (void)nvs_set_u32(nvs, key, reasonCount);
+    const esp_err_t committed = nvs_commit(nvs);
+    nvs_close(nvs);
+    if (committed == ESP_OK)
+        ESP_LOGW(kTag, "Boot %lu, reset reason=%lu, reason count=%lu",
+                 static_cast<unsigned long>(bootSequence), static_cast<unsigned long>(reason),
+                 static_cast<unsigned long>(reasonCount));
+}
+
+void stableBootTask(void *) {
+    vTaskDelay(pdMS_TO_TICKS(10000));
+    nvs_handle_t nvs;
+    if (nvs_open("boot_diag", NVS_READWRITE, &nvs) == ESP_OK) {
+        uint32_t stable = 0;
+        (void)nvs_get_u32(nvs, "stable", &stable);
+        if (stable != UINT32_MAX) ++stable;
+        (void)nvs_set_u32(nvs, "stable", stable);
+        (void)nvs_set_u32(nvs, "last_stable", bootSequence);
+        (void)nvs_commit(nvs);
+        nvs_close(nvs);
+        ESP_LOGI(kTag, "Boot %lu remained stable for 10 seconds", static_cast<unsigned long>(bootSequence));
+    }
+    vTaskDelete(nullptr);
+}
+
+void orientationButtonTask(void *) {
+    for (;;) {
+        if (gpio_get_level(kOrientationButton) == 0) {
+            vTaskDelay(pdMS_TO_TICKS(40));
+            if (gpio_get_level(kOrientationButton) == 0) {
+                const TickType_t pressedAt = xTaskGetTickCount();
+                bool statusVisible = false;
+                while (gpio_get_level(kOrientationButton) == 0) {
+                    if (!statusVisible && xTaskGetTickCount() - pressedAt >= kLongPressTicks) {
+                        SystemStatus::instance().show();
+                        HudStateStore::instance().refresh();
+                        statusVisible = true;
+                    }
+                    vTaskDelay(pdMS_TO_TICKS(20));
+                }
+                if (statusVisible) {
+                    SystemStatus::instance().hide();
+                    HudStateStore::instance().refresh();
+                } else {
+                    bool doublePressed = false;
+                    const TickType_t releasedAt = xTaskGetTickCount();
+                    while (xTaskGetTickCount() - releasedAt < kDoublePressTicks) {
+                        if (gpio_get_level(kOrientationButton) == 0) {
+                            vTaskDelay(pdMS_TO_TICKS(40));
+                            if (gpio_get_level(kOrientationButton) == 0) {
+                                while (gpio_get_level(kOrientationButton) == 0)
+                                    vTaskDelay(pdMS_TO_TICKS(20));
+                                const esp_err_t result = DeviceConfig::instance().toggleMirror();
+                                if (result != ESP_OK)
+                                    ESP_LOGE(kTag, "Mirror button update failed: %s",
+                                             esp_err_to_name(result));
+                                doublePressed = true;
+                                break;
+                            }
+                        }
+                        vTaskDelay(pdMS_TO_TICKS(10));
+                    }
+                    if (!doublePressed) {
+                        const esp_err_t result = DeviceConfig::instance().toggleRotation();
+                        if (result != ESP_OK)
+                            ESP_LOGE(kTag, "Orientation button update failed: %s",
+                                     esp_err_to_name(result));
+                    }
+                }
+            }
+        }
+        vTaskDelay(pdMS_TO_TICKS(20));
+    }
+}
+
+esp_err_t startOrientationButton() {
+    gpio_config_t config{};
+    config.pin_bit_mask = 1ULL << static_cast<unsigned>(kOrientationButton);
+    config.mode = GPIO_MODE_INPUT;
+    config.pull_up_en = GPIO_PULLUP_ENABLE;
+    config.pull_down_en = GPIO_PULLDOWN_DISABLE;
+    config.intr_type = GPIO_INTR_DISABLE;
+    ESP_RETURN_ON_ERROR(gpio_config(&config), kTag, "orientation/status button setup failed");
+    const BaseType_t created = xTaskCreate(orientationButtonTask, "hud_button", 2560,
+                                           nullptr, 3, nullptr);
+    return created == pdPASS ? ESP_OK : ESP_ERR_NO_MEM;
+}
+
+void systemStatusTask(void *) {
+    for (;;) {
+        if (SystemStatus::instance().refresh())
+            HudStateStore::instance().refresh();
+        vTaskDelay(pdMS_TO_TICKS(5000));
+    }
+}
+
+void uiTask(void *) {
+    ESP_LOGI(kTag, "UI task started");
+    const esp_err_t displayResult = DisplayDriver::instance().init();
+    if (displayResult != ESP_OK) {
+        ESP_LOGE(kTag, "Display unavailable: %s; UI task stopped", esp_err_to_name(displayResult));
+        vTaskDelete(nullptr);
+        return;
+    }
+    HudRenderer renderer;
+    if (renderer.init() != ESP_OK) {
+        ESP_LOGE(kTag, "Renderer initialization failed; UI task stopped");
+        vTaskDelete(nullptr);
+        return;
+    }
+#if CONFIG_WAZE_HUD_DISPLAY_CYD_28
+    auto lightAdc = initLightSensor();
+    if (!lightAdc) ESP_LOGW(kTag, "LDR unavailable; using configured brightness");
+    uint8_t autoBrightness = 70;
+    TickType_t lastLightSample = xTaskGetTickCount();
+    int lightRaw = 0;
+    if (lightAdc && sampleLight(lightAdc, lightRaw)) {
+        autoBrightness = lightBrightness(lightRaw, autoBrightness);
+        ESP_LOGI(kTag, "LDR raw=%d, brightness=%u%%", lightRaw, autoBrightness);
+    }
+    auto settings = DeviceConfig::instance().snapshot();
+    if (lightAdc && settings.autoBrightness) settings.brightness = autoBrightness;
+    uint8_t renderedBrightness = settings.brightness;
+#endif
+    HudState state = HudStateStore::instance().snapshot();
+    const int64_t renderStartedUs = esp_timer_get_time();
+#if CONFIG_WAZE_HUD_DISPLAY_CYD_28
+    renderer.render(state, settings, SystemStatus::instance().snapshot());
+#else
+    renderer.render(state, DeviceConfig::instance().snapshot(), SystemStatus::instance().snapshot());
+#endif
+    ESP_LOGI(kTag, "Initial UI frame rendered in %lld ms",
+             static_cast<long long>((esp_timer_get_time() - renderStartedUs) / 1000));
+    for (;;) {
+#if CONFIG_WAZE_HUD_DISPLAY_CYD_28
+        const TickType_t timeout = renderer.animationActive() ? pdMS_TO_TICKS(80) : pdMS_TO_TICKS(1000);
+        const bool received = HudStateStore::instance().receive(state, timeout);
+        settings = DeviceConfig::instance().snapshot();
+        if (lightAdc && settings.autoBrightness &&
+            xTaskGetTickCount() - lastLightSample >= pdMS_TO_TICKS(1000)) {
+            lastLightSample = xTaskGetTickCount();
+            if (sampleLight(lightAdc, lightRaw)) {
+                const uint8_t next = lightBrightness(lightRaw, autoBrightness);
+                if (next != autoBrightness) {
+                    autoBrightness = next;
+                    ESP_LOGI(kTag, "LDR raw=%d, brightness=%u%%", lightRaw, autoBrightness);
+                }
+            }
+        }
+        if (lightAdc && settings.autoBrightness) settings.brightness = autoBrightness;
+        if (received || renderer.animationActive() || settings.brightness != renderedBrightness) {
+            renderer.render(state, settings, SystemStatus::instance().snapshot());
+            renderedBrightness = settings.brightness;
+        }
+#else
+        const TickType_t timeout = renderer.animationActive() ? pdMS_TO_TICKS(80) : portMAX_DELAY;
+        if (HudStateStore::instance().receive(state, timeout))
+            renderer.render(state, DeviceConfig::instance().snapshot(), SystemStatus::instance().snapshot());
+        else if (renderer.animationActive())
+            renderer.render(state, DeviceConfig::instance().snapshot(), SystemStatus::instance().snapshot());
+#endif
+    }
+}
+
+template <std::size_t Size>
+void setText(std::array<char, Size> &target, const char *text) {
+    std::snprintf(target.data(), target.size(), "%s", text);
+}
+
+#if CONFIG_WAZE_HUD_MOCK_MODE
+HudState baseMock() {
+    HudState state{};
+    state.connected = true;
+    state.hasProducerState = true;
+    state.navigationActive = true;
+    state.speedKmh = 70;
+    state.speedLimitKmh = 50;
+    state.maneuver = Maneuver::UTurn;
+    state.maneuverDistanceM = 350;
+    state.hasMinimumSpeed = true;
+    state.minimumSpeedKmh = 60;
+    state.laneCount = 3;
+    state.lanes[0] = {0x05, 0x04};  // straight + left, selected left
+    state.lanes[1] = {0x01, 0x01};  // straight, selected
+    state.lanes[2] = {0x30, 0x10};  // slight/right, selected slight-right
+    setText(state.currentStreet, "Đường Phạm Văn Đồng");
+    setText(state.eta, "20:01");
+    state.clockUnixSeconds = 1787478627;
+    state.timezoneOffsetMinutes = 420;
+    state.clockSyncMonotonicMs = 0;
+    return state;
+}
+
+void mockTask(void *) {
+    ESP_LOGW(kTag, "Renderer mock mode enabled; BLE/HLP input is disabled");
+    vTaskDelay(pdMS_TO_TICKS(1200));
+    constexpr uint32_t kScenarioCount = 12;
+    uint32_t scenario = 0;
+    for (;;) {
+        HudState state = baseMock();
+        switch (scenario % kScenarioCount) {
+            case 0: break;
+            case 1:
+                state.nearestAlert = {AlertKind::SpeedCamera, 300, 0};
+                state.upcomingAlerts[0] = {AlertKind::Police, 850, 0}; state.upcomingAlertCount = 1;
+                break;
+            case 2:
+                state.nearestAlert = {AlertKind::Police, 120, 0};
+                state.upcomingAlerts[0] = {AlertKind::Hazard, 600, 0};
+                state.upcomingAlerts[1] = {AlertKind::SpeedDrop, 900, 40}; state.upcomingAlertCount = 2;
+                break;
+            case 3:
+                state.noPassingZone = true; state.noPassingRemainingM = 1250;
+                state.nearestAlert = {AlertKind::NoPassing, 0, 0};
+                break;
+            case 4:
+                state.maneuver = Maneuver::RoundaboutRight; state.roundaboutExit = 3; state.maneuverDistanceM = 1200;
+                setText(state.currentStreet, "Võ Nguyên Giáp"); break;
+            case 5:
+                state.speedKmh = 86; state.speedLimitKmh = 60; state.overSpeed = true;
+                state.maneuver = Maneuver::SharpLeft; state.maneuverDistanceM = 35; break;
+            case 6:
+                state = {}; break;
+            case 7:
+                setText(state.currentStreet, "Đường Cách Mạng Tháng Tám, Phường Bến Thành");
+                state.maneuver = Maneuver::ExitRight; state.maneuverDistanceM = 980; break;
+            case 8:
+                state.maneuver = Maneuver::RoundaboutStraight; state.roundaboutExit = 2;
+                state.maneuverDistanceM = 420;
+                state.nearestAlert = {AlertKind::PhoneCamera, 650, 0};
+                break;
+            case 9:
+                state.nearestAlert = {AlertKind::Railway, 180, 0};
+                state.upcomingAlerts[0] = {AlertKind::Flood, 900, 0};
+                state.upcomingAlerts[1] = {AlertKind::SchoolZone, 1400, 0};
+                state.upcomingAlertCount = 2;
+                break;
+            case 10:
+                state.nearestAlert = {AlertKind::TrafficJam, 420, 0, 4, 18};
+                state.upcomingAlerts[0] = {AlertKind::TrafficJam, 1350, 0, 2, 5};
+                state.upcomingAlertCount = 1;
+                break;
+            case 11:
+                state.laneCount = 10;
+                for (uint8_t index = 0; index < state.laneCount; ++index) {
+                    state.lanes[index].directionMask = index < 3 ? 0x04 : index > 5 ? 0x20 : 0x01;
+                    state.lanes[index].selectedMask = index >= 3 && index <= 5 ? 0x01 : 0x00;
+                }
+                state.upcomingAlerts[0] = {AlertKind::Police, 650, 0};
+                state.upcomingAlerts[1] = {AlertKind::Hazard, 1200, 0};
+                state.upcomingAlertCount = 2;
+                break;
+        }
+        HudStateStore::instance().publish(state);
+        ESP_LOGI(kTag, "Mock renderer scenario %lu",
+                 static_cast<unsigned long>(scenario % kScenarioCount));
+        ++scenario;
+        vTaskDelay(pdMS_TO_TICKS(5000));
+    }
+}
+#endif
+}  // namespace
+}  // namespace waze_hud
+
+extern "C" void app_main() {
+    using namespace waze_hud;
+    ESP_LOGI("APP", "Waze HUD firmware booting");
+    esp_err_t result = nvs_flash_init();
+    if (result == ESP_ERR_NVS_NO_FREE_PAGES || result == ESP_ERR_NVS_NEW_VERSION_FOUND) {
+        ESP_LOGW("APP", "NVS requires recovery erase");
+        ESP_ERROR_CHECK(nvs_flash_erase());
+        result = nvs_flash_init();
+    }
+    ESP_ERROR_CHECK(result);
+    recordBootReason();
+    ESP_ERROR_CHECK(DeviceConfig::instance().init());
+    ESP_ERROR_CHECK(HudStateStore::instance().init() ? ESP_OK : ESP_ERR_NO_MEM);
+    const esp_err_t statusResult = SystemStatus::instance().init();
+    if (statusResult != ESP_OK)
+        ESP_LOGW("APP", "Battery status unavailable: %s", esp_err_to_name(statusResult));
+
+#if !CONFIG_WAZE_HUD_HEADLESS_DIAGNOSTIC
+    const BaseType_t created = xTaskCreatePinnedToCore(uiTask, "hud_ui", 12288, nullptr, 5, nullptr,
+                                                      CONFIG_WAZE_HUD_UI_TASK_CORE);
+    ESP_ERROR_CHECK(created == pdPASS ? ESP_OK : ESP_ERR_NO_MEM);
+#else
+    ESP_LOGW("APP", "Headless diagnostic mode: LCD and UI task disabled");
+#endif
+
+    ESP_ERROR_CHECK(startOrientationButton());
+#if CONFIG_WAZE_HUD_DISPLAY_CYD_28
+    ESP_ERROR_CHECK(startOverspeedLed());
+#endif
+    ESP_ERROR_CHECK(xTaskCreate(systemStatusTask, "hud_status", 3072, nullptr, 3, nullptr) == pdPASS
+                        ? ESP_OK : ESP_ERR_NO_MEM);
+
+#if CONFIG_WAZE_HUD_MOCK_MODE
+    ESP_ERROR_CHECK(xTaskCreate(mockTask, "hud_mock", 4096, nullptr, 4, nullptr) == pdPASS ? ESP_OK : ESP_ERR_NO_MEM);
+#else
+    ESP_ERROR_CHECK(BleTransport::instance().init());
+    ESP_ERROR_CHECK(HlpProtocol::instance().start());
+#endif
+
+    ESP_ERROR_CHECK(xTaskCreate(stableBootTask, "boot_stable", 2048, nullptr, 2, nullptr) == pdPASS
+                        ? ESP_OK : ESP_ERR_NO_MEM);
+
+    ESP_LOGI("APP", "Startup complete; free internal=%lu, PSRAM=%lu",
+             static_cast<unsigned long>(heap_caps_get_free_size(MALLOC_CAP_INTERNAL)),
+             static_cast<unsigned long>(heap_caps_get_free_size(MALLOC_CAP_SPIRAM)));
+}

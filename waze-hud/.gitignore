@@ -1,0 +1,12 @@
+/build/
+/build-mock/
+/build-35/
+/build-35-mock/
+/build-cyd/
+/artifact/
+/sdkconfig
+/sdkconfig.**
+backups/
+dist/
+.vscode/
+/managed_components/
