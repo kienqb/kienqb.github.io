@@ -23,7 +23,7 @@ Cửa hàng hải sản tại Quảng Bình, giao hàng toàn quốc.
 - Nhận đơn qua Zalo: **0865 777 073**
 - Kèm theo là hệ thống quản lý bán hàng và công nợ tự xây dựng cho cửa hàng (ghi bán hàng, theo dõi công nợ khách, doanh thu ngày/tuần/tháng, tự sao lưu dữ liệu hằng ngày): [honglai.quangbinhtaxi.com](https://www.honglai.quangbinhtaxi.com)
 
-## 🎵 Dex Music TLG
+## 🎵 Dex Music
 
 Ứng dụng Android nghe nhạc lấy nguồn từ các kênh share nhạc trên Telegram, tự viết để dùng trên đầu Android ô tô.
 
@@ -32,8 +32,8 @@ Cửa hàng hải sản tại Quảng Bình, giao hàng toàn quốc.
 - Vừa tải vừa phát, có bộ nhớ đệm trong phiên nghe; phát nền, điều khiển qua thông báo và qua nút cứng trên ô tô (qua bài / lùi bài / dừng phát)
 - Yêu thích, danh sách phát tự tạo, danh sách chờ phát chọn nhanh ngay trong trình phát
 - Chỉnh EQ theo dải tần + tăng bass, hiệu ứng cột phổ nhạc cầu vồng nhảy theo nhạc thật
-- Phiên bản hiện tại: **1.29** — Android 6.0 trở lên
-- ⬇ **[Tải APK 1.29 (23 MB)](https://kienqb.is-a.dev/dex-music/dex-music-tlg-v1.29.apk)**
+- Phiên bản hiện tại: **1.30** — Android 6.0 trở lên
+- ⬇ **[Tải APK 1.30 (23 MB)](https://kienqb.is-a.dev/dex-music/dex-music-v1.30.apk)**
 
 ## 🛰️ Module GPS Bluetooth
 
@@ -59,14 +59,14 @@ Bản mod giao diện màn hình chính (launcher) cho Android TV Sony, phát tr
 
 | Dự án | File | Link |
 |---|---|---|
-| Dex Music TLG 1.29 | APK Android (23 MB) | [Tải về](https://kienqb.is-a.dev/dex-music/dex-music-tlg-v1.29.apk) |
+| Dex Music 1.30 | APK Android (23 MB) | [Tải về](https://kienqb.is-a.dev/dex-music/dex-music-v1.30.apk) |
 | Module GPS Bluetooth | Code ESP32 + hướng dẫn (.zip) | [Tải về](https://kienqb.is-a.dev/gps-bluetooth/gps-bluetooth-esp32-neo-m10.zip) |
 | TV Launcher Mod | APK bản share | [Tải về](https://kienqb.is-a.dev/tv-launcher/launcher-tvhome-share.apk) |
 
 ## Cấu trúc thư mục
 
 - `index.html` — trang chủ của site
-- `dex-music/` — file APK của app Dex Music TLG
+- `dex-music/` — file APK của app Dex Music
 - `gps-bluetooth/` — code ESP32, hướng dẫn và bản .zip của module GPS
 - `tv-launcher/` — file APK bản share của TV Launcher Mod
 - `CNAME` — tên miền riêng kienqb.is-a.dev
