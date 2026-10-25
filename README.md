@@ -33,7 +33,7 @@ Cửa hàng hải sản tại Quảng Bình, giao hàng toàn quốc.
 - Yêu thích, danh sách phát tự tạo, danh sách chờ phát chọn nhanh ngay trong trình phát
 - Chỉnh EQ theo dải tần + tăng bass, hiệu ứng cột phổ nhạc cầu vồng nhảy theo nhạc thật
 - Phiên bản hiện tại: **1.28** — Android 6.0 trở lên
-- ⬇ **[Tải APK 1.28 (23 MB)](https://kienqb.is-a.dev/dex-music/dex-music-tlg-v1.28.apk)**
+- ⬇ **[Tải APK 1.28 (23 MB)](https://kienqb.is-a.dev/dex-music/dex-music-tlg-v1.29.apk)**
 
 ## 🛰️ Module GPS Bluetooth
 
@@ -59,7 +59,7 @@ Bản mod giao diện màn hình chính (launcher) cho Android TV Sony, phát tr
 
 | Dự án | File | Link |
 |---|---|---|
-| Dex Music TLG 1.28 | APK Android (23 MB) | [Tải về](https://kienqb.is-a.dev/dex-music/dex-music-tlg-v1.28.apk) |
+| Dex Music TLG 1.28 | APK Android (23 MB) | [Tải về](https://kienqb.is-a.dev/dex-music/dex-music-tlg-v1.29.apk) |
 | Module GPS Bluetooth | Code ESP32 + hướng dẫn (.zip) | [Tải về](https://kienqb.is-a.dev/gps-bluetooth/gps-bluetooth-esp32-neo-m10.zip) |
 | TV Launcher Mod | APK bản share | [Tải về](https://kienqb.is-a.dev/tv-launcher/launcher-tvhome-share.apk) |
 
