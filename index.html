@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kiên Nguyễn — Các dự án linh tinh</title>
+<meta name="description" content="Trang cá nhân của Kiên Nguyễn (Quảng Bình) — nơi tổng hợp các dự án tự làm: web, app và đồ điện tử DIY.">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+    background: linear-gradient(180deg, #1b1035 0%, #0a0a14 55%, #07090f 100%);
+    color: #f5f2fa; min-height: 100vh; padding: 48px 20px 60px;
+  }
+  .wrap { max-width: 880px; margin: 0 auto; }
+  header { text-align: center; margin-bottom: 40px; }
+  .avatar {
+    width: 96px; height: 96px; margin: 0 auto 18px; border-radius: 50%;
+    background: linear-gradient(135deg, #8e2de2, #2e7cf6);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 40px; font-weight: 700; color: #fff;
+    box-shadow: 0 10px 34px rgba(124, 62, 230, .45);
+  }
+  h1 { font-size: 34px; letter-spacing: .3px; }
+  .tag { color: #a79fc0; margin-top: 8px; font-size: 16px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 16px; }
+  .card {
+    background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.14);
+    border-radius: 16px; padding: 20px; transition: transform .15s ease, border-color .15s ease;
+  }
+  .card:hover { transform: translateY(-3px); border-color: rgba(158,107,255,.65); }
+  .card .icon { font-size: 26px; margin-bottom: 10px; }
+  .card h2 { font-size: 18px; margin-bottom: 8px; }
+  .card p { color: #c9c2dd; font-size: 14.5px; line-height: 1.5; }
+  .card a { color: #7db4ff; text-decoration: none; font-size: 14.5px; }
+  .card a:hover { text-decoration: underline; }
+  .link { margin-top: 12px; display: inline-block; }
+  footer { text-align: center; color: #8b84a3; font-size: 13.5px; margin-top: 46px; line-height: 1.7; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="avatar">KN</div>
+    <h1>Kiên Nguyễn</h1>
+    <p class="tag">Quảng Bình &bull; Trang tổng hợp các dự án linh tinh tự làm — web, app và điện tử DIY</p>
+  </header>
+
+  <div class="grid">
+    <div class="card">
+      <div class="icon">🚕</div>
+      <h2>Taxi Quảng Bình</h2>
+      <p>Website dịch vụ taxi tại Đồng Hới, Quảng Bình — đặt xe 4/7/16 chỗ, đưa đón sân bay Đồng Hới, đi Phong Nha và liên tỉnh.</p>
+      <a class="link" href="https://quangbinhtaxi.com" target="_blank" rel="noopener">quangbinhtaxi.com →</a>
+    </div>
+
+    <div class="card">
+      <div class="icon">🦀</div>
+      <h2>Hải Sản Hồng Lài</h2>
+      <p>Cửa hàng hải sản tại Quảng Bình, giao hàng toàn quốc. Kèm hệ thống quản lý bán hàng và công nợ tự xây dựng cho cửa hàng.</p>
+    </div>
+
+    <div class="card">
+      <div class="icon">🎵</div>
+      <h2>Dex Music TLG</h2>
+      <p>Ứng dụng Android nghe nhạc lấy nguồn từ các kênh share nhạc trên Telegram — đăng nhập bằng tài khoản Telegram, phát nhạc nền, thêm được nhiều nguồn nhạc.</p>
+    </div>
+
+    <div class="card">
+      <div class="icon">🛵</div>
+      <h2>73 Shiper</h2>
+      <p>Hệ thống quản lý và điều phối giao hàng trong tỉnh: tiếp nhận yêu cầu, phân công shipper và theo dõi trạng thái giao hàng.</p>
+    </div>
+
+    <div class="card">
+      <div class="icon">🛰️</div>
+      <h2>Module GPS Bluetooth</h2>
+      <p>Dự án DIY: ESP32 kết hợp module định vị u-blox NEO-M10, phát dữ liệu vị trí về điện thoại qua Bluetooth để dùng với Google Maps.</p>
+    </div>
+
+    <div class="card">
+      <div class="icon">📺</div>
+      <h2>TV Launcher Mod</h2>
+      <p>Bản mod giao diện màn hình chính cho Android TV Sony, kèm khóa mở máy bằng mã xác thực hai lớp (TOTP) kiểu Authenticator.</p>
+    </div>
+  </div>
+
+  <footer>
+    © 2026 Kiên Nguyễn &bull; kienqb.is-a.dev<br>
+    Trang cá nhân phục vụ học hỏi và chia sẻ dự án.
+  </footer>
+</div>
+</body>
+</html>
