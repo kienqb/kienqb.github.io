@@ -9,7 +9,6 @@ Trang cá nhân của Kiên Nguyễn (Quảng Bình), tổng hợp các dự án
 - 🚕 **Taxi Quảng Bình** — Website dịch vụ taxi tại Đồng Hới, Quảng Bình: đặt xe 4/7/16 chỗ, đưa đón sân bay Đồng Hới, đi Phong Nha và liên tỉnh. [quangbinhtaxi.com](https://quangbinhtaxi.com)
 - 🦀 **Hải Sản Hồng Lài** — Cửa hàng hải sản tại Quảng Bình, giao hàng toàn quốc, kèm hệ thống quản lý bán hàng và công nợ tự xây dựng cho cửa hàng.
 - 🎵 **Dex Music TLG** — Ứng dụng Android nghe nhạc lấy nguồn từ các kênh share nhạc trên Telegram: đăng nhập bằng tài khoản Telegram, phát nhạc nền, thêm được nhiều nguồn nhạc.
-- 🛵 **73 Shiper** — Hệ thống quản lý và điều phối giao hàng trong tỉnh: tiếp nhận yêu cầu, phân công shipper và theo dõi trạng thái giao hàng.
 - 🛰️ **Module GPS Bluetooth** — Dự án DIY: ESP32 kết hợp module định vị u-blox NEO-M10, phát dữ liệu vị trí về điện thoại qua Bluetooth để dùng với Google Maps.
 - 📺 **TV Launcher Mod** — Bản mod giao diện màn hình chính cho Android TV Sony, kèm khóa mở máy bằng mã xác thực hai lớp (TOTP) kiểu Authenticator.
 
