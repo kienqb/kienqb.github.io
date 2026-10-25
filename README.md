@@ -1,193 +1,94 @@
-# WazeHUD cho màn hình CYD 2.8 inch
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kiên Nguyễn — Các dự án linh tinh</title>
+<meta name="description" content="Trang cá nhân của Kiên Nguyễn (Quảng Bình) — nơi tổng hợp các dự án tự làm: web, app và đồ điện tử DIY.">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+    background: linear-gradient(180deg, #1b1035 0%, #0a0a14 55%, #07090f 100%);
+    color: #f5f2fa; min-height: 100vh; padding: 48px 20px 60px;
+  }
+  .wrap { max-width: 880px; margin: 0 auto; }
+  header { text-align: center; margin-bottom: 40px; }
+  .avatar {
+    width: 96px; height: 96px; margin: 0 auto 18px; border-radius: 50%;
+    background: linear-gradient(135deg, #8e2de2, #2e7cf6);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 40px; font-weight: 700; color: #fff;
+    box-shadow: 0 10px 34px rgba(124, 62, 230, .45);
+  }
+  h1 { font-size: 34px; letter-spacing: .3px; }
+  .tag { color: #a79fc0; margin-top: 8px; font-size: 16px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 16px; }
+  .card {
+    background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.14);
+    border-radius: 16px; padding: 20px; transition: transform .15s ease, border-color .15s ease;
+  }
+  .card:hover { transform: translateY(-3px); border-color: rgba(158,107,255,.65); }
+  .card .icon { font-size: 26px; margin-bottom: 10px; }
+  .card h2 { font-size: 18px; margin-bottom: 8px; }
+  .card p { color: #c9c2dd; font-size: 14.5px; line-height: 1.5; }
+  .card a { color: #7db4ff; text-decoration: none; font-size: 14.5px; }
+  .card a:hover { text-decoration: underline; }
+  .link { margin-top: 12px; display: inline-block; }
+  footer { text-align: center; color: #8b84a3; font-size: 13.5px; margin-top: 46px; line-height: 1.7; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="avatar">KN</div>
+    <h1>Kiên Nguyễn</h1>
+    <p class="tag">Quảng Bình &bull; Trang tổng hợp các dự án linh tinh tự làm — web, app và điện tử DIY</p>
+  </header>
 
-WazeHUD biến mạch ESP32-2432S028 (Cheap Yellow Display) thành màn hình dẫn đường phụ cho ô tô, nhận dữ liệu trực tiếp từ Waze Mod qua Bluetooth Low Energy (BLE).
+  <div class="grid">
+    <div class="card">
+      <div class="icon">🚕</div>
+      <h2>Taxi Quảng Bình</h2>
+      <p>Website dịch vụ taxi tại Đồng Hới, Quảng Bình — đặt xe 4/7/16 chỗ, đưa đón sân bay Đồng Hới, đi Phong Nha và liên tỉnh.</p>
+      <a class="link" href="https://quangbinhtaxi.com" target="_blank" rel="noopener">quangbinhtaxi.com →</a>
+    </div>
 
-> [!IMPORTANT]
-> Branch này dành riêng cho mạch **ESP32-2432S028 dùng ESP32-WROOM-32 và màn ILI9341**. Không flash firmware này cho các bản CYD dùng ESP32-S3 hoặc controller màn hình khác.
+    <div class="card">
+      <div class="icon">🦀</div>
+      <h2>Hải Sản Hồng Lài</h2>
+      <p>Cửa hàng hải sản tại Quảng Bình, giao hàng toàn quốc. Kèm hệ thống quản lý bán hàng và công nợ tự xây dựng cho cửa hàng.</p>
+    </div>
 
-## Hình ảnh thực tế
+    <div class="card">
+      <div class="icon">🎵</div>
+      <h2>Dex Music TLG</h2>
+      <p>Ứng dụng Android nghe nhạc lấy nguồn từ các kênh share nhạc trên Telegram — đăng nhập bằng tài khoản Telegram, phát nhạc nền, thêm được nhiều nguồn nhạc.</p>
+    </div>
 
-![WazeHUD hiển thị biển giới hạn tốc độ, cảnh báo và ETA trên CYD 2.8 inch](./assets/demo/image_01.png)
+    <div class="card">
+      <div class="icon">🛵</div>
+      <h2>73 Shiper</h2>
+      <p>Hệ thống quản lý và điều phối giao hàng trong tỉnh: tiếp nhận yêu cầu, phân công shipper và theo dõi trạng thái giao hàng.</p>
+    </div>
 
-![WazeHUD hoạt động song song với Waze Mod trên điện thoại](./assets/demo/image_02.png)
+    <div class="card">
+      <div class="icon">🛰️</div>
+      <h2>Module GPS Bluetooth</h2>
+      <p>Dự án DIY: ESP32 kết hợp module định vị u-blox NEO-M10, phát dữ liệu vị trí về điện thoại qua Bluetooth để dùng với Google Maps.</p>
+    </div>
 
-## Tính năng chính
+    <div class="card">
+      <div class="icon">📺</div>
+      <h2>TV Launcher Mod</h2>
+      <p>Bản mod giao diện màn hình chính cho Android TV Sony, kèm khóa mở máy bằng mã xác thực hai lớp (TOTP) kiểu Authenticator.</p>
+    </div>
+  </div>
 
-- Kết nối không dây với Waze Mod qua BLE, tên thiết bị là `WazeHUD`.
-- Hiển thị tốc độ xe, biển giới hạn tốc độ, hướng rẽ và khoảng cách tới lượt rẽ.
-- Hiển thị cảnh báo chính cùng hai cảnh báo tiếp theo.
-- Lane guidance tối đa 10 làn, có đánh dấu làn được khuyến nghị.
-- Hiển thị ETA, tên đường tiếng Việt và đồng hồ.
-- Hai bố cục tốc độ: ưu tiên tốc độ xe hoặc ưu tiên biển giới hạn.
-- Hỗ trợ lật gương để phản chiếu lên kính lái và xoay màn hình 180°.
-- Lưu độ sáng, giao diện, bố cục và các thiết lập khác vào bộ nhớ NVS.
-- Cập nhật từng vùng thay đổi để giảm độ trễ khi vẽ màn hình.
-
-## Cài firmware nhanh
-
-### Chọn đúng file
-
-Firmware phát hành dùng quy tắc đặt tên:
-
-```text
-WazeHUD-<phiên-bản>-WazeMod-<phiên-bản>-<mạch>-<ngày-giờ>-Factory.bin
-WazeHUD-<phiên-bản>-WazeMod-<phiên-bản>-<mạch>-<ngày-giờ>-OTA.bin
-```
-
-| File | Dùng khi nào | Offset |
-|---|---|---:|
-| `Factory.bin` | Cài mới, đổi partition hoặc khôi phục mạch | `0x0` |
-| `OTA.bin` | Chỉ cập nhật app khi mạch đã có đúng partition table | `0x20000` |
-
-> [!WARNING]
-> Không flash file OTA tại `0x0`. Nếu không chắc firmware cũ dùng partition nào, hãy dùng Factory BIN.
-
-### Flash Factory BIN trên Windows
-
-1. Cắm mạch bằng cáp USB có truyền dữ liệu.
-2. Mở Device Manager để tìm cổng `USB-SERIAL CH340`, ví dụ `COM12`.
-3. Kích hoạt ESP-IDF và flash file Factory:
-
-```powershell
-. 'C:\Espressif\tools\Microsoft.v5.5.5.PowerShell_profile.ps1'
-esptool.py --chip esp32 --port COM12 --baud 460800 write_flash 0x0 `
-  .\WazeHUD-1.0.7-WazeMod-V12-ESP32-2432S028-YYYYMMDD-HHMMSS-Factory.bin
-```
-
-Thay `COM12` và tên file bằng giá trị thực tế trên máy.
-
-Nếu mạch không tự vào chế độ flash, giữ nút **BOOT**, nhấn rồi thả **RESET**, sau đó thả **BOOT** và chạy lại lệnh.
-
-## Kết nối với Waze Mod
-
-1. Bật Bluetooth trên điện thoại.
-2. Cấp quyền thiết bị ở gần/Bluetooth cho Waze Mod nếu Android yêu cầu.
-3. Trong phần HUD Link của Waze Mod, chọn thiết bị `WazeHUD`.
-4. Mở một hành trình trong Waze.
-
-Khi kết nối thành công, firmware thương lượng HLP/1 ở tốc độ cập nhật 4 Hz. Không ghép đôi HUD bằng cổng COM Bluetooth của Windows.
-
-## Hiểu trạng thái LED phía sau
-
-| Trạng thái | Màu LED |
-|---|---|
-| Chưa kết nối, chờ dữ liệu hoặc tốc độ bình thường | Tắt |
-| Vượt ngưỡng tốc độ | Nháy đỏ 2 Hz |
-
-Tốc độ bằng đúng giới hạn không bị tính là quá tốc. Cảnh báo chỉ bật khi tốc độ xe lớn hơn `giới hạn + offset` đã cấu hình.
-
-## Dùng nút BOOT
-
-Sau khi mạch khởi động xong, nút BOOT có ba thao tác:
-
-| Thao tác | Kết quả |
-|---|---|
-| Nhấn một lần | Xoay màn hình 180° |
-| Nhấn đúp | Bật hoặc tắt lật gương HUD |
-| Nhấn giữ | Hiện trạng thái BLE của thiết bị |
-
-Lật gương và xoay 180° hoạt động độc lập, đồng thời được lưu lại sau khi mất nguồn.
-
-## Cấu hình từ Waze Mod
-
-Khi Waze Mod hỗ trợ `device_config`, HUD gửi lên mười thiết lập sau:
-
-| Thiết lập | Giá trị | Ý nghĩa |
-|---|---|---|
-| Độ sáng | 10–100%, bước 5% | Điều chỉnh đèn nền khi tắt tự động độ sáng |
-| Tự động độ sáng | Bật / Tắt | Dùng cảm biến ánh sáng CYD: tối 30%, sáng 70% |
-| Giao diện | Tự động / Ban ngày / Ban đêm | Chọn màu giao diện |
-| Hiển thị tốc độ | Tốc độ hiện tại / Biển giới hạn | Chọn thành phần tốc độ chính |
-| Hiện tên đường | Bật / Tắt | Ẩn hoặc hiện tên đường |
-| Phản chiếu HUD | Bật / Tắt | Lật ngang để phản chiếu kính lái |
-| Xoay màn hình | Bật / Tắt | Xoay 180° theo hướng lắp mạch |
-| Ngưỡng quá tốc | −10 đến +5 km/h | Bù vào giới hạn trước khi cảnh báo |
-| Dịch ngang | −5 đến +5 px | Tinh chỉnh vị trí giao diện |
-| Dịch dọc | −5 đến +5 px | Tinh chỉnh vị trí giao diện |
-
-Ở chế độ **Biển giới hạn**, biển báo được phóng lớn làm nội dung chính; tốc độ xe hiện tại xuất hiện nhỏ ở góc dưới-phải của biển.
-
-## Build từ mã nguồn
-
-### Yêu cầu
-
-- ESP-IDF 5.5.5.
-- Mạch ESP32-2432S028, flash 4 MB, không có PSRAM.
-- Cáp USB dữ liệu và driver CH340 trên Windows.
-
-### Build và flash
-
-```powershell
-. 'C:\Espressif\tools\Microsoft.v5.5.5.PowerShell_profile.ps1'
-Set-Location D:\Code\WazeHUD\waze-hud
-idf.py set-target esp32
-idf.py build
-idf.py -p COM12 -b 460800 flash monitor
-```
-
-Thành phẩm app nằm tại:
-
-```text
-waze-hud/build/waze_hud_cyd_28.bin
-```
-
-### Chạy giao diện thử không cần điện thoại
-
-Mock mode lần lượt hiển thị các tình huống như rẽ, vòng xuyến, quá tốc, cảnh báo, tên đường dài và lane guidance 10 làn.
-
-```powershell
-idf.py -B build-mock `
-  -D SDKCONFIG=sdkconfig.mock `
-  -D "SDKCONFIG_DEFAULTS=sdkconfig.defaults;sdkconfig.mock.defaults" `
-  set-target esp32
-idf.py -B build-mock -D SDKCONFIG=sdkconfig.mock build
-```
-
-## Thông số phần cứng
-
-| Chức năng | GPIO / thông số |
-|---|---|
-| LCD | ILI9341, SPI2, 40 MHz |
-| MOSI / MISO / SCLK | 13 / 12 / 14 |
-| LCD CS / DC | 15 / 2 |
-| LCD reset | Nối chung với EN |
-| Backlight PWM | GPIO21, active-high trên board đã kiểm tra |
-| LED đỏ / xanh lá / xanh dương | GPIO4 / GPIO16 / GPIO17, active-low |
-| Nút BOOT | GPIO0, active-low |
-| Độ phân giải | 320×240 landscape |
-
-Màn hình được giữ ở address space gốc 240×320. Firmware xoay các dirty stripe bằng phần mềm sang giao diện landscape 320×240 để màu sắc và chiều hiển thị ổn định giữa các lô CYD.
-
-## Xử lý lỗi thường gặp
-
-| Hiện tượng | Cách kiểm tra |
-|---|---|
-| Không thấy cổng COM | Đổi cáp USB, cài driver CH340 và thử cổng USB khác |
-| Flash không kết nối được | Giữ BOOT, nhấn RESET, thả RESET rồi thả BOOT |
-| Màn hình tối | Kiểm tra đúng mạch ESP32-2432S028 và backlight GPIO21 |
-| Màu đỏ/xanh bị đảo | Kiểm tra đúng controller ILI9341 và profile BGR |
-| Màn hình ngược | Nhấn BOOT một lần hoặc bật cấu hình xoay màn hình |
-| Hình bị lật | Nhấn đúp BOOT hoặc tắt `Phản chiếu HUD` |
-| Điện thoại không thấy HUD | Kiểm tra quyền Bluetooth và tên `WazeHUD` |
-| Đã kết nối nhưng chưa có dữ liệu | Bắt đầu hành trình trong Waze |
-
-## Tài liệu kỹ thuật
-
-- [Chi tiết quá trình port CYD 2.8 inch](./waze-hud/DISPLAY_CYD_28_PORTING.md)
-- [Hướng dẫn flash firmware bằng tiếng Việt](./waze-hud/FLASH_FIRMWARE_VI.md)
-- [Đặc tả giao thức HLP/1](./waze-hud-link-sdk-ai-bundle.md)
-
-## Cấu trúc mã nguồn
-
-```text
-waze-hud/main/
-├── bluetooth/   # BLE GATT, advertising và reconnect
-├── protocol/    # HLP/1 framing, handshake và JSON decoder
-├── state/       # Snapshot trạng thái HUD giữa các task
-├── display/     # Layout, renderer, font và driver ILI9341
-├── config/      # Cấu hình động và lưu NVS
-├── system/      # LED RGB, nút BOOT và trạng thái hệ thống
-└── assets/      # Ảnh/font đã chuyển thành dữ liệu nhúng
-```
-
-BLE callback chỉ đưa dữ liệu vào queue. Việc parse JSON, cập nhật state và truyền ảnh RGB565 tới LCD được thực hiện ngoài callback để tránh làm nghẽn Bluetooth.
+  <footer>
+    © 2026 Kiên Nguyễn &bull; kienqb.is-a.dev<br>
+    Trang cá nhân phục vụ học hỏi và chia sẻ dự án.
+  </footer>
+</div>
+</body>
+</html>
