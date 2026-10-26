@@ -32,8 +32,8 @@ Cửa hàng hải sản tại Quảng Bình, giao hàng toàn quốc.
 - Vừa tải vừa phát, có bộ nhớ đệm trong phiên nghe; phát nền, điều khiển qua thông báo và qua nút cứng trên ô tô (qua bài / lùi bài / dừng phát)
 - Yêu thích, danh sách phát tự tạo, danh sách chờ phát chọn nhanh ngay trong trình phát
 - Chỉnh EQ theo dải tần + tăng bass, hiệu ứng cột phổ nhạc cầu vồng nhảy theo nhạc thật
-- Phiên bản hiện tại: **1.47** — Android 6.0 trở lên
-- ⬇ **[Tải APK 1.47 (25 MB)](https://github.com/kienqb/kienqb.github.io/releases/download/dex-music-v1.47/dex-music-v1.47.apk)**
+- Phiên bản hiện tại: **1.48** — Android 6.0 trở lên
+- ⬇ **[Tải APK 1.48 (25 MB)](https://github.com/kienqb/kienqb.github.io/releases/download/dex-music-v1.48/dex-music-v1.48.apk)**
 
 ## 🛰️ Module GPS Bluetooth
 
@@ -60,7 +60,7 @@ Bản mod giao diện màn hình chính (launcher) cho Android TV Sony, phát tr
 
 | Dự án | File | Link |
 |---|---|---|
-| Dex Music 1.47 | APK Android (25 MB) | [Tải về](https://github.com/kienqb/kienqb.github.io/releases/download/dex-music-v1.47/dex-music-v1.47.apk) |
+| Dex Music 1.48 | APK Android (25 MB) | [Tải về](https://github.com/kienqb/kienqb.github.io/releases/download/dex-music-v1.48/dex-music-v1.48.apk) |
 | Module GPS Bluetooth | Code ESP32 + hướng dẫn (.zip) | [Tải về](https://kienqb.is-a.dev/gps-bluetooth/gps-bluetooth-esp32-neo-m10.zip) |
 | TV Launcher Mod 2.13 | APK bản share | [Tải về](https://kienqb.is-a.dev/tv-launcher/launcher-tvhome-share.apk) |
 
