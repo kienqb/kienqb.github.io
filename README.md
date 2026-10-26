@@ -51,8 +51,8 @@ Bản mod giao diện màn hình chính (launcher) cho Android TV Sony, phát tr
 - Giao diện gọn nhẹ: lời chào, dock ứng dụng tùy chỉnh, font Be Vietnam Pro, đặt được hình nền cá nhân
 - Khóa mở máy bằng **mã TOTP 6 số đổi mỗi 30 giây** (kiểu Google Authenticator) kèm mã dự phòng; hết phiên xem phải nhập lại mã
 - Bản chia sẻ (share) dùng giao diện và lời chào mặc định, credit *Mod by Kiên Nguyễn*
-- Phiên bản share hiện tại: **2.10** — bản share đầu tiên có cập nhật online ngay trong app (từ bản này app tự báo bản mới trong Cài đặt launcher)
-- ⬇ **[Tải bản share 2.10 (APK)](https://kienqb.is-a.dev/tv-launcher/launcher-tvhome-share.apk)**
+- Phiên bản share hiện tại: **2.11** — bot Telegram phản hồi gần như ngay nhờ long polling (thay vòng ngủ cố định 30 giây), TV hiện thông báo khi mở/khóa từ xa
+- ⬇ **[Tải bản share 2.11 (APK)](https://kienqb.is-a.dev/tv-launcher/launcher-tvhome-share.apk)**
 
 ---
 
@@ -62,7 +62,7 @@ Bản mod giao diện màn hình chính (launcher) cho Android TV Sony, phát tr
 |---|---|---|
 | Dex Music 1.47 | APK Android (25 MB) | [Tải về](https://github.com/kienqb/kienqb.github.io/releases/download/dex-music-v1.47/dex-music-v1.47.apk) |
 | Module GPS Bluetooth | Code ESP32 + hướng dẫn (.zip) | [Tải về](https://kienqb.is-a.dev/gps-bluetooth/gps-bluetooth-esp32-neo-m10.zip) |
-| TV Launcher Mod 2.10 | APK bản share | [Tải về](https://kienqb.is-a.dev/tv-launcher/launcher-tvhome-share.apk) |
+| TV Launcher Mod 2.11 | APK bản share | [Tải về](https://kienqb.is-a.dev/tv-launcher/launcher-tvhome-share.apk) |
 
 ## Cấu trúc thư mục
 
