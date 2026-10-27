@@ -66,7 +66,7 @@
   <h1>Hướng dẫn dùng TidyTV — dọn TV &amp; cài launcher trong 5 bước bấm nút</h1>
   <p class="sub">TidyTV là app chạy trên điện thoại Android (hoặc cài thẳng lên TV): tự kết nối tới TV qua Wi-Fi, sao lưu, tắt ứng dụng rác theo đúng mẫu TV, rồi cài <b>Launcher Mod của Kiên Nguyễn</b> làm màn hình chính. Không cần máy tính, không gõ một dòng lệnh nào.</p>
 
-  <a class="dl" href="/tidytv/TidyTV-1.0.apk"><b>⬇ Tải TidyTV 1.0 (APK, 10,6 MB)</b><span>Cài trên điện thoại Android hoặc ngay trên TV đều được</span></a>
+  <a class="dl" href="/tidytv/TidyTV-1.0.1.apk"><b>⬇ Tải TidyTV 1.0.1 (APK, 10,6 MB)</b><span>Cài trên điện thoại Android hoặc ngay trên TV đều được</span></a>
 
   <h2>Chuẩn bị — chỉ cần 3 thứ</h2>
   <ul>
@@ -79,7 +79,7 @@
   <h2>Bước 0 — Bật gỡ lỗi trên TV (làm 1 lần)</h2>
   <p>Trên TV, vào <b>Cài đặt → Ưu tiên thiết bị / Hệ thống → Giới thiệu</b>, bấm chọn mục <b>Số bản dựng</b> 7 lần. Sau đó quay lại <b>Cài đặt → Tùy chọn nhà phát triển</b>:</p>
   <ul>
-    <li>TV Android TV: bật <b>Gỡ lỗi USB</b>.</li>
+    <li>TV Android TV: bật <b>Gỡ lỗi USB</b> — đừng để chữ "USB" đánh lừa: đó là <b>tên của công tắc bật ADB</b> trong TV đời cũ. TidyTV vẫn kết nối <b>qua Wi-Fi</b>, không cắm cáp gì cả.</li>
     <li>TV Google TV đời mới: bật <b>Gỡ lỗi không dây</b>, rồi chọn <b>"Ghép nối thiết bị bằng mã ghép nối"</b> — TV hiện một <b>mã 6 số</b> và một <b>cổng ghép nối</b>, để nguyên màn hình đó, lát nữa nhập vào app.</li>
   </ul>
   <div class="fig">
@@ -104,7 +104,7 @@
   <ol>
     <li>Nhập <b>IP của TV</b>. Nếu TidyTV đang chạy ngay trên TV, bấm nút <b>"App đang chạy trên chính TV này"</b> để app tự điền IP.</li>
     <li>TV đời mới có mã ghép nối: nhập <b>cổng ghép nối</b> + <b>mã 6 số</b> rồi bấm <b>Ghép nối bằng mã</b> trước.</li>
-    <li>Bấm <b>KẾT NỐI TỚI TV</b>. Trên TV hiện hộp thoại "Cho phép gỡ lỗi USB?" → chọn <b>Cho phép</b>.</li>
+    <li>Bấm <b>KẾT NỐI TỚI TV</b>. Trên TV hiện hộp thoại "Cho phép gỡ lỗi USB?" (TV tự ghi vậy) → chọn <b>Cho phép</b>.</li>
   </ol>
   <div class="fig">
     <svg viewBox="0 0 300 560" width="300" role="img" aria-label="Màn hình bước 1 của TidyTV">
@@ -236,7 +236,7 @@
 
   <h2>Hỏi đáp nhanh</h2>
   <ul>
-    <li><b>Bấm Kết nối mãi không được?</b> Kiểm tra: TV và điện thoại cùng Wi-Fi chưa; đã bật Gỡ lỗi chưa; trên TV có hộp thoại "Cho phép gỡ lỗi" đang chờ bấm Cho phép không. TV đời mới: mã ghép nối chỉ dùng được 1 lần — ghép trượt thì mở lại màn hình ghép nối trên TV để lấy mã mới.</li>
+    <li><b>Bấm Kết nối mãi không được?</b> Kiểm tra: TV và điện thoại cùng Wi-Fi chưa; đã bật gỡ lỗi ADB chưa (mục "Gỡ lỗi USB" trên Android TV, "Gỡ lỗi không dây" trên Google TV); trên TV có hộp thoại "Cho phép gỡ lỗi" đang chờ bấm Cho phép không. TV đời mới: mã ghép nối chỉ dùng được 1 lần — ghép trượt thì mở lại màn hình ghép nối trên TV để lấy mã mới.</li>
     <li><b>Không thấy mẫu TV của mình trong danh sách?</b> Chọn "Không dọn theo danh sách mẫu" ở Bước 2, bỏ qua phần dọn rác, vẫn cài được launcher bình thường.</li>
     <li><b>Bấm Home vẫn về giao diện cũ?</b> Nếu là Google TV mà quên tích ô ở Bước 4, làm lại Bước 4 và tích ô đó. Nếu là Android TV, khi bấm Home TV có thể hỏi chọn màn hình chính — chọn TV Home.</li>
     <li><b>Dọn xong TV có mất bảo hành / hỏng gì không?</b> App chỉ tắt ứng dụng (không xoá, không root), mọi thứ khôi phục lại nguyên trạng bằng nút Khôi phục.</li>
