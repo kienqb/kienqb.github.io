@@ -42,6 +42,7 @@
   }
   .fig { text-align: center; margin: 16px 0 4px; }
   .fig svg { max-width: 100%; height: auto; border-radius: 14px; }
+  .fig img { max-width: 100%; height: auto; border-radius: 14px; }
   .cap { text-align: center; color: #a79fc0; font-size: 13.5px; margin-bottom: 12px; }
   footer { text-align: center; color: #8b84a3; font-size: 13.5px; margin-top: 46px; line-height: 1.7; }
   .back { display: inline-block; margin-bottom: 18px; font-size: 14.5px; }
@@ -72,7 +73,7 @@
   <h1>Dùng TidyTV dọn TV và cài launcher — hướng dẫn từng bước</h1>
   <p class="sub">TidyTV là app Android nhỏ do mình viết. Nó kết nối tới TV qua Wi-Fi (bằng ADB), tắt các ứng dụng rác theo đúng mẫu TV của bạn, rồi cài Launcher Mod của mình làm màn hình chính. Không cần máy tính, không cần biết lệnh. Làm quen tay thì khoảng 5 phút cho một chiếc TV.</p>
 
-  <div class="note"><b>Về hình trong bài:</b> toàn bộ hình dưới đây là <b>hình minh hoạ</b>, vẽ lại theo giao diện thật của app và của TV. Mỗi hãng, mỗi đời TV sắp xếp menu hơi khác nhau, chữ có thể lệch đôi chút — cứ theo đúng chữ hiện trên TV của bạn mà bấm, thứ tự các bước thì giống nhau.</div>
+  <div class="note"><b>Về hình trong bài:</b> hình ở Việc 1 và Việc 2 là <b>ảnh chụp thật</b> từ TV Sony; hình trong app ở Việc 3 là <b>hình minh hoạ</b>, vẽ lại theo giao diện thật. Mỗi hãng, mỗi đời TV sắp xếp menu hơi khác nhau, chữ có thể lệch đôi chút — cứ theo đúng chữ hiện trên TV của bạn mà bấm, thứ tự các bước thì giống nhau.</div>
 
   <a class="dl" href="/tidytv/TidyTV-1.0.12.apk"><b>⬇ Tải TidyTV 1.0.12 (APK, 10,7 MB)</b><span>Cài lên điện thoại Android, hoặc cài thẳng lên TV cũng được</span></a>
 
@@ -94,11 +95,19 @@
   <ul>
     <li>Tuỳ hãng mà đường vào hơi khác: <b>Google TV</b> là Cài đặt → Hệ thống → Giới thiệu → <b>Số bản dựng hệ điều hành Android TV</b>; vài dòng TV giấu mục Giới thiệu trong <b>Ưu tiên thiết bị</b> hoặc <b>Tuỳ chọn thiết bị</b>. Cứ tìm trang Giới thiệu, dòng cần bấm 7 lần luôn là dòng Bản dựng/Số bản dựng ở gần cuối trang.</li>
   </ul>
+  <div class="fig">
+    <img src="img/viec1-gioi-thieu.jpg" alt="Trang Giới thiệu trên TV, dòng Bản dựng ở gần cuối trang" loading="lazy">
+  </div>
+  <p class="cap">Ảnh thật: trang Giới thiệu — bấm 7 lần vào dòng Bản dựng ở gần cuối trang</p>
   <p>Mở được rồi thì <b>quay trở lại</b>, vào mục <b>Tuỳ chọn nhà phát triển</b> vừa xuất hiện và <b>bật Gỡ lỗi ADB</b>. Tuỳ từng TV, công tắc này mang tên khác nhau:</p>
   <ul>
     <li><b>Gỡ lỗi ADB</b> hoặc <b>Gỡ lỗi USB</b>: tên nghe là USB nhưng đây chính là công tắc bật ADB của máy — TidyTV kết nối qua Wi-Fi, không cắm cáp gì hết. Cứ bật đúng mục này. Nếu trong danh sách còn có mục <b>Gỡ lỗi qua mạng</b> (Network debugging) thì bật luôn.</li>
     <li><b>Gỡ lỗi không dây</b> (Google TV đời mới): bật lên. Nếu là lần đầu, TV bắt ghép nối: chạm vào dòng <b>Ghép nối thiết bị bằng mã ghép nối</b>, TV hiện <b>mã 6 số</b> kèm một <b>số cổng</b> — để nguyên màn hình này, đừng thoát ra (thoát là mã hết hiệu lực), lát nhập vào app.</li>
   </ul>
+  <div class="fig">
+    <img src="img/viec1-go-loi-adb.jpg" alt="Tuỳ chọn nhà phát triển trên TV, mục Gỡ lỗi ADB đang bật" loading="lazy">
+  </div>
+  <p class="cap">Ảnh thật: Tuỳ chọn nhà phát triển — bật Gỡ lỗi ADB</p>
   <div class="fig">
     <svg viewBox="0 0 560 300" width="560" role="img" aria-label="Minh hoạ màn hình ghép nối trên TV">
       <rect class="tv-bg" x="2" y="2" width="556" height="296" rx="14"/>
@@ -122,12 +131,26 @@
   <p>TV có sẵn cửa hàng ứng dụng thì tải TidyTV thẳng về TV luôn, không cần điện thoại, không cần USB. Dùng ứng dụng <b>Downloader</b>:</p>
   <ul>
     <li>Vào <b>Cửa hàng Google Play</b> (cửa hàng ứng dụng) trên TV, tìm và tải ứng dụng <b>Downloader by AFTVnews</b> — biểu tượng chữ D màu cam, đúng app này.</li>
+  </ul>
+  <div class="fig">
+    <img src="img/viec2-downloader.jpg" alt="Ứng dụng Downloader by AFTVnews trên Cửa hàng Google Play" loading="lazy">
+  </div>
+  <p class="cap">Ảnh thật: ứng dụng Downloader by AFTVnews trên Cửa hàng Google Play</p>
+  <ul>
     <li>Mở Downloader, viết mã này vào ô nhập rồi bấm <b>Load</b>:</li>
   </ul>
   <p style="text-align:center;font-size:2.2em;font-weight:800;letter-spacing:.12em;margin:14px 0"><b>1029902</b></p>
+  <div class="fig">
+    <img src="img/viec2-nhap-ma.jpg" alt="Ô nhập mã trong ứng dụng Downloader" loading="lazy">
+  </div>
+  <p class="cap">Ảnh thật: ô nhập mã trong Downloader — nhập mã ở trên rồi bấm Load</p>
   <ul>
     <li>File APK tự tải về, TV hiện màn hình cài đặt — bấm <b>CÀI ĐẶT</b> và cài như bình thường là xong. (Mã trên là của bản TidyTV 1.0.12 hiện tại.)</li>
   </ul>
+  <div class="fig">
+    <img src="img/viec2-cai-dat.jpg" alt="Màn hình cài đặt TidyTV trên TV" loading="lazy">
+  </div>
+  <p class="cap">Ảnh thật: màn hình cài đặt TidyTV — bấm CÀI ĐẶT</p>
 
   <h2>Việc 3 — Trong app TidyTV</h2>
 
