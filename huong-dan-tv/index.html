@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hướng dẫn dọn TV bằng CleanYourTV và cài Launcher Mod — Kiên Nguyễn</title>
+<meta name="description" content="Hướng dẫn từng bước: dọn rác, gỡ quảng cáo trên Android TV / Google TV bằng dự án CleanYourTV, sau đó cài Launcher Mod (khoá trẻ em TOTP, điều khiển từ xa qua Telegram) và đặt làm màn hình chính.">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+    background: linear-gradient(180deg, #1b1035 0%, #0a0a14 55%, #07090f 100%);
+    color: #f5f2fa; min-height: 100vh; padding: 40px 20px 60px; line-height: 1.65;
+  }
+  .wrap { max-width: 820px; margin: 0 auto; }
+  a { color: #7db4ff; }
+  h1 { font-size: 30px; line-height: 1.3; margin-bottom: 10px; }
+  .sub { color: #a79fc0; font-size: 16px; margin-bottom: 28px; }
+  h2 { font-size: 22px; margin: 34px 0 12px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,.12); }
+  h2:first-of-type { border-top: none; padding-top: 0; }
+  h3 { font-size: 17.5px; margin: 20px 0 8px; }
+  p, li { font-size: 15.5px; color: #e8e4f5; }
+  ul, ol { margin: 8px 0 12px 22px; }
+  li { margin-bottom: 5px; }
+  code {
+    background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.16);
+    border-radius: 6px; padding: 1px 6px; font-size: 14px;
+    font-family: Consolas, "Courier New", monospace; word-break: break-all;
+  }
+  .dl {
+    display: block; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.14);
+    border-radius: 12px; padding: 13px 16px; margin: 8px 0; text-decoration: none;
+  }
+  .dl:hover { border-color: rgba(158,107,255,.65); }
+  .dl b { color: #f5f2fa; }
+  .dl span { color: #a79fc0; font-size: 13.5px; display: block; }
+  .warn {
+    background: rgba(255, 170, 0, .1); border: 1px solid rgba(255, 170, 0, .45);
+    border-radius: 12px; padding: 12px 16px; margin: 14px 0; font-size: 15px;
+  }
+  .note {
+    background: rgba(126, 180, 255, .08); border: 1px solid rgba(126, 180, 255, .35);
+    border-radius: 12px; padding: 12px 16px; margin: 14px 0; font-size: 15px;
+  }
+  footer { text-align: center; color: #8b84a3; font-size: 13.5px; margin-top: 46px; line-height: 1.7; }
+  .back { display: inline-block; margin-bottom: 18px; font-size: 14.5px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="/">← Về trang chủ kienqb.is-a.dev</a>
+  <h1>Dọn TV bằng CleanYourTV, cài Launcher Mod làm màn hình chính</h1>
+  <p class="sub">Áp dụng cho TV chạy <b>Android TV</b> hoặc <b>Google TV</b> (Sony, TCL, Xiaomi, Philips…). Không cần root, không cần cắm cáp, mọi thao tác đều khôi phục lại được.</p>
+
+  <h2>Bài này làm hai việc</h2>
+  <p><b>1. Dọn TV bằng CleanYourTV</b> — dự án mở của tác giả Gathin23 (<a href="https://github.com/Gathin23/cleanyourtv">github.com/Gathin23/cleanyourtv</a>, có <a href="https://github.com/Gathin23/cleanyourtv/blob/main/README.vi.md">bản hướng dẫn tiếng Việt</a>, trang chủ <a href="https://cleanyour.tv">cleanyour.tv</a>). Nguyên tắc của dự án: sao lưu trước, chỉ <i>tắt</i> (disable) ứng dụng rác/quảng cáo chứ <b>không gỡ cài đặt</b>, nên lúc nào cũng bật lại được.</p>
+  <p><b>2. Cài Launcher Mod của Kiên Nguyễn</b> — bản mod từ launcher gốc của CleanYourTV (giao diện kiểu Apple TV), thêm: khoá TV cho trẻ em bằng mã TOTP 6 số (kiểu Google Authenticator) + passcode dự phòng, điều khiển mở/khoá/tắt TV từ xa qua bot Telegram, tự kiểm tra cập nhật online. Sau khi cài, launcher này được đặt làm màn hình chính thay launcher gốc.</p>
+
+  <h2>Chuẩn bị</h2>
+  <ul>
+    <li>TV Android TV / Google TV, đang kết nối Wi-Fi. TV Samsung (Tizen), LG (webOS), Roku <b>không</b> làm được theo cách này.</li>
+    <li>Máy tính Windows cùng mạng Wi-Fi với TV, đã có sẵn <code>adb</code> (Android platform-tools) — hoặc cài sẵn trong thư mục khi chạy file .bat ở các bước sau.</li>
+    <li>Tải trước các file sau:</li>
+  </ul>
+  <a class="dl" href="https://github.com/kienqb/kienqb.github.io/releases/download/tv-launcher-v2.13/launcher-tvhome-share.apk"><b>⬇ Launcher Mod bản share 2.13 (APK)</b><span>Bản mới nhất, có cập nhật online ngay trong app</span></a>
+  <a class="dl" href="/tv-launcher/thay-launcher-google-tv.bat"><b>⬇ thay-launcher-google-tv.bat</b><span>Chỉ cần cho TV Google TV (Bước 5B): tắt launcher gốc để nút Home về launcher mới</span></a>
+  <a class="dl" href="/tv-launcher/bat-lai-launcher-goc-google-tv.bat"><b>⬇ bat-lai-launcher-goc-google-tv.bat</b><span>File hoàn nguyên: bật lại launcher gốc của Google TV khi cần</span></a>
+
+  <h2>Bước 1 — Bật Gỡ lỗi ADB trên TV</h2>
+  <ol>
+    <li>Vào <b>Cài đặt → Ưu tiên thiết bị (Hệ thống) → Giới thiệu</b>.</li>
+    <li>Bấm chọn mục <b>Số bản dựng (Build)</b> 7 lần liên tiếp, TV báo đã bật chế độ nhà phát triển.</li>
+    <li>Quay lại mục <b>Cài đặt → Tùy chọn nhà phát triển</b>, bật <b>Gỡ lỗi USB (USB debugging)</b>. Nếu thấy thêm mục <b>Gỡ lỗi qua mạng / ADB debugging</b> thì bật luôn.</li>
+    <li>Xem địa chỉ IP của TV ở <b>Cài đặt → Mạng</b> (ví dụ 192.168.1.50) — các bước sau sẽ cần.</li>
+  </ol>
+  <p>Lần đầu máy tính kết nối, TV hiện hộp thoại "Cho phép gỡ lỗi USB?" — chọn <b>Cho phép</b> (Allow).</p>
+
+  <h2>Bước 2 — Tắt quét Play Protect để cài được APK</h2>
+  <p>Play Protect hay chặn cài APK ngoài cửa hàng. Tắt phần quét như sau:</p>
+  <ol>
+    <li>Mở <b>Google Play Store</b> trên TV → bấm vào <b>ảnh đại diện</b> ở góc phải trên → <b>Play Protect</b>.</li>
+    <li>Bấm biểu tượng <b>⚙ (Cài đặt)</b> trong Play Protect → tắt <b>"Quét ứng dụng bằng Play Protect"</b>.</li>
+  </ol>
+  <div class="note">Trên Google TV, app Play Store bị giấu khá kỹ: sang tab <b>Ứng dụng</b> kéo xuống dưới tìm Google Play Store, hoặc bấm nút 🔍 tìm kiếm gõ "Play Store", hoặc giữ nút micro trên remote và nói "Play Protect".</div>
+
+  <h2>Bước 3 — Dọn TV bằng CleanYourTV</h2>
+  <h3>Cách A: nhờ trợ lý AI làm (cách dự án khuyến nghị)</h3>
+  <ol>
+    <li>Tải mã nguồn dự án về máy tính: <code>git clone https://github.com/Gathin23/cleanyourtv</code></li>
+    <li>Mở thư mục đó bằng một trợ lý lập trình (Claude Code, Codex, Gemini CLI…), dán nội dung file <code>PROMPT.md</code> của dự án và điền model TV của bạn.</li>
+    <li>Trợ lý sẽ tự: sao lưu danh sách ứng dụng → đề xuất danh sách rác để tắt → bạn duyệt từng mục → tắt bằng lệnh <code>pm disable-user</code>. Toàn bộ quá trình khoảng 15 phút.</li>
+  </ol>
+  <h3>Cách B: tự làm bằng lệnh</h3>
+  <ol>
+    <li>Kết nối: <code>adb connect &lt;IP-của-TV&gt;:5555</code></li>
+    <li>Sao lưu danh sách ứng dụng trước khi đụng vào bất cứ thứ gì: <code>adb shell pm list packages &gt; backup-packages.txt</code></li>
+    <li>Tắt từng gói rác bằng lệnh: <code>adb shell pm disable-user --user 0 &lt;tên-gói&gt;</code> — ví dụ các nhóm thường gặp: app quảng cáo/gợi ý của hãng, app đối tác không dùng (xem phim, game cài sẵn), dịch vụ thu thập dữ liệu. Danh sách đã kiểm chứng theo từng model TV có sẵn trong thư mục <code>examples/</code> của dự án CleanYourTV.</li>
+  </ol>
+  <div class="warn"><b>Nguyên tắc an toàn:</b> chỉ <code>disable</code>, <b>tuyệt đối không</b> dùng lệnh <code>uninstall</code> với ứng dụng hệ thống. Chỉ tắt gói nào chắc chắn là rác; không chắc thì để nguyên. Ghi lại mọi gói đã tắt vào một file để sau này bật lại bằng <code>adb shell pm enable &lt;tên-gói&gt;</code>.</div>
+
+  <h2>Bước 4 — Cài Launcher Mod</h2>
+  <ol>
+    <li>Cài APK bằng lệnh: <code>adb install launcher-tvhome-share.apk</code> (hoặc chép APK vào USB, cắm vào TV và cài bằng app quản lý file — nhớ đã làm Bước 2).</li>
+    <li>Mở thử launcher một lần từ danh sách ứng dụng: màn hình chính kiểu Apple TV hiện lên, lời chào "Xin chào", hàng dock ứng dụng ở dưới. Mở được bình thường mới sang Bước 5.</li>
+  </ol>
+
+  <h2>Bước 5 — Đặt launcher làm màn hình chính</h2>
+  <h3>5A. TV Android TV (đời cũ)</h3>
+  <p>Bấm nút <b>Home</b> trên remote, TV thường hiện hộp thoại hỏi chọn màn hình chính — chọn <b>TV Home (Launcher Mod)</b> và chọn "Luôn dùng". Nếu TV không hỏi: vào <b>Cài đặt → Ứng dụng → Ứng dụng mặc định → Ứng dụng màn hình chính</b> rồi chọn launcher mới.</p>
+  <h3>5B. TV Google TV (bấm Home vẫn về launcher gốc)</h3>
+  <p>Đây là cơ chế của Google TV: launcher gốc của Google giữ nút Home ở mức ưu tiên cao nhất của hệ thống, nên chỉ cài app và chọn mặc định thì <b>không</b> giành được nút Home. Phải tắt launcher gốc bằng máy tính:</p>
+  <ol>
+    <li>Chạy file <b>thay-launcher-google-tv.bat</b> đã tải ở phần Chuẩn bị, nhập IP của TV.</li>
+    <li>Script sẽ tự kiểm tra launcher mới đã cài chưa, mở thử lên TV cho bạn xác nhận, rồi mới tắt 2 gói: <code>com.google.android.apps.tv.launcherx</code> (launcher gốc) và <code>com.google.android.tungsten.setupwraith</code> (trình cài đặt — phải tắt cùng, nếu không nó tự bật lại launcher gốc).</li>
+    <li>Bấm nút Home trên remote để kiểm tra: về launcher mới là xong.</li>
+  </ol>
+  <div class="warn"><b>Lưu ý riêng cho Google TV:</b> (1) <b>Đừng tắt Gỡ lỗi ADB</b> sau bước này — đó là đường lui duy nhất để bật lại launcher gốc. (2) Nút ⚙ (cài đặt nhanh) trên remote có thể không mở nữa vì do launcher gốc phụ trách; vào Cài đặt từ launcher mới vẫn bình thường. (3) TV cập nhật phần mềm lớn có thể tự bật lại launcher gốc — gặp lại chỉ cần chạy lại file .bat. Muốn hoàn nguyên: chạy file <b>bat-lai-launcher-goc-google-tv.bat</b>.</div>
+
+  <h2>Bước 6 — Thiết lập trong launcher</h2>
+  <ul>
+    <li><b>Sắp xếp dock:</b> nhấn giữ một ô ứng dụng trên màn hình chính để di chuyển; vào Cài đặt của launcher để thêm/bớt ứng dụng và đổi hình nền theo ý thích.</li>
+    <li><b>Bảo vệ khoá:</b> mở Cài đặt của launcher, bấm vào hàng <b>"Bảo vệ khóa"</b> — app tự kiểm tra và dẫn bạn cấp các quyền còn thiếu (quyền xem ứng dụng đang chạy + 2 dịch vụ Trợ năng). Cấp đủ 3 lớp thì khoá mới chặn được toàn bộ TV.</li>
+    <li><b>Đặt khoá cho trẻ em:</b> trong Cài đặt khoá, đặt <b>passcode</b> (mã dự phòng, mở được không giới hạn) và liên kết <b>mã TOTP</b> bằng cách quét mã QR bằng app Authenticator trên điện thoại (mở bằng TOTP thì tính giờ phiên, tự nhập 1–999 phút; tắt TV là hết phiên, bật lại luôn đòi mã).</li>
+    <li><b>Điều khiển từ xa qua Telegram (tuỳ chọn):</b> tạo một bot riêng bằng <a href="https://t.me/BotFather">@BotFather</a>, chép token của bot vào một file <code>.txt</code>, cắm USB vào TV và nạp file đó trong mục Điều khiển từ xa của Cài đặt khoá; lấy mã chat của bạn bằng cách nhắn cho bot <a href="https://t.me/userinfobot">@userinfobot</a> rồi nhập vào ô mã chat. Sau đó nhắn cho bot của bạn các lệnh: <code>mở tv &lt;phút&gt;</code> · <code>mở &lt;phút&gt;</code> · <code>khoá tv</code> · <code>khoá</code> · <code>tắt tv</code> · <code>tắt</code> · <code>trạng thái</code>.</li>
+    <li><b>Cập nhật:</b> bản share tự kiểm tra bản mới tối đa 1 lần/ngày và báo ở hàng "Cập nhật phần mềm" trong Cài đặt — có bản mới thì bấm vào để tải và cài ngay trong app.</li>
+  </ul>
+
+  <h2>Khi muốn khôi phục về như cũ</h2>
+  <ul>
+    <li><b>Google TV:</b> chạy file <code>bat-lai-launcher-goc-google-tv.bat</code> (bật lại launcher gốc + trình cài đặt), bấm Home là về giao diện gốc.</li>
+    <li><b>Android TV:</b> vào Cài đặt → Ứng dụng mặc định, chọn lại launcher gốc; hoặc gỡ Launcher Mod như một app bình thường.</li>
+    <li><b>Bật lại app đã tắt khi dọn TV:</b> <code>adb shell pm enable &lt;tên-gói&gt;</code> với từng gói trong danh sách đã ghi ở Bước 3.</li>
+  </ul>
+  <div class="note">Vì mọi thao tác trong bài đều là "tắt" chứ không "xoá", TV của bạn luôn quay về nguyên trạng được. Chúc bạn có chiếc TV sạch và nhanh hơn! — Kiên Nguyễn</div>
+
+  <footer>
+    © 2026 Kiên Nguyễn • kienqb.is-a.dev<br>
+    CleanYourTV là dự án của Gathin23 — Launcher Mod phát triển dựa trên launcher của dự án đó.
+  </footer>
+</div>
+</body>
+</html>
