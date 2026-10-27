@@ -73,7 +73,7 @@
   <h1>Dùng TidyTV dọn TV và cài launcher — hướng dẫn từng bước</h1>
   <p class="sub">TidyTV là app Android nhỏ do mình viết. Nó kết nối tới TV qua Wi-Fi (bằng ADB), tắt các ứng dụng rác theo đúng mẫu TV của bạn, rồi cài Launcher Mod của mình làm màn hình chính. Không cần máy tính, không cần biết lệnh. Làm quen tay thì khoảng 5 phút cho một chiếc TV.</p>
 
-  <div class="note"><b>Về hình trong bài:</b> hình ở Việc 1 và Việc 2 là <b>ảnh chụp thật</b> từ TV Sony; hình trong app ở Việc 3 là <b>hình minh hoạ</b>, vẽ lại theo giao diện thật. Mỗi hãng, mỗi đời TV sắp xếp menu hơi khác nhau, chữ có thể lệch đôi chút — cứ theo đúng chữ hiện trên TV của bạn mà bấm, thứ tự các bước thì giống nhau.</div>
+  <div class="note"><b>Về hình trong bài:</b> hình ở các bước là <b>ảnh chụp thật</b> từ TV Sony và từ app TidyTV; riêng hình màn hình ghép nối ở Việc 1 là hình minh hoạ. Mỗi hãng, mỗi đời TV sắp xếp menu hơi khác nhau, chữ có thể lệch đôi chút — cứ theo đúng chữ hiện trên TV của bạn mà bấm, thứ tự các bước thì giống nhau.</div>
 
   <a class="dl" href="/tidytv/TidyTV-1.0.12.apk"><b>⬇ Tải TidyTV 1.0.12 (APK, 10,7 MB)</b><span>Cài lên điện thoại Android, hoặc cài thẳng lên TV cũng được</span></a>
 
@@ -155,134 +155,40 @@
   <h2>Việc 3 — Trong app TidyTV</h2>
 
   <h3>Bước 1: Kết nối</h3>
-  <p>Nhập IP của TV vào ô đầu tiên. Nếu TidyTV đang cài ngay trên chiếc TV cần dọn, bấm nút <b>"App đang chạy trên chính TV này → tự điền IP"</b> cho nhanh. TV có mã ghép nối thì điền thêm cổng ghép nối + mã 6 số, bấm <b>Ghép nối bằng mã</b> trước (ghép thành công app sẽ báo). Xong bấm <b>KẾT NỐI TỚI TV</b> và nhìn lên TV: thường trong vài giây TV hiện hộp thoại <b>"Cho phép gỡ lỗi USB?"</b> — chọn <b>Cho phép</b> (TV tự ghi chữ USB, kệ nó; tích thêm ô "Luôn cho phép" nếu có để lần sau khỏi hỏi lại). Hộp thoại không hiện mà app báo lỗi thì gần như chắc chắn sai IP hoặc khác mạng Wi-Fi.</p>
+  <p>Bấm nút <b>APP ĐANG CHẠY TRÊN CHÍNH TV NÀY → TỰ ĐIỀN IP</b> để app tự lấy IP của TV (nếu chạy TidyTV trên điện thoại thì nhập IP của TV vào ô đầu tiên), cổng để <b>5555</b>, rồi bấm <b>KẾT NỐI TỚI TV</b>. TV hiện bảng "Cho phép gỡ lỗi USB?" thì <b>tích vào ô "Luôn luôn cho phép"</b> rồi bấm <b>Cho phép</b>. Riêng TV đời mới bắt ghép mã: điền thêm cổng ghép nối + mã 6 số (lấy ở Việc 1), bấm <b>Ghép nối bằng mã</b> trước rồi mới kết nối.</p>
   <div class="fig">
-    <svg viewBox="0 0 300 560" width="300" role="img" aria-label="Minh hoạ màn hình bước 1 của TidyTV">
-      <rect class="ph-bg" x="2" y="2" width="296" height="556" rx="22"/>
-      <text x="18" y="36" class="ph-title">TidyTV — dọn TV &amp; cài Launcher</text>
-      <text x="18" y="58" class="ph-step">Bước 1/5: Kết nối tới TV</text>
-      <text x="18" y="84" class="ph-txt">TV và thiết bị này phải cùng một mạng Wi-Fi.</text>
-      <rect class="ph-field" x="18" y="98" width="264" height="38" rx="8"/>
-      <text x="28" y="122" class="ph-fieldtxt">192.168.1.50</text>
-      <rect class="ph-btn" x="18" y="144" width="264" height="34" rx="8"/>
-      <text x="150" y="166" class="ph-btntxt" text-anchor="middle">App chạy trên chính TV này → tự điền IP</text>
-      <rect class="ph-field" x="18" y="186" width="264" height="38" rx="8"/>
-      <text x="28" y="210" class="ph-fieldtxt">5555</text>
-      <text x="18" y="248" class="ph-dim">Chỉ khi TV bắt ghép mã (ở Việc 1):</text>
-      <rect class="ph-field" x="18" y="258" width="126" height="38" rx="8"/>
-      <text x="28" y="282" class="ph-fieldtxt">41237</text>
-      <rect class="ph-field" x="156" y="258" width="126" height="38" rx="8"/>
-      <text x="166" y="282" class="ph-fieldtxt">483920</text>
-      <rect class="ph-btn" x="18" y="304" width="264" height="36" rx="8"/>
-      <text x="150" y="327" class="ph-btntxt" text-anchor="middle">Ghép nối bằng mã</text>
-      <rect class="ph-big" x="18" y="356" width="264" height="50" rx="10"/>
-      <text x="150" y="388" class="ph-bigtxt" text-anchor="middle">KẾT NỐI TỚI TV</text>
-      <text x="18" y="436" class="ph-dim">Nhật ký:</text>
-      <text x="18" y="458" class="ph-txt">✓ Đã kết nối tới TV 192.168.1.50</text>
-    </svg>
+    <img src="img/viec3-buoc1-ket-noi.jpg" alt="Bước 1 trong app TidyTV: kết nối tới TV" loading="lazy">
   </div>
-  <p class="cap">Hình minh hoạ: màn hình Bước 1 trong app</p>
+  <p class="cap">Ảnh thật: Bước 1 — Kết nối tới TV</p>
 
   <h3>Bước 2: Kiểm tra mẫu TV và sao lưu</h3>
-  <p>Kết nối xong app tự đọc model TV và chọn sẵn danh sách app rác tương ứng trong ô danh sách (hiện có 158 mẫu). Nhìn lướt qua: đúng tên dòng TV của bạn thì thôi, lệch thì tự chọn lại — chọn nhầm danh sách cũng không nguy hiểm, vì bước sau chỉ những app thật sự có trên TV mới hiện ra. Ô "Giảm hiệu ứng chuyển cảnh 0.5x" để nguyên nếu muốn TV phản hồi nhanh hơn một chút, không thích thì bỏ tích. Bấm <b>SAO LƯU &amp; SANG BƯỚC DỌN RÁC</b>: app lưu lại danh sách ứng dụng và tình trạng hiện tại, đây là cơ sở để nút Khôi phục ở cuối làm việc — đừng bỏ qua bước này.</p>
+  <p>Kết nối xong, app tự đọc thông tin TV và gợi ý sẵn mẫu TV. Xem lại <b>model TV đúng chưa</b>: chưa đúng thì bấm <b>mũi tên</b> ở ô danh sách để chọn lại model. Đúng rồi thì bấm <b>SAO LƯU &amp; SANG BƯỚC DỌN RÁC</b> — bản sao lưu này là cơ sở để nút Khôi phục ở Bước 5 trả TV về như cũ, đừng bỏ qua.</p>
   <div class="fig">
-    <svg viewBox="0 0 300 470" width="300" role="img" aria-label="Minh hoạ màn hình bước 2 của TidyTV">
-      <rect class="ph-bg" x="2" y="2" width="296" height="466" rx="22"/>
-      <text x="18" y="36" class="ph-title">TidyTV — dọn TV &amp; cài Launcher</text>
-      <text x="18" y="58" class="ph-step">Bước 2/5: Thông tin TV &amp; sao lưu</text>
-      <rect class="ph-field" x="18" y="74" width="264" height="74" rx="8"/>
-      <text x="28" y="98" class="ph-txt">TV: Sony BRAVIA 4K GB</text>
-      <text x="28" y="120" class="ph-txt">Android 9 • 112 ứng dụng</text>
-      <text x="28" y="140" class="ph-dim">Màn hình chính hiện tại: launcher gốc</text>
-      <text x="18" y="172" class="ph-txt">Danh sách app rác theo mẫu TV:</text>
-      <rect class="ph-field" x="18" y="182" width="264" height="40" rx="8"/>
-      <text x="28" y="207" class="ph-fieldtxt">Sony Bravia 4K GB   ▾</text>
-      <rect class="ph-check" x="18" y="238" width="16" height="16" rx="3"/>
-      <path d="M21 246 l4 4 l7 -8" stroke="#7DB4FF" stroke-width="2" fill="none"/>
-      <text x="42" y="251" class="ph-txt">Giảm hiệu ứng chuyển cảnh 0.5x cho mượt</text>
-      <rect class="ph-big" x="18" y="272" width="264" height="50" rx="10"/>
-      <text x="150" y="296" class="ph-bigtxt" text-anchor="middle">SAO LƯU &amp; SANG BƯỚC</text>
-      <text x="150" y="314" class="ph-bigtxt" text-anchor="middle">DỌN RÁC</text>
-      <rect class="ph-btn" x="18" y="334" width="264" height="38" rx="8"/>
-      <text x="150" y="358" class="ph-btntxt" text-anchor="middle">Khôi phục TV về như cũ (từ bản sao lưu)</text>
-    </svg>
+    <img src="img/viec3-buoc2-thong-tin.jpg" alt="Bước 2 trong app TidyTV: thông tin TV và sao lưu" loading="lazy">
   </div>
-  <p class="cap">Hình minh hoạ: màn hình Bước 2 — app tự nhận diện và gợi ý mẫu TV</p>
+  <p class="cap">Ảnh thật: Bước 2 — Thông tin TV &amp; sao lưu</p>
 
   <h3>Bước 3: Tắt ứng dụng rác</h3>
-  <p>App liệt kê những ứng dụng trong danh sách mẫu mà TV của bạn thật sự có, kèm ghi chú ngắn từng cái là gì (ghi chú lấy từ dữ liệu cộng đồng CleanYourTV nên một số dòng để tiếng Anh). Đọc qua một lượt: cái nào đang dùng — ví dụ app xem phim cài sẵn của hãng — thì <b>bỏ dấu tích</b>. Phần còn lại bấm <b>TẮT CÁC ỨNG DỤNG ĐÃ CHỌN</b>. App này chỉ <i>tắt</i> (disable), không xoá hẳn, và nó tự né sẵn các ứng dụng hệ thống quan trọng, ứng dụng vốn đã tắt từ trước, và màn hình chính hiện tại — nên không có chuyện tắt nhầm thứ khiến TV không lên được. Tắt xong app đọc lại trạng thái thật trên TV rồi mới ghi vào sổ khôi phục, mục nào tắt không được nó báo ✗ ngay trong nhật ký ở cuối màn hình.</p>
+  <p>Như hình là TV đã dọn hết app rác nên danh sách trống. Bình thường, TV chưa dọn sẽ có các app rác hiện ở đây (chỉ những app thật sự có trên TV mới hiện). Muốn dọn thì bấm <b>CHỌN TẤT CẢ</b> rồi bấm <b>TẮT CÁC ỨNG DỤNG ĐÃ CHỌN</b>; app nào đang dùng muốn giữ lại thì bỏ tích ở app đó. Không muốn dọn thì bấm <b>BỎ QUA BƯỚC NÀY →</b>. App chỉ <i>tắt</i> chứ không xoá hẳn, khôi phục lại được ở Bước 5.</p>
   <div class="fig">
-    <svg viewBox="0 0 300 480" width="300" role="img" aria-label="Minh hoạ màn hình bước 3 của TidyTV">
-      <rect class="ph-bg" x="2" y="2" width="296" height="476" rx="22"/>
-      <text x="18" y="36" class="ph-title">TidyTV — dọn TV &amp; cài Launcher</text>
-      <text x="18" y="58" class="ph-step">Bước 3/5: Dọn ứng dụng rác</text>
-      <text x="18" y="82" class="ph-txt">Danh sách Sony Bravia 4K GB: TV này có 9 mục tắt được.</text>
-      <g>
-        <rect class="ph-check" x="18" y="98" width="16" height="16" rx="3"/><path d="M21 106 l4 4 l7 -8" stroke="#7DB4FF" stroke-width="2" fill="none"/>
-        <text x="42" y="108" class="ph-txt">tv.samba.ssm</text><text x="42" y="124" class="ph-dim">(theo dõi nội dung đang xem)</text>
-        <rect class="ph-check" x="18" y="136" width="16" height="16" rx="3"/><path d="M21 144 l4 4 l7 -8" stroke="#7DB4FF" stroke-width="2" fill="none"/>
-        <text x="42" y="146" class="ph-txt">com.sony.dtv.sonyselect</text><text x="42" y="162" class="ph-dim">(ô quảng cáo Sony Select)</text>
-        <rect class="ph-check" x="18" y="174" width="16" height="16" rx="3"/><path d="M21 182 l4 4 l7 -8" stroke="#7DB4FF" stroke-width="2" fill="none"/>
-        <text x="42" y="184" class="ph-txt">com.sony.dtv.discovery</text><text x="42" y="200" class="ph-dim">(thanh gợi ý nội dung)</text>
-        <rect class="ph-check" x="18" y="212" width="16" height="16" rx="3"/>
-        <text x="42" y="222" class="ph-txt">com.google.android.videos</text><text x="42" y="238" class="ph-dim">(Google Play Phim — bỏ tích nếu đang dùng)</text>
-      </g>
-      <rect class="ph-big" x="18" y="262" width="264" height="50" rx="10"/>
-      <text x="150" y="294" class="ph-bigtxt" text-anchor="middle">TẮT CÁC ỨNG DỤNG ĐÃ CHỌN</text>
-      <rect class="ph-btn" x="18" y="324" width="264" height="38" rx="8"/>
-      <text x="150" y="348" class="ph-btntxt" text-anchor="middle">Bỏ qua bước này →</text>
-      <text x="18" y="392" class="ph-txt">✓ Đã tắt tv.samba.ssm</text>
-      <text x="18" y="412" class="ph-txt">✓ Đã tắt com.sony.dtv.sonyselect</text>
-    </svg>
+    <img src="img/viec3-buoc3-don-rac.jpg" alt="Bước 3 trong app TidyTV: dọn ứng dụng rác" loading="lazy">
   </div>
-  <p class="cap">Hình minh hoạ: màn hình Bước 3 — bỏ tích ở mục nào muốn giữ lại</p>
+  <p class="cap">Ảnh thật: Bước 3 — Dọn ứng dụng rác (TV trong hình đã dọn hết nên không còn mục nào)</p>
 
   <h3>Bước 4: Cài launcher làm màn hình chính</h3>
-  <p>Đây là bước thay giao diện. Bấm <b>CÀI LAUNCHER &amp; ĐẶT LÀM MÀN HÌNH CHÍNH</b>, chờ khoảng nửa phút: app gửi file sang TV, cài đặt, thiết lập xong rồi tự chuyển sang Bước 5. App cũng bật sẵn luôn 3 lớp bảo vệ khoá của launcher (quyền xem ứng dụng đang chạy và 2 dịch vụ phím) — việc này làm từ trong launcher thường không được trên nhiều dòng TV, nên app làm luôn trong lúc cài. Bước này chỉ cài và thiết lập — chưa tắt gì của TV cả. Hai trường hợp nút Home cứ quay về giao diện cũ (Google TV, và một số TV Android TV ghim chặt launcher gốc như Sony) thì xử lý ở Bước 5: app cố ý để tới bước cuối mới tắt launcher gốc, sau khi launcher mới đã vào vị trí hẳn hoi.</p>
+  <p>Bấm vào <b>CÀI LAUNCHER &amp; ĐẶT LÀM MÀN HÌNH CHÍNH</b>. App tự cài launcher lên TV, đặt làm màn hình chính và bật sẵn luôn 3 lớp bảo vệ khoá, xong tự chuyển sang Bước 5. Bước này chỉ cài và thiết lập — chưa tắt gì của TV cả, việc tắt launcher gốc để ở bước cuối cùng.</p>
   <div class="fig">
-    <svg viewBox="0 0 300 300" width="300" role="img" aria-label="Minh hoạ màn hình bước 4 của TidyTV">
-      <rect class="ph-bg" x="2" y="2" width="296" height="296" rx="22"/>
-      <text x="18" y="36" class="ph-title">TidyTV — dọn TV &amp; cài Launcher</text>
-      <text x="18" y="58" class="ph-step">Bước 4/5: Cài launcher làm màn hình chính</text>
-      <text x="18" y="84" class="ph-txt">Cài Launcher Mod (giao diện sạch kiểu Apple TV,</text>
-      <text x="18" y="102" class="ph-txt">khoá TV bằng mã TOTP + passcode, điều khiển</text>
-      <text x="18" y="120" class="ph-txt">từ xa qua Telegram) làm màn hình chính.</text>
-      <rect class="ph-big" x="18" y="140" width="264" height="54" rx="10"/>
-      <text x="150" y="164" class="ph-bigtxt" text-anchor="middle">CÀI LAUNCHER &amp; ĐẶT LÀM</text>
-      <text x="150" y="183" class="ph-bigtxt" text-anchor="middle">MÀN HÌNH CHÍNH</text>
-      <text x="18" y="228" class="ph-txt">✓ Đã cài launcher lên TV</text>
-      <text x="18" y="248" class="ph-txt">✓ Launcher đã là màn hình chính của TV</text>
-    </svg>
+    <img src="img/viec3-buoc4-launcher.jpg" alt="Bước 4 trong app TidyTV: cài launcher làm màn hình chính" loading="lazy">
   </div>
-  <p class="cap">Hình minh hoạ: màn hình Bước 4 — chỉ cài và thiết lập launcher</p>
+  <p class="cap">Ảnh thật: Bước 4 — Cài launcher làm màn hình chính</p>
   <div class="warn"><b>Hai điều cần nhớ với Google TV:</b> (1) Sau khi làm xong <b>đừng tắt Gỡ lỗi không dây</b> trên TV — đó là đường lui duy nhất để khôi phục khi cần. (2) Nút ⚙ (cài đặt nhanh) trên remote có thể không mở nữa vì nó do launcher gốc phụ trách; muốn vào Cài đặt thì vào từ launcher mới. Ngoài ra, khi TV cập nhật phần mềm lớn, hãng có thể tự bật lại launcher gốc — gặp lại thì mở TidyTV chạy lại Bước 4 là xong.</div>
 
   <h3>Bước 5: Xong</h3>
-  <p>Nếu bấm nút Home mà vẫn về giao diện gốc (hay gặp ở TV Sony Android TV): tích ô <b>"TV này là Android TV"</b> trên màn hình này rồi bấm <b>TẮT LAUNCHER GỐC</b> — app tắt launcher gốc để nút Home nhường cho launcher mới, có ghi lại để nút Khôi phục bên dưới bật lại được; tắt xong mà vẫn chưa giành được nút Home thì app tự bật lại launcher gốc, TV không mất màn hình chính. Với <b>Google TV</b> cũng vậy: tích ô <b>"TV này là Google TV"</b> rồi bấm <b>TẮT LAUNCHER GOOGLE</b> — app tắt cả cụm giữ Home của Google, có ghi lại để Khôi phục bật lại, và cũng tự bật lại nếu chưa giành được nút Home. Xong xuôi, bấm nút Home trên remote. Giao diện mới hiện ra là hoàn tất: hàng ứng dụng dưới cùng, đồng hồ và lời chào phía trên. Từ đây mọi tuỳ biến làm ngay trong launcher: nhấn giữ một ô ứng dụng để di chuyển/thêm bớt, vào Cài đặt của launcher để đổi hình nền. Launcher tự kiểm tra bản mới mỗi ngày một lần và báo trong mục Cài đặt → Cập nhật phần mềm. Phần khoá TV cho trẻ em và điều khiển từ xa làm tiếp ở Phần 2 dưới đây.</p>
+  <p>Bấm thử nút <b>Home</b> trên remote xem đã về launcher mới chưa. Nếu vẫn bị về launcher gốc thì vào lại app, ở màn hình Bước 5 này <b>tích vào ô đúng loại TV của bạn</b> — "TV này là Android TV" hoặc "TV này là Google TV" — rồi bấm nút <b>TẮT LAUNCHER GỐC</b> (hoặc <b>TẮT LAUNCHER GOOGLE</b>) là được. Khi nào muốn trả TV về trạng thái trước khi dọn thì bấm <b>KHÔI PHỤC TV VỀ NHƯ CŨ</b> ở ngay dưới. Xong xuôi, mọi tuỳ biến làm ngay trong launcher: nhấn giữ một ô ứng dụng để di chuyển/thêm bớt, vào Cài đặt của launcher để đổi hình nền. Phần khoá TV cho trẻ em và điều khiển từ xa làm tiếp ở Phần 2 dưới đây.</p>
   <div class="fig">
-    <svg viewBox="0 0 300 420" width="300" role="img" aria-label="Minh hoạ màn hình bước 5 của TidyTV">
-      <rect class="ph-bg" x="2" y="2" width="296" height="416" rx="22"/>
-      <text x="18" y="36" class="ph-title">TidyTV — dọn TV &amp; cài Launcher</text>
-      <text x="18" y="58" class="ph-step">Bước 5/5: Hoàn tất</text>
-      <text x="18" y="88" class="ph-txt">Hoàn tất! Bấm nút Home trên remote để về</text>
-      <text x="18" y="108" class="ph-txt">màn hình chính mới.</text>
-      <rect class="ph-check" x="18" y="122" width="16" height="16" rx="3"/>
-      <text x="42" y="132" class="ph-txt">TV này là Android TV → tắt luôn</text>
-      <text x="42" y="148" class="ph-txt">launcher gốc</text>
-      <rect class="ph-btn" x="18" y="160" width="264" height="38" rx="8"/>
-      <text x="150" y="184" class="ph-btntxt" text-anchor="middle">TẮT LAUNCHER GỐC</text>
-      <rect class="ph-check" x="18" y="210" width="16" height="16" rx="3"/>
-      <text x="42" y="220" class="ph-txt">TV này là Google TV → tắt luôn</text>
-      <text x="42" y="236" class="ph-txt">launcher gốc của Google</text>
-      <rect class="ph-btn" x="18" y="248" width="264" height="38" rx="8"/>
-      <text x="150" y="272" class="ph-btntxt" text-anchor="middle">TẮT LAUNCHER GOOGLE</text>
-      <rect class="ph-big" x="18" y="298" width="264" height="50" rx="10"/>
-      <text x="150" y="330" class="ph-bigtxt" text-anchor="middle">KHÔI PHỤC TV VỀ NHƯ CŨ</text>
-      <rect class="ph-btn" x="18" y="360" width="264" height="38" rx="8"/>
-      <text x="150" y="384" class="ph-btntxt" text-anchor="middle">Ngắt kết nối, làm TV khác</text>
-    </svg>
+    <img src="img/viec3-buoc5-hoan-tat.jpg" alt="Bước 5 trong app TidyTV: hoàn tất, tắt launcher gốc và khôi phục" loading="lazy">
   </div>
-  <p class="cap">Hình minh hoạ: màn hình Bước 5</p>
+  <p class="cap">Ảnh thật: Bước 5 — Hoàn tất</p>
 
   <h2>Phần 2 — Khoá TV cho trẻ em và điều khiển từ xa qua Telegram</h2>
   <p>Phần này làm <b>ngay trong launcher</b> sau khi đã cài xong ở Phần 1, không liên quan gì tới TidyTV nữa. Nguyên tắc của khoá: TV chỉ mở khi nhập đúng mã. Có hai loại mã — <b>passcode</b> cố định thì mở không giới hạn (cho người lớn), còn mã <b>TOTP</b> 6 số đổi mỗi 30 giây (giống mã trong app Authenticator ngân hàng) thì mở theo phiên tính phút, hết giờ TV tự khoá lại kể cả đang xem YouTube. Thêm bot Telegram nữa thì bạn mở/khoá/tắt TV từ điện thoại ở bất cứ đâu.</p>
