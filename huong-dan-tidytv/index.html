@@ -71,280 +71,60 @@
 <div class="wrap">
   <a class="back" href="/">← Về trang chủ kienqb.is-a.dev</a>
   <h1>Dùng TidyTV dọn TV và cài launcher — hướng dẫn từng bước</h1>
-  <p class="sub">TidyTV là app Android nhỏ do mình viết. Nó kết nối tới TV qua Wi-Fi (bằng ADB), tắt các ứng dụng rác theo đúng mẫu TV của bạn, rồi cài Launcher Mod của mình làm màn hình chính. Không cần máy tính, không cần biết lệnh. Làm quen tay thì khoảng 5 phút cho một chiếc TV.</p>
-
-  <div class="note"><b>Về hình trong bài:</b> hình ở các bước là <b>ảnh chụp thật</b> từ TV Sony và từ app TidyTV; riêng hình màn hình ghép nối ở Việc 1 là hình minh hoạ. Mỗi hãng, mỗi đời TV sắp xếp menu hơi khác nhau, chữ có thể lệch đôi chút — cứ theo đúng chữ hiện trên TV của bạn mà bấm, thứ tự các bước thì giống nhau.</div>
 
   <a class="dl" href="/tidytv/TidyTV-1.0.12.apk"><b>⬇ Tải TidyTV 1.0.12 (APK, 10,7 MB)</b><span>Cài lên điện thoại Android, hoặc cài thẳng lên TV cũng được</span></a>
 
   <h2>Trước khi bắt đầu</h2>
-  <h3>Cài TidyTV vào đâu</h3>
   <ul>
-    <li><b>Có điện thoại Android:</b> tải file APK ở trên về điện thoại, bấm vào file để cài. Cách này dễ nhất.</li>
-    <li><b>Chỉ có iPhone:</b> tải APK bằng máy tính (hoặc nhờ điện thoại Android của người nhà tải hộ), chép vào USB, cắm USB vào TV, mở app quản lý file trên TV (mục Media/Thư viện hoặc app File có sẵn) rồi bấm vào file APK để cài ngay trên TV. TidyTV chạy trên TV thì các bước sau y hệt, chỉ khác là bạn đứng trước TV mà bấm.</li>
-    <li><b>Cài thẳng lên TV, khỏi cần USB:</b> dùng app Downloader nhập một mã số là tải được — xem <b>Việc 2</b> bên dưới.</li>
-  </ul>
-  <ul>
-    <li>TV phải chạy <b>Android TV</b> hoặc <b>Google TV</b> (Sony, TCL, Xiaomi, Philips, Hisense… đều được). TV Samsung, LG dùng hệ điều hành riêng, không làm theo cách này được.</li>
-    <li>TV và thiết bị chạy TidyTV phải bắt <b>cùng một mạng Wi-Fi</b>. Đây là nguyên nhân số một khiến kết nối thất bại — kiểm tra trước cho đỡ mất công.</li>
     <li>Nếu cài APK mà máy báo bị chặn bởi Play Protect: tắt nó ngay trong Cài đặt của TV — bấm <b>⚙ Cài đặt → Ứng dụng → Bảo mật và hạn chế</b> (có máy chỉ ghi <b>Bảo mật</b>) <b>→ Quét ứng dụng bằng Play Protect → chuyển sang Tắt</b>. Thấy thêm mục <b>Cải thiện việc phát hiện ứng dụng có hại</b> thì tắt luôn. Không thấy đường này thì đi đường Play Store: mở <b>Play Store → bấm ảnh đại diện → Play Protect → ⚙ Cài đặt → tắt "Quét ứng dụng bằng Play Protect"</b>. Riêng Google TV giấu app Play Store khá kỹ: sang tab <b>Ứng dụng</b> kéo xuống dưới, hoặc giữ nút micro trên remote nói "Play Protect".</li>
   </ul>
 
-  <h2>Việc 1 — Trên TV: mở Tuỳ chọn nhà phát triển, bật gỡ lỗi</h2>
-  <p>Mặc định Android giấu mục nhà phát triển, phải tự mở: vào <b>Cài đặt của TV → Giới thiệu</b>, kéo xuống dòng <b>Bản dựng</b> rồi <b>bấm 7 lần liên tục</b> vào đó — TV đếm ngược rồi báo "Bạn đã là nhà phát triển" là mở xong.</p>
-  <ul>
-    <li>Tuỳ hãng mà đường vào hơi khác: <b>Google TV</b> là Cài đặt → Hệ thống → Giới thiệu → <b>Số bản dựng hệ điều hành Android TV</b>; vài dòng TV giấu mục Giới thiệu trong <b>Ưu tiên thiết bị</b> hoặc <b>Tuỳ chọn thiết bị</b>. Cứ tìm trang Giới thiệu, dòng cần bấm 7 lần luôn là dòng Bản dựng/Số bản dựng ở gần cuối trang.</li>
-  </ul>
+  <h2>Bước 1</h2>
+  <p>Vào Cài đặt tivi → Giới thiệu → bấm 7 lần vào Bản dựng để mở Tuỳ chọn nhà phát triển.</p>
   <div class="fig">
-    <img src="img/viec1-gioi-thieu.jpg" alt="Trang Giới thiệu trên TV, dòng Bản dựng ở gần cuối trang" loading="lazy">
+    <img src="img/viec1-gioi-thieu.jpg" alt="Trang Giới thiệu trên TV, dòng Bản dựng ở gần cuối trang">
   </div>
-  <p class="cap">Ảnh thật: trang Giới thiệu — bấm 7 lần vào dòng Bản dựng ở gần cuối trang</p>
-  <p>Mở được rồi thì <b>quay trở lại</b>, vào mục <b>Tuỳ chọn nhà phát triển</b> vừa xuất hiện và <b>bật Gỡ lỗi ADB</b>. Tuỳ từng TV, công tắc này mang tên khác nhau:</p>
-  <ul>
-    <li><b>Gỡ lỗi ADB</b> hoặc <b>Gỡ lỗi USB</b>: tên nghe là USB nhưng đây chính là công tắc bật ADB của máy — TidyTV kết nối qua Wi-Fi, không cắm cáp gì hết. Cứ bật đúng mục này. Nếu trong danh sách còn có mục <b>Gỡ lỗi qua mạng</b> (Network debugging) thì bật luôn.</li>
-    <li><b>Gỡ lỗi không dây</b> (Google TV đời mới): bật lên. Nếu là lần đầu, TV bắt ghép nối: chạm vào dòng <b>Ghép nối thiết bị bằng mã ghép nối</b>, TV hiện <b>mã 6 số</b> kèm một <b>số cổng</b> — để nguyên màn hình này, đừng thoát ra (thoát là mã hết hiệu lực), lát nhập vào app.</li>
-  </ul>
+  <p>Bật được trở về vào Tuỳ chọn nhà phát triển → bật Gỡ lỗi ADB (có tivi hiện là Wi-Fi, USB, Gỡ lỗi không dây).</p>
   <div class="fig">
-    <img src="img/viec1-go-loi-adb.jpg" alt="Tuỳ chọn nhà phát triển trên TV, mục Gỡ lỗi ADB đang bật" loading="lazy">
+    <img src="img/viec1-go-loi-adb.jpg" alt="Tuỳ chọn nhà phát triển trên TV, mục Gỡ lỗi ADB đang bật">
   </div>
-  <p class="cap">Ảnh thật: Tuỳ chọn nhà phát triển — bật Gỡ lỗi ADB</p>
-  <div class="fig">
-    <svg viewBox="0 0 560 300" width="560" role="img" aria-label="Minh hoạ màn hình ghép nối trên TV">
-      <rect class="tv-bg" x="2" y="2" width="556" height="296" rx="14"/>
-      <text x="28" y="42" class="tv-txt" font-weight="700">Gỡ lỗi không dây</text>
-      <rect class="tv-row" x="28" y="58" width="504" height="40" rx="8"/>
-      <text x="44" y="84" class="tv-txt">Gỡ lỗi không dây</text>
-      <text x="470" y="84" class="tv-txt" fill="#7DB4FF">BẬT</text>
-      <rect class="tv-sel" x="28" y="108" width="504" height="40" rx="8"/>
-      <text x="44" y="134" class="tv-txt">Ghép nối thiết bị bằng mã ghép nối</text>
-      <rect class="tv-row" x="90" y="166" width="380" height="112" rx="10"/>
-      <text x="280" y="192" class="tv-dim" text-anchor="middle">Mã ghép nối Wi-Fi</text>
-      <text x="280" y="226" class="tv-big" text-anchor="middle">483 920</text>
-      <text x="280" y="254" class="tv-dim" text-anchor="middle">Địa chỉ IP và cổng: 192.168.1.50:41237</text>
-    </svg>
-  </div>
-  <p class="cap">Hình minh hoạ: màn hình ghép nối trên Google TV — cần mã 6 số và số cổng đi kèm</p>
-  <p>Cuối cùng, xem <b>địa chỉ IP của TV</b>: Cài đặt → Mạng &amp; Internet → bấm vào tên Wi-Fi đang kết nối, IP nằm trong phần chi tiết (ví dụ 192.168.1.50). Ghi lại, bước sau phải nhập.</p>
-  <div class="warn"><b>Người mới hay nhầm ở đây:</b> TV dùng Gỡ lỗi không dây có <b>hai số cổng khác nhau</b> — <i>cổng ghép nối</i> (hiện trong màn hình mã 6 số, chỉ để ghép) và <i>cổng kết nối</i> (hiện ngay ở trang Gỡ lỗi không dây, dưới tên mạng Wi-Fi). Ghép xong mà kết nối bằng cổng 5555 là không vào được đâu, phải dùng đúng cổng kết nối đó.</div>
 
-  <h2>Việc 2 — Tải app TidyTV về TV</h2>
-  <p>TV có sẵn cửa hàng ứng dụng thì tải TidyTV thẳng về TV luôn, không cần điện thoại, không cần USB. Dùng ứng dụng <b>Downloader</b>:</p>
-  <ul>
-    <li>Vào <b>Cửa hàng Google Play</b> (cửa hàng ứng dụng) trên TV, tìm và tải ứng dụng <b>Downloader by AFTVnews</b> — biểu tượng chữ D màu cam, đúng app này.</li>
-  </ul>
+  <h2>Bước 2: Tải app</h2>
+  <p>Vào Cửa hàng Google Play (cửa hàng ứng dụng). Tải ứng dụng Downloader như hình.</p>
   <div class="fig">
-    <img src="img/viec2-downloader.jpg" alt="Ứng dụng Downloader by AFTVnews trên Cửa hàng Google Play" loading="lazy">
+    <img src="img/viec2-downloader.jpg" alt="Ứng dụng Downloader by AFTVnews trên Cửa hàng Google Play">
   </div>
-  <p class="cap">Ảnh thật: ứng dụng Downloader by AFTVnews trên Cửa hàng Google Play</p>
-  <ul>
-    <li>Mở Downloader, viết mã này vào ô nhập rồi bấm <b>Load</b>:</li>
-  </ul>
+  <p>Xong viết code này:</p>
   <p style="text-align:center;font-size:2.2em;font-weight:800;letter-spacing:.12em;margin:14px 0"><b>1029902</b></p>
   <div class="fig">
-    <img src="img/viec2-nhap-ma.jpg" alt="Ô nhập mã trong ứng dụng Downloader" loading="lazy">
+    <img src="img/viec2-nhap-ma.jpg" alt="Ô nhập mã trong ứng dụng Downloader">
   </div>
-  <p class="cap">Ảnh thật: ô nhập mã trong Downloader — nhập mã ở trên rồi bấm Load</p>
-  <ul>
-    <li>File APK tự tải về, TV hiện màn hình cài đặt — bấm <b>CÀI ĐẶT</b> và cài như bình thường là xong. (Mã trên là của bản TidyTV 1.0.12 hiện tại.)</li>
-  </ul>
+  <p>Tải về và cài đặt như bình thường.</p>
   <div class="fig">
-    <img src="img/viec2-cai-dat.jpg" alt="Màn hình cài đặt TidyTV trên TV" loading="lazy">
+    <img src="img/viec2-cai-dat.jpg" alt="Màn hình cài đặt TidyTV trên TV">
   </div>
-  <p class="cap">Ảnh thật: màn hình cài đặt TidyTV — bấm CÀI ĐẶT</p>
 
-  <h2>Việc 3 — Trong app TidyTV</h2>
-
-  <h3>Bước 1: Kết nối</h3>
-  <p>Bấm nút <b>APP ĐANG CHẠY TRÊN CHÍNH TV NÀY → TỰ ĐIỀN IP</b> để app tự lấy IP của TV (nếu chạy TidyTV trên điện thoại thì nhập IP của TV vào ô đầu tiên), cổng để <b>5555</b>, rồi bấm <b>KẾT NỐI TỚI TV</b>. TV hiện bảng "Cho phép gỡ lỗi USB?" thì <b>tích vào ô "Luôn luôn cho phép"</b> rồi bấm <b>Cho phép</b>. Riêng TV đời mới bắt ghép mã: điền thêm cổng ghép nối + mã 6 số (lấy ở Việc 1), bấm <b>Ghép nối bằng mã</b> trước rồi mới kết nối.</p>
+  <h2>Bước 3: Vào app TidyTV làm theo hướng dẫn</h2>
+  <p>Ảnh 1: Bấm vào lấy IP TV → Kết nối. Hiện bảng cho phép thì tích vào ô luôn cho phép và bấm Cho phép.</p>
   <div class="fig">
-    <img src="img/viec3-buoc1-ket-noi.jpg" alt="Bước 1 trong app TidyTV: kết nối tới TV" loading="lazy">
+    <img src="img/viec3-buoc1-ket-noi.jpg" alt="Bước 1 trong app TidyTV: kết nối tới TV">
   </div>
-  <p class="cap">Ảnh thật: Bước 1 — Kết nối tới TV</p>
-
-  <h3>Bước 2: Kiểm tra mẫu TV và sao lưu</h3>
-  <p>Kết nối xong, app tự đọc thông tin TV và gợi ý sẵn mẫu TV. Xem lại <b>model TV đúng chưa</b>: chưa đúng thì bấm <b>mũi tên</b> ở ô danh sách để chọn lại model. Đúng rồi thì bấm <b>SAO LƯU &amp; SANG BƯỚC DỌN RÁC</b> — bản sao lưu này là cơ sở để nút Khôi phục ở Bước 5 trả TV về như cũ, đừng bỏ qua.</p>
+  <p>Ảnh 2: Xem Model tivi đúng chưa. Chưa thì bấm mũi tên chọn model. Nếu đúng rồi thì bấm Sao lưu.</p>
   <div class="fig">
-    <img src="img/viec3-buoc2-thong-tin.jpg" alt="Bước 2 trong app TidyTV: thông tin TV và sao lưu" loading="lazy">
+    <img src="img/viec3-buoc2-thong-tin.jpg" alt="Bước 2 trong app TidyTV: thông tin TV và sao lưu">
   </div>
-  <p class="cap">Ảnh thật: Bước 2 — Thông tin TV &amp; sao lưu</p>
-
-  <h3>Bước 3: Tắt ứng dụng rác</h3>
-  <p>Như hình là TV đã dọn hết app rác nên danh sách trống. Bình thường, TV chưa dọn sẽ có các app rác hiện ở đây (chỉ những app thật sự có trên TV mới hiện). Muốn dọn thì bấm <b>CHỌN TẤT CẢ</b> rồi bấm <b>TẮT CÁC ỨNG DỤNG ĐÃ CHỌN</b>; app nào đang dùng muốn giữ lại thì bỏ tích ở app đó. Không muốn dọn thì bấm <b>BỎ QUA BƯỚC NÀY →</b>. App chỉ <i>tắt</i> chứ không xoá hẳn, khôi phục lại được ở Bước 5.</p>
+  <p>Ảnh 3: Như hình là đã dọn hết app rác. Bình thường nó sẽ có những app rác ở đó. Muốn dọn app rác thì bấm tất cả ứng dụng được chọn. Còn không thì bỏ qua.</p>
   <div class="fig">
-    <img src="img/viec3-buoc3-don-rac.jpg" alt="Bước 3 trong app TidyTV: dọn ứng dụng rác" loading="lazy">
+    <img src="img/viec3-buoc3-don-rac.jpg" alt="Bước 3 trong app TidyTV: dọn ứng dụng rác">
   </div>
-  <p class="cap">Ảnh thật: Bước 3 — Dọn ứng dụng rác (TV trong hình đã dọn hết nên không còn mục nào)</p>
-
-  <h3>Bước 4: Cài launcher làm màn hình chính</h3>
-  <p>Bấm vào <b>CÀI LAUNCHER &amp; ĐẶT LÀM MÀN HÌNH CHÍNH</b>. App tự cài launcher lên TV, đặt làm màn hình chính và bật sẵn luôn 3 lớp bảo vệ khoá, xong tự chuyển sang Bước 5. Bước này chỉ cài và thiết lập — chưa tắt gì của TV cả, việc tắt launcher gốc để ở bước cuối cùng.</p>
+  <p>Ảnh 4: Bấm vào Cài đặt Launcher.</p>
   <div class="fig">
-    <img src="img/viec3-buoc4-launcher.jpg" alt="Bước 4 trong app TidyTV: cài launcher làm màn hình chính" loading="lazy">
+    <img src="img/viec3-buoc4-launcher.jpg" alt="Bước 4 trong app TidyTV: cài launcher làm màn hình chính">
   </div>
-  <p class="cap">Ảnh thật: Bước 4 — Cài launcher làm màn hình chính</p>
-  <div class="warn"><b>Hai điều cần nhớ với Google TV:</b> (1) Sau khi làm xong <b>đừng tắt Gỡ lỗi không dây</b> trên TV — đó là đường lui duy nhất để khôi phục khi cần. (2) Nút ⚙ (cài đặt nhanh) trên remote có thể không mở nữa vì nó do launcher gốc phụ trách; muốn vào Cài đặt thì vào từ launcher mới. Ngoài ra, khi TV cập nhật phần mềm lớn, hãng có thể tự bật lại launcher gốc — gặp lại thì mở TidyTV chạy lại Bước 4 là xong.</div>
-
-  <h3>Bước 5: Xong</h3>
-  <p>Bấm thử nút <b>Home</b> trên remote xem đã về launcher mới chưa. Nếu vẫn bị về launcher gốc thì vào lại app, ở màn hình Bước 5 này <b>tích vào ô đúng loại TV của bạn</b> — "TV này là Android TV" hoặc "TV này là Google TV" — rồi bấm nút <b>TẮT LAUNCHER GỐC</b> (hoặc <b>TẮT LAUNCHER GOOGLE</b>) là được. Khi nào muốn trả TV về trạng thái trước khi dọn thì bấm <b>KHÔI PHỤC TV VỀ NHƯ CŨ</b> ở ngay dưới. Xong xuôi, mọi tuỳ biến làm ngay trong launcher: nhấn giữ một ô ứng dụng để di chuyển/thêm bớt, vào Cài đặt của launcher để đổi hình nền. Phần khoá TV cho trẻ em và điều khiển từ xa làm tiếp ở Phần 2 dưới đây.</p>
+  <p>Ảnh 5: Thử bấm Home xem về launcher gốc không. Nếu vẫn bị launcher gốc. Nếu dính launcher gốc thì vào lại app tích vào ô xong bấm Tắt là được.</p>
   <div class="fig">
-    <img src="img/viec3-buoc5-hoan-tat.jpg" alt="Bước 5 trong app TidyTV: hoàn tất, tắt launcher gốc và khôi phục" loading="lazy">
+    <img src="img/viec3-buoc5-hoan-tat.jpg" alt="Bước 5 trong app TidyTV: hoàn tất">
   </div>
-  <p class="cap">Ảnh thật: Bước 5 — Hoàn tất</p>
-
-  <h2>Phần 2 — Khoá TV cho trẻ em và điều khiển từ xa qua Telegram</h2>
-  <p>Phần này làm <b>ngay trong launcher</b> sau khi đã cài xong ở Phần 1, không liên quan gì tới TidyTV nữa. Nguyên tắc của khoá: TV chỉ mở khi nhập đúng mã. Có hai loại mã — <b>passcode</b> cố định thì mở không giới hạn (cho người lớn), còn mã <b>TOTP</b> 6 số đổi mỗi 30 giây (giống mã trong app Authenticator ngân hàng) thì mở theo phiên tính phút, hết giờ TV tự khoá lại kể cả đang xem YouTube. Thêm bot Telegram nữa thì bạn mở/khoá/tắt TV từ điện thoại ở bất cứ đâu.</p>
-  <p>Đường vào: ở màn hình chính của launcher, mở <b>Cài đặt</b> (nút ⚙) → mục <b>Khóa màn hình (TOTP)</b>. Lần đầu vào, mục này chưa cài nên mở tự do. Từ lần sau, muốn vào lại khu vực này phải nhập passcode hiện tại — đó là cách app chống trẻ con tự mò vào tắt khoá.</p>
-  <div class="fig">
-    <svg viewBox="0 0 560 268" width="560" role="img" aria-label="Minh hoạ mục cài đặt khoá trong launcher">
-      <rect class="tv-bg" x="2" y="2" width="556" height="264" rx="14"/>
-      <text x="28" y="42" class="tv-txt" font-weight="700">Cài đặt</text>
-      <rect class="tv-sel" x="28" y="58" width="504" height="42" rx="8"/>
-      <text x="44" y="85" class="tv-txt">Khóa màn hình (TOTP)</text>
-      <rect class="tv-row" x="28" y="110" width="504" height="42" rx="8"/>
-      <text x="44" y="137" class="tv-txt">Thời gian mở khóa bằng mã Authenticator: 30 phút</text>
-      <rect class="tv-row" x="28" y="162" width="504" height="42" rx="8"/>
-      <text x="44" y="189" class="tv-txt">Điều khiển từ xa qua Telegram</text>
-      <rect class="tv-row" x="28" y="214" width="504" height="42" rx="8"/>
-      <text x="44" y="241" class="tv-txt">Bảo vệ khóa: Đầy đủ</text>
-    </svg>
-  </div>
-  <p class="cap">Hình minh hoạ: các mục khoá trong Cài đặt của launcher</p>
-
-  <h3>1. Quét mã TOTP trước, rồi đặt passcode</h3>
-  <p>Thứ tự trong màn hình "Cài đặt khóa màn hình" như sau. Đầu tiên TV hiện một <b>mã QR</b>: lấy điện thoại mở app Authenticator (Google Authenticator, Microsoft Authenticator hay app 2FA của ngân hàng đều được) → thêm tài khoản mới → quét mã. Không quét được thì nhập tay chuỗi bí mật TV hiện ngay dưới mã QR. Bấm <b>Tiếp tục</b>, TV chuyển sang màn hình <b>Đặt passcode</b>: nhập một mã <b>6 số</b> bạn tự nghĩ ra, nhập lại lần nữa để xác nhận. Passcode này là chìa khoá dự phòng — dùng khi điện thoại hết pin hoặc giờ trên TV bị lệch làm mã TOTP không khớp — nên chọn số dễ nhớ với bạn nhưng khó đoán với trẻ, và <b>ghi lại ở nơi kín</b>: quên passcode thì cách mở lại duy nhất là can thiệp bằng máy tính qua ADB, rất mất công.</p>
-  <div class="fig">
-    <svg viewBox="0 0 560 250" width="560" role="img" aria-label="Minh hoạ màn hình quét mã QR TOTP">
-      <rect class="tv-bg" x="2" y="2" width="556" height="246" rx="14"/>
-      <text x="28" y="42" class="tv-txt" font-weight="700">Cài đặt khóa màn hình</text>
-      <rect x="28" y="60" width="150" height="150" rx="8" fill="#ffffff"/>
-      <g fill="#14141f">
-        <rect x="42" y="74" width="30" height="30"/><rect x="114" y="74" width="30" height="30"/><rect x="42" y="146" width="30" height="30"/>
-        <rect x="52" y="84" width="10" height="10" fill="#ffffff"/><rect x="124" y="84" width="10" height="10" fill="#ffffff"/><rect x="52" y="156" width="10" height="10" fill="#ffffff"/>
-        <rect x="82" y="74" width="10" height="10"/><rect x="96" y="88" width="10" height="10"/><rect x="82" y="118" width="10" height="10"/>
-        <rect x="110" y="118" width="12" height="12"/><rect x="88" y="146" width="10" height="10"/><rect x="124" y="146" width="10" height="22"/>
-        <rect x="42" y="118" width="10" height="10"/><rect x="146" y="104" width="10" height="10"/><rect x="102" y="168" width="10" height="10"/>
-      </g>
-      <text x="200" y="96" class="tv-txt">Quét mã QR này bằng app Authenticator,</text>
-      <text x="200" y="120" class="tv-txt">hoặc nhập tay chuỗi bí mật:</text>
-      <text x="200" y="152" class="tv-txt" font-family="Consolas, monospace" font-size="16">JBSW Y3DP EBLW G4TQ OJQX ....</text>
-      <rect class="tv-sel" x="200" y="176" width="130" height="38" rx="8"/>
-      <text x="265" y="201" class="tv-txt" text-anchor="middle">Tiếp tục</text>
-    </svg>
-  </div>
-  <p class="cap">Hình minh hoạ: màn hình liên kết TOTP (mã QR trong hình là giả)</p>
-  <p>Đặt xong, vào mục <b>Thời gian mở khóa bằng mã Authenticator</b> mà chỉnh số phút cho mỗi phiên mở bằng TOTP: mặc định là <b>30 phút</b>, đặt lại từ 1 tới 999 phút tuỳ nhà. Mở bằng TOTP thì TV đếm ngược phiên đó, trước khi hết 5 phút TV báo trước một lần, hết giờ là khoá ngay. Mở bằng passcode thì không tính giờ. Tắt TV là hết phiên: lần bật sau luôn phải nhập mã lại. Nhập sai mã nhiều lần liên tục, màn hình khoá sẽ bắt chờ một lúc mới cho nhập tiếp — trẻ con đoán mò không ăn thua.</p>
-
-  <h3>2. Bật "Bảo vệ khóa" cho đủ 3 lớp</h3>
-  <p>Vẫn trong Cài đặt, nhìn hàng <b>Bảo vệ khóa</b>. Hàng này báo "Đầy đủ" thì thôi; báo "Thiếu: …" thì bấm thẳng vào hàng đó, app liệt kê phần còn thiếu và dẫn bạn tới đúng màn hình hệ thống để bật. Có 3 phần: <b>quyền xem ứng dụng đang chạy</b>, <b>dịch vụ phím nhập</b> và <b>dịch vụ phím Home</b> (hai dịch vụ sau nằm trong mục Trợ năng của TV — vào đó tìm tên launcher này trong danh sách dịch vụ đã cài và bật lên). Thiếu các lớp này, trẻ vẫn có thể bấm nút app trên remote để qua mặt khoá, nên làm đủ cả 3 trước khi giao TV cho trẻ.</p>
-
-  <h3>3. Tạo bot Telegram bằng BotFather</h3>
-  <p>Bot này là bot <b>của riêng bạn</b>, TV chỉ nghe lệnh từ bot đó và chỉ từ chính bạn. Cách tạo, làm trên điện thoại:</p>
-  <ol>
-    <li>Mở Telegram, tìm <b>@BotFather</b> (có dấu tích xanh), bấm Start rồi gửi lệnh <code>/newbot</code>.</li>
-    <li>BotFather hỏi tên hiển thị — đặt gì cũng được, ví dụ "TV nhà tôi".</li>
-    <li>Hỏi tiếp username — phải kết thúc bằng chữ <code>bot</code>, ví dụ <code>tvnhatoi_bot</code>. Trùng với người khác thì nó báo, đặt tên khác.</li>
-    <li>Tạo xong, BotFather trả về một <b>token</b> — dãy ký tự dạng <code>123456789:AAH…</code> dài khoảng 46 ký tự. Đây là "chìa khoá" của bot: ai có token là điều khiển được bot, nên <b>không gửi token cho bất kỳ ai</b>, không đăng lên mạng. Lỡ lộ thì vào BotFather gõ <code>/revoke</code> để thu hồi và lấy token mới.</li>
-  </ol>
-  <div class="fig">
-    <svg viewBox="0 0 300 430" width="300" role="img" aria-label="Minh hoạ đoạn chat tạo bot với BotFather">
-      <rect class="ph-bg" x="2" y="2" width="296" height="426" rx="22"/>
-      <text x="18" y="38" class="ph-title">BotFather</text>
-      <rect x="150" y="58" width="132" height="34" rx="10" fill="#2A4A7F"/>
-      <text x="264" y="80" class="ph-txt" text-anchor="end">/newbot</text>
-      <rect x="18" y="102" width="220" height="52" rx="10" fill="#1E1E2E"/>
-      <text x="30" y="124" class="ph-txt">Alright, a new bot. How are we</text>
-      <text x="30" y="142" class="ph-txt">going to call it?</text>
-      <rect x="150" y="164" width="132" height="34" rx="10" fill="#2A4A7F"/>
-      <text x="264" y="186" class="ph-txt" text-anchor="end">TV nhà tôi</text>
-      <rect x="18" y="208" width="230" height="52" rx="10" fill="#1E1E2E"/>
-      <text x="30" y="230" class="ph-txt">Good. Now let's choose a username</text>
-      <text x="30" y="248" class="ph-txt">for your bot.</text>
-      <rect x="150" y="270" width="132" height="34" rx="10" fill="#2A4A7F"/>
-      <text x="264" y="292" class="ph-txt" text-anchor="end">tvnhatoi_bot</text>
-      <rect x="18" y="314" width="264" height="96" rx="10" fill="#1E1E2E"/>
-      <text x="30" y="336" class="ph-txt">Done! Use this token to access</text>
-      <text x="30" y="354" class="ph-txt">the HTTP API:</text>
-      <text x="30" y="380" class="ph-txt" font-family="Consolas, monospace" font-size="10.5">123456789:AAH-minh-hoa-token-gia</text>
-      <text x="30" y="400" class="ph-dim">Giữ token này kín như mật khẩu.</text>
-    </svg>
-  </div>
-  <p class="cap">Hình minh hoạ: tạo bot với @BotFather (token trong hình là giả)</p>
-
-  <h3>4. Tạo file token.txt và chép vào USB</h3>
-  <p>Token dài loằng ngoằng, gõ tay bằng remote TV rất dễ sai, nên launcher cho nạp token từ file. Làm trên máy tính hoặc điện thoại:</p>
-  <ol>
-    <li>Tạo một file văn bản thuần, đặt tên là <code>token.txt</code> (tên khác cũng được, miễn là file <code>.txt</code>).</li>
-    <li>Mở file, dán <b>duy nhất token</b> vào — chỉ một dòng, không thêm chữ nào khác, không để khoảng trắng ở đầu/cuối dòng. Lưu file.</li>
-    <li>Chép file vào USB (định dạng FAT32/exFAT như USB xem phim bình thường).</li>
-  </ol>
-  <div class="fig">
-    <svg viewBox="0 0 460 190" width="460" role="img" aria-label="Minh hoạ file token.txt">
-      <rect x="2" y="2" width="456" height="186" rx="12" fill="#1B1B28" stroke="rgba(255,255,255,.3)"/>
-      <rect x="2" y="2" width="456" height="34" rx="12" fill="#2A2A3A"/>
-      <text x="18" y="25" class="ph-txt">📄 token.txt — Notepad</text>
-      <text x="18" y="72" class="ph-txt" font-family="Consolas, monospace" font-size="13">123456789:AAH-minh-hoa-token-gia-dung-de</text>
-      <text x="18" y="96" class="ph-txt" font-family="Consolas, monospace" font-size="13">thay-bang-token-that-cua-ban</text>
-      <text x="18" y="136" class="ph-dim">Đúng một dòng là token, không thêm bất cứ chữ gì khác.</text>
-      <text x="18" y="160" class="ph-dim">Lưu xong chép file này vào USB, cắm USB vào TV.</text>
-    </svg>
-  </div>
-  <p class="cap">Hình minh hoạ: nội dung đúng của file token.txt</p>
-
-  <h3>5. Nạp token vào TV và khai báo ID chat của bạn</h3>
-  <p>Cắm USB vào TV, vào <b>Cài đặt → Khóa màn hình (TOTP) → Điều khiển từ xa qua Telegram</b>. Mục này chỉ mở khi khoá màn hình đã cài xong (đã qua mục 1 ở trên) — app sẽ nhắc nếu chưa cài. Trong màn hình Telegram:</p>
-  <ol>
-    <li>Bấm <b>Nạp token từ file .txt</b>, chọn file token.txt trên USB. Nạp đúng, app báo "Đã nạp token bot: ••••" kèm 4 ký tự cuối của token để bạn đối chiếu. (Ai kiên nhẫn thì gõ tay token vào ô "Token bot" cũng được, file chỉ là cách cho đỡ sai.)</li>
-    <li>Lấy <b>ID chat của bạn</b>: mở Telegram, tìm <b>@userinfobot</b>, bấm Start — nó trả về một dãy số, đó là ID của bạn. Nhập dãy số đó vào ô <b>ID chat của chủ</b> trên TV.</li>
-    <li>Bấm <b>Lưu</b>. Xong. Từ giờ TV chỉ nhận lệnh từ đúng chat của bạn; người khác nhắn cho bot, TV phớt lờ.</li>
-  </ol>
-  <p>Thử ngay: mở khung chat với bot vừa tạo, gửi chữ <code>trạng thái</code>. Bot trả lời tình trạng TV (đang khoá hay đang mở, còn bao lâu) là đường đã thông. TV phải đang bật và có mạng mới nghe lệnh; lệnh gửi lúc TV tắt sẽ bị bỏ qua nếu quá 5 phút mới tới TV.</p>
-
-  <h3>6. Các lệnh dùng hằng ngày</h3>
-  <ul>
-    <li><code>mở tv 60</code> hoặc <code>mở 60</code> — mở khoá 60 phút (1–999). Không ghi số phút thì TV mở theo thời lượng mặc định đã đặt.</li>
-    <li><code>khoá tv</code> hoặc <code>khoá</code> — khoá ngay lập tức.</li>
-    <li><code>tắt tv</code> hoặc <code>tắt</code> — khoá và đưa TV về chế độ chờ (standby).</li>
-    <li><code>trạng thái</code> — hỏi TV đang thế nào.</li>
-  </ul>
-  <p>Gõ có dấu hay không dấu (<code>mo tv 60</code>, <code>khoa tv</code>) đều được. Sai cú pháp, bot trả về danh sách lệnh để bạn gõ lại.</p>
-  <div class="fig">
-    <svg viewBox="0 0 300 300" width="300" role="img" aria-label="Minh hoạ chat điều khiển TV qua bot Telegram">
-      <rect class="ph-bg" x="2" y="2" width="296" height="296" rx="22"/>
-      <text x="18" y="38" class="ph-title">TV nhà tôi (bot)</text>
-      <rect x="150" y="58" width="132" height="34" rx="10" fill="#2A4A7F"/>
-      <text x="264" y="80" class="ph-txt" text-anchor="end">mở tv 60</text>
-      <rect x="18" y="102" width="240" height="40" rx="10" fill="#1E1E2E"/>
-      <text x="30" y="127" class="ph-txt">Đã mở khoá TV — phiên 60 phút.</text>
-      <rect x="150" y="152" width="132" height="34" rx="10" fill="#2A4A7F"/>
-      <text x="264" y="174" class="ph-txt" text-anchor="end">trạng thái</text>
-      <rect x="18" y="196" width="250" height="40" rx="10" fill="#1E1E2E"/>
-      <text x="30" y="221" class="ph-txt">Đang mở, còn khoảng 42 phút.</text>
-      <rect x="150" y="246" width="132" height="34" rx="10" fill="#2A4A7F"/>
-      <text x="264" y="268" class="ph-txt" text-anchor="end">khoá tv</text>
-    </svg>
-  </div>
-  <p class="cap">Hình minh hoạ: nhắn lệnh cho bot — câu trả lời trong hình chỉ là ví dụ</p>
-  <div class="note"><b>Muốn tắt điều khiển từ xa:</b> vào lại mục Điều khiển từ xa qua Telegram, xoá trống ô token rồi Lưu — TV ngừng nghe bot ngay. Đổi bot khác thì nạp token của bot mới đè lên là xong.</div>
-  <p><b>Nhắn lệnh mà bot im re</b>, kiểm tra lần lượt: (1) bạn đang nhắn đúng vào khung chat của bot vừa tạo chưa — nhắn vào BotFather là bot không nghe đâu; (2) ID chat đã nhập đúng số của bạn chưa, sai một số là TV coi như người lạ; (3) token nạp vào có phải của chính bot đó không; (4) TV có đang bật và có mạng không; (5) đồng hồ trên TV có đúng giờ không — giờ TV lệch nhiều thì lệnh bị coi là "quá cũ" và bị bỏ qua, TV có hiện cảnh báo này trong mục Telegram khi bị. Xử lý xong nhắn thử <code>trạng thái</code> lại.</p>
-
-  <h2>Muốn trả TV về như cũ</h2>
-  <p>Mở TidyTV, kết nối lại tới TV như Bước 1, rồi bấm <b>KHÔI PHỤC TV VỀ NHƯ CŨ</b> (nút này có ở cả Bước 2 và Bước 5). App bật lại đúng những ứng dụng nó đã tắt — ứng dụng nào vốn tắt từ trước nó không đụng vào — trả launcher gốc và tốc độ hiệu ứng về như cũ, xong đọc lại trạng thái TV để kiểm chứng chứ không báo khống. Lưu ý hai giới hạn thật: sổ khôi phục được lưu <b>trong app TidyTV trên thiết bị bạn đã dùng</b> (gắn theo từng TV) — xoá app hoặc đổi điện thoại là mất sổ, nên đừng xoá TidyTV ngay sau khi dọn xong; và bản sao lưu ghi trên TV (<code>/sdcard/TidyTV-sao-luu.txt</code>) chỉ là danh sách ứng dụng để đối chiếu, không tự khôi phục được. Một điểm nữa: Khôi phục chỉ trả lại trạng thái cũ, <b>launcher vẫn còn cài trên TV</b> (không còn là màn hình chính nữa). Muốn gỡ hẳn thì xoá nó như một ứng dụng bình thường trong Cài đặt → Ứng dụng của TV.</p>
-
-  <h2>Kẹt ở đâu thì xem ở đó</h2>
-  <ul>
-    <li><b>Bấm Kết nối, app báo không kết nối được.</b> Theo thứ tự khả năng: hai thiết bị khác mạng Wi-Fi → sai IP (vào TV xem lại, IP có thể đã thay đổi sau khi router cấp lại) → chưa bật gỡ lỗi → hộp thoại "Cho phép gỡ lỗi" đang hiện trên TV mà chưa ai bấm. Một số router bật tính năng cách ly thiết bị (AP isolation) cũng chặn kiểu kết nối này — tắt nó đi hoặc dùng chung một băng tần Wi-Fi.</li>
-    <li><b>Ghép nối bằng mã báo thất bại.</b> Mã 6 số chỉ dùng được một lần và hết hạn nhanh. Thoát màn hình mã trên TV, mở lại để lấy mã mới, nhập ngay. Nhớ phân biệt cổng ghép nối với cổng kết nối như đã nói ở Việc 1.</li>
-    <li><b>Kết nối được nhưng app báo "TV không trả lời lệnh".</b> Hiếm gặp; thường là TV đang bận hoặc ADB bị treo. Chờ vài giây bấm lại, vẫn không được thì khởi động lại TV rồi kết nối lại từ đầu.</li>
-    <li><b>Không thấy mẫu TV của mình trong danh sách.</b> Chọn dòng "Không dọn theo danh sách mẫu" ở Bước 2. Bạn bỏ qua phần tắt app rác, phần cài launcher vẫn làm bình thường.</li>
-    <li><b>Bấm Home vẫn về giao diện cũ.</b> Nếu là Google TV: khả năng cao là quên tích ô Google TV ở Bước 4 — làm lại bước đó và tích ô. Nếu là Android TV: bấm Home, TV hỏi chọn màn hình chính thì chọn TV Home; hoặc vào Cài đặt → Ứng dụng → Ứng dụng mặc định → Màn hình chính và chọn ở đó.</li>
-    <li><b>Dọn xong mất một tính năng nào đó.</b> Ví dụ mất gợi ý nội dung, mất một app của hãng mà nhà bạn vẫn dùng. Mở TidyTV, kết nối lại và bấm Khôi phục — hoặc chỉ cần cài/bật lại riêng app đó từ CH Play. Vì app chỉ tắt chứ không xoá nên không mất dữ liệu gì.</li>
-  </ul>
-
-  <h2>Vài điều nên biết cho rõ</h2>
-  <ul>
-    <li>TidyTV không root máy, không xoá ứng dụng hệ thống, không đụng vào các gói lõi của Android, CH Play và dịch vụ Google. Mọi thay đổi đều nằm trong khả năng khôi phục.</li>
-    <li>Danh sách app rác theo từng mẫu TV tham khảo từ dữ liệu cộng đồng của dự án CleanYourTV (gathin23/cleanyourtv) — 158 mẫu, gồm nhiều dòng TCL, Xiaomi, Sony, Philips, Hisense… Mẫu nào chưa có trong danh sách thì app gợi ý mẫu gần nhất hoặc để bạn tự chọn.</li>
-    <li>Fire TV của Amazon thì khác: hệ điều hành của nó không cho thay màn hình chính, nên với Fire TV app chỉ hỗ trợ phần tắt app rác ở một số mẫu, không cài được launcher.</li>
-  </ul>
 
   <footer>
     © 2026 Kiên Nguyễn • kienqb.is-a.dev<br>
