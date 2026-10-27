@@ -77,6 +77,11 @@
   <a class="dl" href="/tidytv/TidyTV-1.0.2.apk"><b>⬇ Tải TidyTV 1.0.2 (APK, 10,6 MB)</b><span>Cài lên điện thoại Android, hoặc cài thẳng lên TV cũng được</span></a>
 
   <h2>Trước khi bắt đầu</h2>
+  <h3>Cài TidyTV vào đâu</h3>
+  <ul>
+    <li><b>Có điện thoại Android:</b> tải file APK ở trên về điện thoại, bấm vào file để cài. Cách này dễ nhất.</li>
+    <li><b>Chỉ có iPhone:</b> tải APK bằng máy tính (hoặc nhờ điện thoại Android của người nhà tải hộ), chép vào USB, cắm USB vào TV, mở app quản lý file trên TV (mục Media/Thư viện hoặc app File có sẵn) rồi bấm vào file APK để cài ngay trên TV. TidyTV chạy trên TV thì các bước sau y hệt, chỉ khác là bạn đứng trước TV mà bấm.</li>
+  </ul>
   <ul>
     <li>TV phải chạy <b>Android TV</b> hoặc <b>Google TV</b> (Sony, TCL, Xiaomi, Philips, Hisense… đều được). TV Samsung, LG dùng hệ điều hành riêng, không làm theo cách này được.</li>
     <li>TV và thiết bị chạy TidyTV phải bắt <b>cùng một mạng Wi-Fi</b>. Đây là nguyên nhân số một khiến kết nối thất bại — kiểm tra trước cho đỡ mất công.</li>
@@ -92,7 +97,7 @@
   </ul>
   <p>Quay ra Cài đặt, mục <b>Tuỳ chọn nhà phát triển</b> đã xuất hiện. Vào đó bật gỡ lỗi:</p>
   <ul>
-    <li><b>Android TV:</b> bật <b>Gỡ lỗi USB</b>. Tên nghe là USB nhưng đây là công tắc bật ADB của máy — TidyTV kết nối qua Wi-Fi, không cắm cáp gì hết. Cứ bật đúng mục này.</li>
+    <li><b>Android TV:</b> bật <b>Gỡ lỗi USB</b>. Tên nghe là USB nhưng đây là công tắc bật ADB của máy — TidyTV kết nối qua Wi-Fi, không cắm cáp gì hết. Cứ bật đúng mục này. Nếu trong danh sách còn có mục <b>Gỡ lỗi qua mạng</b> (Network debugging) thì bật luôn.</li>
     <li><b>Google TV đời mới:</b> bật <b>Gỡ lỗi không dây</b>. Nếu là lần đầu, TV bắt ghép nối: chạm vào dòng <b>Ghép nối thiết bị bằng mã ghép nối</b>, TV hiện <b>mã 6 số</b> kèm một <b>số cổng</b> — để nguyên màn hình này, đừng thoát ra (thoát là mã hết hiệu lực), lát nhập vào app.</li>
   </ul>
   <div class="fig">
@@ -172,7 +177,7 @@
   <p class="cap">Hình minh hoạ: màn hình Bước 2 — app tự nhận diện và gợi ý mẫu TV</p>
 
   <h3>Bước 3: Tắt ứng dụng rác</h3>
-  <p>App liệt kê những ứng dụng trong danh sách mẫu mà TV của bạn thật sự có, kèm ghi chú ngắn từng cái là gì (ghi chú lấy từ dữ liệu cộng đồng CleanYourTV nên một số dòng để tiếng Anh). Đọc qua một lượt: cái nào đang dùng — ví dụ app xem phim cài sẵn của hãng — thì <b>bỏ dấu tích</b>. Phần còn lại bấm <b>TẮT CÁC ỨNG DỤNG ĐÃ CHỌN</b>. Nói rõ để bạn yên tâm: app này chỉ <i>tắt</i> (disable), không xoá hẳn, và nó tự né sẵn các ứng dụng hệ thống quan trọng, ứng dụng vốn đã tắt từ trước, và màn hình chính hiện tại — nên không có chuyện tắt nhầm thứ khiến TV không lên được. Tắt xong app đọc lại trạng thái thật trên TV rồi mới ghi vào sổ khôi phục, mục nào tắt không được nó báo ✗ ngay trong nhật ký ở cuối màn hình.</p>
+  <p>App liệt kê những ứng dụng trong danh sách mẫu mà TV của bạn thật sự có, kèm ghi chú ngắn từng cái là gì (ghi chú lấy từ dữ liệu cộng đồng CleanYourTV nên một số dòng để tiếng Anh). Đọc qua một lượt: cái nào đang dùng — ví dụ app xem phim cài sẵn của hãng — thì <b>bỏ dấu tích</b>. Phần còn lại bấm <b>TẮT CÁC ỨNG DỤNG ĐÃ CHỌN</b>. App này chỉ <i>tắt</i> (disable), không xoá hẳn, và nó tự né sẵn các ứng dụng hệ thống quan trọng, ứng dụng vốn đã tắt từ trước, và màn hình chính hiện tại — nên không có chuyện tắt nhầm thứ khiến TV không lên được. Tắt xong app đọc lại trạng thái thật trên TV rồi mới ghi vào sổ khôi phục, mục nào tắt không được nó báo ✗ ngay trong nhật ký ở cuối màn hình.</p>
   <div class="fig">
     <svg viewBox="0 0 300 480" width="300" role="img" aria-label="Minh hoạ màn hình bước 3 của TidyTV">
       <rect class="ph-bg" x="2" y="2" width="296" height="476" rx="22"/>
@@ -225,7 +230,7 @@
   <div class="warn"><b>Hai điều cần nhớ với Google TV:</b> (1) Sau bước này <b>đừng tắt Gỡ lỗi không dây</b> trên TV — đó là đường lui duy nhất để khôi phục khi cần. (2) Nút ⚙ (cài đặt nhanh) trên remote có thể không mở nữa vì nó do launcher gốc phụ trách; muốn vào Cài đặt thì vào từ launcher mới. Ngoài ra, khi TV cập nhật phần mềm lớn, hãng có thể tự bật lại launcher gốc — gặp lại thì mở TidyTV chạy lại Bước 4 là xong.</div>
 
   <h3>Bước 5: Xong</h3>
-  <p>Bấm nút Home trên remote. Giao diện mới hiện ra là hoàn tất: hàng ứng dụng dưới cùng, đồng hồ và lời chào phía trên. Từ đây mọi tuỳ biến làm ngay trong launcher: nhấn giữ một ô ứng dụng để di chuyển/thêm bớt, vào Cài đặt của launcher để đổi hình nền. Launcher tự kiểm tra bản mới mỗi ngày một lần và báo trong mục Cài đặt → Cập nhật phần mềm. Còn phần khoá TV cho trẻ em và điều khiển từ xa — phần hay nhất của launcher này — thì làm tiếp ở Phần 2 dưới đây.</p>
+  <p>Bấm nút Home trên remote. Giao diện mới hiện ra là hoàn tất: hàng ứng dụng dưới cùng, đồng hồ và lời chào phía trên. Từ đây mọi tuỳ biến làm ngay trong launcher: nhấn giữ một ô ứng dụng để di chuyển/thêm bớt, vào Cài đặt của launcher để đổi hình nền. Launcher tự kiểm tra bản mới mỗi ngày một lần và báo trong mục Cài đặt → Cập nhật phần mềm. Phần khoá TV cho trẻ em và điều khiển từ xa làm tiếp ở Phần 2 dưới đây.</p>
   <div class="fig">
     <svg viewBox="0 0 300 330" width="300" role="img" aria-label="Minh hoạ màn hình bước 5 của TidyTV">
       <rect class="ph-bg" x="2" y="2" width="296" height="326" rx="22"/>
@@ -242,7 +247,7 @@
   <p class="cap">Hình minh hoạ: màn hình Bước 5</p>
 
   <h2>Phần 2 — Khoá TV cho trẻ em và điều khiển từ xa qua Telegram</h2>
-  <p>Phần này làm <b>ngay trong launcher</b> sau khi đã cài xong ở Phần 1, không liên quan gì tới TidyTV nữa. Ý tưởng của khoá này: TV chỉ mở khi nhập đúng mã. Có hai loại mã — <b>passcode</b> cố định thì mở không giới hạn (cho người lớn), còn mã <b>TOTP</b> 6 số đổi mỗi 30 giây (giống mã trong app Authenticator ngân hàng) thì mở theo phiên tính phút, hết giờ TV tự khoá lại kể cả đang xem YouTube. Thêm bot Telegram nữa thì bạn mở/khoá/tắt TV từ điện thoại ở bất cứ đâu.</p>
+  <p>Phần này làm <b>ngay trong launcher</b> sau khi đã cài xong ở Phần 1, không liên quan gì tới TidyTV nữa. Nguyên tắc của khoá: TV chỉ mở khi nhập đúng mã. Có hai loại mã — <b>passcode</b> cố định thì mở không giới hạn (cho người lớn), còn mã <b>TOTP</b> 6 số đổi mỗi 30 giây (giống mã trong app Authenticator ngân hàng) thì mở theo phiên tính phút, hết giờ TV tự khoá lại kể cả đang xem YouTube. Thêm bot Telegram nữa thì bạn mở/khoá/tắt TV từ điện thoại ở bất cứ đâu.</p>
   <p>Đường vào: ở màn hình chính của launcher, mở <b>Cài đặt</b> (nút ⚙) → mục <b>Khóa màn hình (TOTP)</b>. Lần đầu vào, mục này chưa cài nên mở tự do. Từ lần sau, muốn vào lại khu vực này phải nhập passcode hiện tại — đó là cách app chống trẻ con tự mò vào tắt khoá.</p>
   <div class="fig">
     <svg viewBox="0 0 560 268" width="560" role="img" aria-label="Minh hoạ mục cài đặt khoá trong launcher">
@@ -251,7 +256,7 @@
       <rect class="tv-sel" x="28" y="58" width="504" height="42" rx="8"/>
       <text x="44" y="85" class="tv-txt">Khóa màn hình (TOTP)</text>
       <rect class="tv-row" x="28" y="110" width="504" height="42" rx="8"/>
-      <text x="44" y="137" class="tv-txt">Thời gian mở khóa bằng mã Authenticator: 60 phút</text>
+      <text x="44" y="137" class="tv-txt">Thời gian mở khóa bằng mã Authenticator: 30 phút</text>
       <rect class="tv-row" x="28" y="162" width="504" height="42" rx="8"/>
       <text x="44" y="189" class="tv-txt">Điều khiển từ xa qua Telegram</text>
       <rect class="tv-row" x="28" y="214" width="504" height="42" rx="8"/>
@@ -260,7 +265,7 @@
   </div>
   <p class="cap">Hình minh hoạ: các mục khoá trong Cài đặt của launcher</p>
 
-  <h3>1. Đặt passcode trước, rồi quét mã TOTP</h3>
+  <h3>1. Quét mã TOTP trước, rồi đặt passcode</h3>
   <p>Thứ tự trong màn hình "Cài đặt khóa màn hình" như sau. Đầu tiên TV hiện một <b>mã QR</b>: lấy điện thoại mở app Authenticator (Google Authenticator, Microsoft Authenticator hay app 2FA của ngân hàng đều được) → thêm tài khoản mới → quét mã. Không quét được thì nhập tay chuỗi bí mật TV hiện ngay dưới mã QR. Bấm <b>Tiếp tục</b>, TV chuyển sang màn hình <b>Đặt passcode</b>: nhập một mã <b>6 số</b> bạn tự nghĩ ra, nhập lại lần nữa để xác nhận. Passcode này là chìa khoá dự phòng — dùng khi điện thoại hết pin hoặc giờ trên TV bị lệch làm mã TOTP không khớp — nên chọn số dễ nhớ với bạn nhưng khó đoán với trẻ, và <b>ghi lại ở nơi kín</b>: quên passcode thì cách mở lại duy nhất là can thiệp bằng máy tính qua ADB, rất mất công.</p>
   <div class="fig">
     <svg viewBox="0 0 560 250" width="560" role="img" aria-label="Minh hoạ màn hình quét mã QR TOTP">
@@ -282,7 +287,7 @@
     </svg>
   </div>
   <p class="cap">Hình minh hoạ: màn hình liên kết TOTP (mã QR trong hình là giả)</p>
-  <p>Đặt xong, vào mục <b>Thời gian mở khóa bằng mã Authenticator</b> và nhập số phút cho mỗi phiên mở bằng TOTP (1–999 phút, tuỳ nhà — 45–60 phút là vừa cho một buổi xem của trẻ). Mở bằng TOTP thì TV đếm ngược phiên đó, trước khi hết 5 phút TV báo trước một lần, hết giờ là khoá ngay. Mở bằng passcode thì không tính giờ. Tắt TV là hết phiên: lần bật sau luôn phải nhập mã lại. Nhập sai mã nhiều lần liên tục, màn hình khoá sẽ bắt chờ một lúc mới cho nhập tiếp — trẻ con đoán mò không ăn thua.</p>
+  <p>Đặt xong, vào mục <b>Thời gian mở khóa bằng mã Authenticator</b> mà chỉnh số phút cho mỗi phiên mở bằng TOTP: mặc định là <b>30 phút</b>, đặt lại từ 1 tới 999 phút tuỳ nhà. Mở bằng TOTP thì TV đếm ngược phiên đó, trước khi hết 5 phút TV báo trước một lần, hết giờ là khoá ngay. Mở bằng passcode thì không tính giờ. Tắt TV là hết phiên: lần bật sau luôn phải nhập mã lại. Nhập sai mã nhiều lần liên tục, màn hình khoá sẽ bắt chờ một lúc mới cho nhập tiếp — trẻ con đoán mò không ăn thua.</p>
 
   <h3>2. Bật "Bảo vệ khóa" cho đủ 3 lớp</h3>
   <p>Vẫn trong Cài đặt, nhìn hàng <b>Bảo vệ khóa</b>. Hàng này báo "Đầy đủ" thì thôi; báo "Thiếu: …" thì bấm thẳng vào hàng đó, app liệt kê phần còn thiếu và dẫn bạn tới đúng màn hình hệ thống để bật. Có 3 phần: <b>quyền xem ứng dụng đang chạy</b>, <b>dịch vụ phím nhập</b> và <b>dịch vụ phím Home</b> (hai dịch vụ sau nằm trong mục Trợ năng của TV — vào đó tìm tên launcher này trong danh sách dịch vụ đã cài và bật lên). Thiếu các lớp này, trẻ vẫn có thể bấm nút app trên remote để qua mặt khoá, nên làm đủ cả 3 trước khi giao TV cho trẻ.</p>
@@ -375,9 +380,10 @@
   </div>
   <p class="cap">Hình minh hoạ: nhắn lệnh cho bot — câu trả lời trong hình chỉ là ví dụ</p>
   <div class="note"><b>Muốn tắt điều khiển từ xa:</b> vào lại mục Điều khiển từ xa qua Telegram, xoá trống ô token rồi Lưu — TV ngừng nghe bot ngay. Đổi bot khác thì nạp token của bot mới đè lên là xong.</div>
+  <p><b>Nhắn lệnh mà bot im re</b>, kiểm tra lần lượt: (1) bạn đang nhắn đúng vào khung chat của bot vừa tạo chưa — nhắn vào BotFather là bot không nghe đâu; (2) ID chat đã nhập đúng số của bạn chưa, sai một số là TV coi như người lạ; (3) token nạp vào có phải của chính bot đó không; (4) TV có đang bật và có mạng không; (5) đồng hồ trên TV có đúng giờ không — giờ TV lệch nhiều thì lệnh bị coi là "quá cũ" và bị bỏ qua, TV có hiện cảnh báo này trong mục Telegram khi bị. Xử lý xong nhắn thử <code>trạng thái</code> lại.</p>
 
   <h2>Muốn trả TV về như cũ</h2>
-  <p>Mở TidyTV, kết nối lại tới TV như Bước 1, rồi bấm <b>KHÔI PHỤC TV VỀ NHƯ CŨ</b> (nút này có ở cả Bước 2 và Bước 5). App bật lại đúng những ứng dụng nó đã tắt — ứng dụng nào vốn tắt từ trước nó không đụng vào — trả launcher gốc và tốc độ hiệu ứng về như cũ, xong đọc lại trạng thái TV để kiểm chứng chứ không báo khống. Lưu ý hai giới hạn thật: sổ khôi phục được lưu <b>trong app TidyTV trên thiết bị bạn đã dùng</b> (gắn theo từng TV) — xoá app hoặc đổi điện thoại là mất sổ, nên đừng xoá TidyTV ngay sau khi dọn xong; và bản sao lưu ghi trên TV (<code>/sdcard/TidyTV-sao-luu.txt</code>) chỉ là danh sách ứng dụng để đối chiếu, không tự khôi phục được.</p>
+  <p>Mở TidyTV, kết nối lại tới TV như Bước 1, rồi bấm <b>KHÔI PHỤC TV VỀ NHƯ CŨ</b> (nút này có ở cả Bước 2 và Bước 5). App bật lại đúng những ứng dụng nó đã tắt — ứng dụng nào vốn tắt từ trước nó không đụng vào — trả launcher gốc và tốc độ hiệu ứng về như cũ, xong đọc lại trạng thái TV để kiểm chứng chứ không báo khống. Lưu ý hai giới hạn thật: sổ khôi phục được lưu <b>trong app TidyTV trên thiết bị bạn đã dùng</b> (gắn theo từng TV) — xoá app hoặc đổi điện thoại là mất sổ, nên đừng xoá TidyTV ngay sau khi dọn xong; và bản sao lưu ghi trên TV (<code>/sdcard/TidyTV-sao-luu.txt</code>) chỉ là danh sách ứng dụng để đối chiếu, không tự khôi phục được. Một điểm nữa: Khôi phục chỉ trả lại trạng thái cũ, <b>launcher vẫn còn cài trên TV</b> (không còn là màn hình chính nữa). Muốn gỡ hẳn thì xoá nó như một ứng dụng bình thường trong Cài đặt → Ứng dụng của TV.</p>
 
   <h2>Kẹt ở đâu thì xem ở đó</h2>
   <ul>
