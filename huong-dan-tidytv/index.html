@@ -3,23 +3,29 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hướng dẫn dùng TidyTV — dọn TV & cài launcher trong 5 bước bấm nút</title>
-<meta name="description" content="Hướng dẫn từng bước kèm hình minh hoạ: dùng app TidyTV để dọn ứng dụng rác trên Android TV / Google TV và cài Launcher Mod của Kiên Nguyễn làm màn hình chính. Không cần máy tính, không gõ lệnh.">
+<title>Hướng dẫn dùng TidyTV — dọn TV và cài launcher, làm một lần khoảng 5 phút</title>
+<meta name="description" content="Hướng dẫn dùng app TidyTV để tắt ứng dụng rác trên Android TV / Google TV và cài Launcher Mod làm màn hình chính: đường menu theo từng hãng, cách ghép nối không dây, cách khôi phục. Có hình minh hoạ.">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
     font-family: "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
     background: linear-gradient(180deg, #1b1035 0%, #0a0a14 55%, #07090f 100%);
-    color: #f5f2fa; min-height: 100vh; padding: 40px 20px 60px; line-height: 1.65;
+    color: #f5f2fa; min-height: 100vh; padding: 40px 20px 60px; line-height: 1.7;
   }
   .wrap { max-width: 780px; margin: 0 auto; }
   a { color: #7db4ff; }
-  h1 { font-size: 29px; line-height: 1.3; margin-bottom: 10px; }
-  .sub { color: #a79fc0; font-size: 16px; margin-bottom: 26px; }
-  h2 { font-size: 21px; margin: 36px 0 10px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,.12); }
+  h1 { font-size: 28px; line-height: 1.35; margin-bottom: 10px; }
+  .sub { color: #c9c2dd; font-size: 16px; margin-bottom: 24px; }
+  h2 { font-size: 21px; margin: 38px 0 10px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,.12); }
+  h3 { font-size: 16.5px; margin: 20px 0 6px; }
   p, li { font-size: 15.5px; color: #e8e4f5; }
   ul, ol { margin: 8px 0 12px 22px; }
-  li { margin-bottom: 5px; }
+  li { margin-bottom: 6px; }
+  code {
+    background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.16);
+    border-radius: 6px; padding: 1px 6px; font-size: 14px;
+    font-family: Consolas, "Courier New", monospace;
+  }
   .dl {
     display: block; background: rgba(123,79,224,.18); border: 1px solid rgba(158,107,255,.6);
     border-radius: 12px; padding: 14px 18px; margin: 14px 0; text-decoration: none;
@@ -34,9 +40,9 @@
     background: rgba(126, 180, 255, .08); border: 1px solid rgba(126, 180, 255, .35);
     border-radius: 12px; padding: 12px 16px; margin: 14px 0; font-size: 15px;
   }
-  .fig { text-align: center; margin: 16px 0 6px; }
+  .fig { text-align: center; margin: 16px 0 4px; }
   .fig svg { max-width: 100%; height: auto; border-radius: 14px; }
-  .cap { text-align: center; color: #a79fc0; font-size: 13.5px; margin-bottom: 10px; }
+  .cap { text-align: center; color: #a79fc0; font-size: 13.5px; margin-bottom: 12px; }
   footer { text-align: center; color: #8b84a3; font-size: 13.5px; margin-top: 46px; line-height: 1.7; }
   .back { display: inline-block; margin-bottom: 18px; font-size: 14.5px; }
   /* ---- SVG mock helpers ---- */
@@ -63,27 +69,34 @@
 <body>
 <div class="wrap">
   <a class="back" href="/">← Về trang chủ kienqb.is-a.dev</a>
-  <h1>Hướng dẫn dùng TidyTV — dọn TV &amp; cài launcher trong 5 bước bấm nút</h1>
-  <p class="sub">TidyTV là app chạy trên điện thoại Android (hoặc cài thẳng lên TV): tự kết nối tới TV qua Wi-Fi, sao lưu, tắt ứng dụng rác theo đúng mẫu TV, rồi cài <b>Launcher Mod của Kiên Nguyễn</b> làm màn hình chính. Không cần máy tính, không gõ một dòng lệnh nào.</p>
+  <h1>Dùng TidyTV dọn TV và cài launcher — hướng dẫn từng bước</h1>
+  <p class="sub">TidyTV là app Android nhỏ do mình viết. Nó kết nối tới TV qua Wi-Fi (bằng ADB), tắt các ứng dụng rác theo đúng mẫu TV của bạn, rồi cài Launcher Mod của mình làm màn hình chính. Không cần máy tính, không cần biết lệnh. Làm quen tay thì khoảng 5 phút cho một chiếc TV.</p>
 
-  <a class="dl" href="/tidytv/TidyTV-1.0.2.apk"><b>⬇ Tải TidyTV 1.0.2 (APK, 10,6 MB)</b><span>Cài trên điện thoại Android hoặc ngay trên TV đều được</span></a>
+  <div class="note"><b>Về hình trong bài:</b> toàn bộ hình dưới đây là <b>hình minh hoạ</b>, vẽ lại theo giao diện thật của app và của TV. Mỗi hãng, mỗi đời TV sắp xếp menu hơi khác nhau, chữ có thể lệch đôi chút — cứ theo đúng chữ hiện trên TV của bạn mà bấm, thứ tự các bước thì giống nhau.</div>
 
-  <h2>Chuẩn bị — chỉ cần 3 thứ</h2>
+  <a class="dl" href="/tidytv/TidyTV-1.0.2.apk"><b>⬇ Tải TidyTV 1.0.2 (APK, 10,6 MB)</b><span>Cài lên điện thoại Android, hoặc cài thẳng lên TV cũng được</span></a>
+
+  <h2>Trước khi bắt đầu</h2>
   <ul>
-    <li>Một chiếc TV chạy <b>Android TV</b> hoặc <b>Google TV</b> (Sony, TCL, Xiaomi, Philips…).</li>
-    <li>Điện thoại Android đã cài TidyTV — hoặc cài TidyTV thẳng lên chính chiếc TV đó.</li>
-    <li>TV và điện thoại <b>cùng một mạng Wi-Fi</b>.</li>
+    <li>TV phải chạy <b>Android TV</b> hoặc <b>Google TV</b> (Sony, TCL, Xiaomi, Philips, Hisense… đều được). TV Samsung, LG dùng hệ điều hành riêng, không làm theo cách này được.</li>
+    <li>TV và thiết bị chạy TidyTV phải bắt <b>cùng một mạng Wi-Fi</b>. Đây là nguyên nhân số một khiến kết nối thất bại — kiểm tra trước cho đỡ mất công.</li>
+    <li>Nếu cài APK mà máy báo bị chặn bởi Play Protect: mở <b>Play Store → bấm ảnh đại diện → Play Protect → ⚙ Cài đặt → tắt "Quét ứng dụng bằng Play Protect"</b>. Riêng Google TV giấu app Play Store khá kỹ: sang tab <b>Ứng dụng</b> kéo xuống dưới, hoặc giữ nút micro trên remote nói "Play Protect".</li>
   </ul>
-  <div class="note">Nếu cài TidyTV mà TV/điện thoại báo chặn vì "ứng dụng lạ": mở <b>Play Store → ảnh đại diện → Play Protect → ⚙ Cài đặt → tắt "Quét ứng dụng bằng Play Protect"</b>. Trên Google TV, app Play Store nằm ở tab <b>Ứng dụng</b>, hoặc giữ nút micro trên remote và nói "Play Protect".</div>
 
-  <h2>Bước 0 — Bật gỡ lỗi trên TV (làm 1 lần)</h2>
-  <p>Trên TV, vào <b>Cài đặt → Ưu tiên thiết bị / Hệ thống → Giới thiệu</b>, bấm chọn mục <b>Số bản dựng</b> 7 lần. Sau đó quay lại <b>Cài đặt → Tùy chọn nhà phát triển</b>:</p>
+  <h2>Việc 1 — Trên TV: mở Tuỳ chọn nhà phát triển, bật gỡ lỗi</h2>
+  <p>Mặc định Android giấu mục nhà phát triển. Mở nó bằng cách vào trang Giới thiệu rồi bấm 7 lần vào dòng Số bản dựng — bấm liên tục, TV sẽ đếm ngược rồi báo "Bạn đã là nhà phát triển". Đường đi cụ thể:</p>
   <ul>
-    <li>TV Android TV: bật <b>Gỡ lỗi USB</b> — đừng để chữ "USB" đánh lừa: đó là <b>tên của công tắc bật ADB</b> trong TV đời cũ. TidyTV vẫn kết nối <b>qua Wi-Fi</b>, không cắm cáp gì cả.</li>
-    <li>TV Google TV đời mới: bật <b>Gỡ lỗi không dây</b>, rồi chọn <b>"Ghép nối thiết bị bằng mã ghép nối"</b> — TV hiện một <b>mã 6 số</b> và một <b>cổng ghép nối</b>, để nguyên màn hình đó, lát nữa nhập vào app.</li>
+    <li><b>Sony và các TV Android TV thường:</b> Cài đặt → Ưu tiên thiết bị → Giới thiệu → <b>Số bản dựng</b>, bấm 7 lần.</li>
+    <li><b>Google TV (Sony/TCL đời mới):</b> Cài đặt → Hệ thống → Giới thiệu → <b>Số bản dựng hệ điều hành Android TV</b>, bấm 7 lần.</li>
+    <li><b>Xiaomi Mi TV:</b> Cài đặt → Tuỳ chọn thiết bị → Giới thiệu → <b>Số bản dựng</b>, bấm 7 lần.</li>
+  </ul>
+  <p>Quay ra Cài đặt, mục <b>Tuỳ chọn nhà phát triển</b> đã xuất hiện. Vào đó bật gỡ lỗi:</p>
+  <ul>
+    <li><b>Android TV:</b> bật <b>Gỡ lỗi USB</b>. Tên nghe là USB nhưng đây là công tắc bật ADB của máy — TidyTV kết nối qua Wi-Fi, không cắm cáp gì hết. Cứ bật đúng mục này.</li>
+    <li><b>Google TV đời mới:</b> bật <b>Gỡ lỗi không dây</b>. Nếu là lần đầu, TV bắt ghép nối: chạm vào dòng <b>Ghép nối thiết bị bằng mã ghép nối</b>, TV hiện <b>mã 6 số</b> kèm một <b>số cổng</b> — để nguyên màn hình này, đừng thoát ra (thoát là mã hết hiệu lực), lát nhập vào app.</li>
   </ul>
   <div class="fig">
-    <svg viewBox="0 0 560 300" width="560" role="img" aria-label="Màn hình TV hiện mã ghép nối">
+    <svg viewBox="0 0 560 300" width="560" role="img" aria-label="Minh hoạ màn hình ghép nối trên TV">
       <rect class="tv-bg" x="2" y="2" width="556" height="296" rx="14"/>
       <text x="28" y="42" class="tv-txt" font-weight="700">Gỡ lỗi không dây</text>
       <rect class="tv-row" x="28" y="58" width="504" height="40" rx="8"/>
@@ -97,17 +110,16 @@
       <text x="280" y="254" class="tv-dim" text-anchor="middle">Địa chỉ IP và cổng: 192.168.1.50:41237</text>
     </svg>
   </div>
-  <p class="cap">Màn hình TV Google TV khi mở ghép nối: nhớ mã 6 số và số cổng (ví dụ 41237)</p>
-  <p>Cũng ở màn hình Giới thiệu / Mạng, xem <b>địa chỉ IP của TV</b> (ví dụ 192.168.1.50) để nhập vào app.</p>
+  <p class="cap">Hình minh hoạ: màn hình ghép nối trên Google TV — cần mã 6 số và số cổng đi kèm</p>
+  <p>Cuối cùng, xem <b>địa chỉ IP của TV</b>: Cài đặt → Mạng &amp; Internet → bấm vào tên Wi-Fi đang kết nối, IP nằm trong phần chi tiết (ví dụ 192.168.1.50). Ghi lại, bước sau phải nhập.</p>
+  <div class="warn"><b>Người mới hay nhầm ở đây:</b> TV dùng Gỡ lỗi không dây có <b>hai số cổng khác nhau</b> — <i>cổng ghép nối</i> (hiện trong màn hình mã 6 số, chỉ để ghép) và <i>cổng kết nối</i> (hiện ngay ở trang Gỡ lỗi không dây, dưới tên mạng Wi-Fi). Ghép xong mà kết nối bằng cổng 5555 là không vào được đâu, phải dùng đúng cổng kết nối đó.</div>
 
-  <h2>Bước 1 — Mở TidyTV và kết nối</h2>
-  <ol>
-    <li>Nhập <b>IP của TV</b>. Nếu TidyTV đang chạy ngay trên TV, bấm nút <b>"App đang chạy trên chính TV này"</b> để app tự điền IP.</li>
-    <li>TV đời mới có mã ghép nối: nhập <b>cổng ghép nối</b> + <b>mã 6 số</b> rồi bấm <b>Ghép nối bằng mã</b> trước.</li>
-    <li>Bấm <b>KẾT NỐI TỚI TV</b>. Trên TV hiện hộp thoại "Cho phép gỡ lỗi USB?" (TV tự ghi vậy) → chọn <b>Cho phép</b>.</li>
-  </ol>
+  <h2>Việc 2 — Trong app TidyTV</h2>
+
+  <h3>Bước 1: Kết nối</h3>
+  <p>Nhập IP của TV vào ô đầu tiên. Nếu TidyTV đang cài ngay trên chiếc TV cần dọn, bấm nút <b>"App đang chạy trên chính TV này → tự điền IP"</b> cho nhanh. TV có mã ghép nối thì điền thêm cổng ghép nối + mã 6 số, bấm <b>Ghép nối bằng mã</b> trước (ghép thành công app sẽ báo). Xong bấm <b>KẾT NỐI TỚI TV</b> và nhìn lên TV: thường trong vài giây TV hiện hộp thoại <b>"Cho phép gỡ lỗi USB?"</b> — chọn <b>Cho phép</b> (TV tự ghi chữ USB, kệ nó; tích thêm ô "Luôn cho phép" nếu có để lần sau khỏi hỏi lại). Hộp thoại không hiện mà app báo lỗi thì gần như chắc chắn sai IP hoặc khác mạng Wi-Fi.</p>
   <div class="fig">
-    <svg viewBox="0 0 300 560" width="300" role="img" aria-label="Màn hình bước 1 của TidyTV">
+    <svg viewBox="0 0 300 560" width="300" role="img" aria-label="Minh hoạ màn hình bước 1 của TidyTV">
       <rect class="ph-bg" x="2" y="2" width="296" height="556" rx="22"/>
       <text x="18" y="36" class="ph-title">TidyTV — dọn TV &amp; cài Launcher</text>
       <text x="18" y="58" class="ph-step">Bước 1/5: Kết nối tới TV</text>
@@ -118,7 +130,7 @@
       <text x="150" y="166" class="ph-btntxt" text-anchor="middle">App chạy trên chính TV này → tự điền IP</text>
       <rect class="ph-field" x="18" y="186" width="264" height="38" rx="8"/>
       <text x="28" y="210" class="ph-fieldtxt">5555</text>
-      <text x="18" y="248" class="ph-dim">Chỉ khi TV bắt ghép mã (ở Bước 0):</text>
+      <text x="18" y="248" class="ph-dim">Chỉ khi TV bắt ghép mã (ở Việc 1):</text>
       <rect class="ph-field" x="18" y="258" width="126" height="38" rx="8"/>
       <text x="28" y="282" class="ph-fieldtxt">41237</text>
       <rect class="ph-field" x="156" y="258" width="126" height="38" rx="8"/>
@@ -131,12 +143,12 @@
       <text x="18" y="458" class="ph-txt">✓ Đã kết nối tới TV 192.168.1.50</text>
     </svg>
   </div>
-  <p class="cap">Màn hình Bước 1 trong app TidyTV</p>
+  <p class="cap">Hình minh hoạ: màn hình Bước 1 trong app</p>
 
-  <h2>Bước 2 — Kiểm tra thông tin TV và sao lưu</h2>
-  <p>App tự đọc model TV và <b>tự gợi ý danh sách app rác đúng mẫu TV của bạn</b> (đã nạp sẵn 158 mẫu). Kiểm tra lại tên mẫu trong ô chọn, để nguyên ô "Giảm hiệu ứng chuyển cảnh 0.5x" nếu muốn TV mượt hơn, rồi bấm <b>SAO LƯU &amp; SANG BƯỚC DỌN RÁC</b>. Mọi thay đổi từ đây đều khôi phục lại được nhờ bản sao lưu này.</p>
+  <h3>Bước 2: Kiểm tra mẫu TV và sao lưu</h3>
+  <p>Kết nối xong app tự đọc model TV và chọn sẵn danh sách app rác tương ứng trong ô danh sách (hiện có 158 mẫu). Nhìn lướt qua: đúng tên dòng TV của bạn thì thôi, lệch thì tự chọn lại — chọn nhầm danh sách cũng không nguy hiểm, vì bước sau chỉ những app thật sự có trên TV mới hiện ra. Ô "Giảm hiệu ứng chuyển cảnh 0.5x" để nguyên nếu muốn TV phản hồi nhanh hơn một chút, không thích thì bỏ tích. Bấm <b>SAO LƯU &amp; SANG BƯỚC DỌN RÁC</b>: app lưu lại danh sách ứng dụng và tình trạng hiện tại, đây là cơ sở để nút Khôi phục ở cuối làm việc — đừng bỏ qua bước này.</p>
   <div class="fig">
-    <svg viewBox="0 0 300 470" width="300" role="img" aria-label="Màn hình bước 2 của TidyTV">
+    <svg viewBox="0 0 300 470" width="300" role="img" aria-label="Minh hoạ màn hình bước 2 của TidyTV">
       <rect class="ph-bg" x="2" y="2" width="296" height="466" rx="22"/>
       <text x="18" y="36" class="ph-title">TidyTV — dọn TV &amp; cài Launcher</text>
       <text x="18" y="58" class="ph-step">Bước 2/5: Thông tin TV &amp; sao lưu</text>
@@ -157,12 +169,12 @@
       <text x="150" y="358" class="ph-btntxt" text-anchor="middle">Khôi phục TV về như cũ (từ bản sao lưu)</text>
     </svg>
   </div>
-  <p class="cap">Màn hình Bước 2: app tự gợi ý đúng mẫu TV</p>
+  <p class="cap">Hình minh hoạ: màn hình Bước 2 — app tự nhận diện và gợi ý mẫu TV</p>
 
-  <h2>Bước 3 — Tắt ứng dụng rác</h2>
-  <p>App liệt kê các ứng dụng rác <b>có thật trên TV của bạn</b>, kèm ghi chú từng cái là gì. Mục nào muốn giữ thì <b>bỏ dấu tích</b>. Xong bấm <b>TẮT CÁC ỨNG DỤNG ĐÃ CHỌN</b>. App chỉ <i>tắt</i> chứ không xoá, và tự loại sẵn các ứng dụng hệ thống quan trọng nên không lo tắt nhầm.</p>
+  <h3>Bước 3: Tắt ứng dụng rác</h3>
+  <p>App liệt kê những ứng dụng trong danh sách mẫu mà TV của bạn thật sự có, kèm ghi chú ngắn từng cái là gì (ghi chú lấy từ dữ liệu cộng đồng CleanYourTV nên một số dòng để tiếng Anh). Đọc qua một lượt: cái nào đang dùng — ví dụ app xem phim cài sẵn của hãng — thì <b>bỏ dấu tích</b>. Phần còn lại bấm <b>TẮT CÁC ỨNG DỤNG ĐÃ CHỌN</b>. Nói rõ để bạn yên tâm: app này chỉ <i>tắt</i> (disable), không xoá hẳn, và nó tự né sẵn các ứng dụng hệ thống quan trọng, ứng dụng vốn đã tắt từ trước, và màn hình chính hiện tại — nên không có chuyện tắt nhầm thứ khiến TV không lên được. Tắt xong app đọc lại trạng thái thật trên TV rồi mới ghi vào sổ khôi phục, mục nào tắt không được nó báo ✗ ngay trong nhật ký ở cuối màn hình.</p>
   <div class="fig">
-    <svg viewBox="0 0 300 480" width="300" role="img" aria-label="Màn hình bước 3 của TidyTV">
+    <svg viewBox="0 0 300 480" width="300" role="img" aria-label="Minh hoạ màn hình bước 3 của TidyTV">
       <rect class="ph-bg" x="2" y="2" width="296" height="476" rx="22"/>
       <text x="18" y="36" class="ph-title">TidyTV — dọn TV &amp; cài Launcher</text>
       <text x="18" y="58" class="ph-step">Bước 3/5: Dọn ứng dụng rác</text>
@@ -185,16 +197,12 @@
       <text x="18" y="412" class="ph-txt">✓ Đã tắt com.sony.dtv.sonyselect</text>
     </svg>
   </div>
-  <p class="cap">Màn hình Bước 3: bỏ tích mục nào muốn giữ lại</p>
+  <p class="cap">Hình minh hoạ: màn hình Bước 3 — bỏ tích ở mục nào muốn giữ lại</p>
 
-  <h2>Bước 4 — Cài launcher làm màn hình chính</h2>
-  <ol>
-    <li>Nếu TV là <b>Google TV</b> (bấm Home vẫn về giao diện Google): tích vào ô <b>"TV này là Google TV"</b> để app tắt luôn launcher gốc của Google. TV Android TV thường thì <b>không</b> tích.</li>
-    <li>Bấm <b>CÀI LAUNCHER &amp; ĐẶT LÀM MÀN HÌNH CHÍNH</b>, chờ app báo xong (khoảng nửa phút).</li>
-    <li>Bấm nút Home trên remote — về giao diện mới là thành công.</li>
-  </ol>
+  <h3>Bước 4: Cài launcher làm màn hình chính</h3>
+  <p>Đây là bước thay giao diện. Nếu TV của bạn là <b>Google TV</b> (bấm Home là về giao diện của Google), tích vào ô <b>"TV này là Google TV"</b> — app sẽ tắt luôn launcher gốc của Google sau khi cài xong, vì không tắt thì nút Home cứ quay về giao diện cũ. TV Android TV thường thì <b>không</b> tích ô này. Bấm <b>CÀI LAUNCHER &amp; ĐẶT LÀM MÀN HÌNH CHÍNH</b>, chờ khoảng nửa phút: app gửi file sang TV, cài đặt, đặt làm màn hình chính, rồi tự kiểm tra lại. Báo "✓ Launcher đã là màn hình chính" mới là xong thật. Nếu là TV thường mà TV chưa chịu nhận, app dừng lại ở bước này và dặn bạn bấm nút Home trên remote rồi chọn <b>TV Home</b> khi TV hỏi — làm theo rồi bấm lại nút cài đặt để app kiểm tra lại. Riêng trường hợp Google TV: nếu cài xong mà launcher mới vẫn không giành được nút Home, app <b>tự bật lại launcher gốc</b> để TV không bị mất màn hình chính, bạn không phải lo TV thành "cục gạch".</p>
   <div class="fig">
-    <svg viewBox="0 0 300 420" width="300" role="img" aria-label="Màn hình bước 4 của TidyTV">
+    <svg viewBox="0 0 300 420" width="300" role="img" aria-label="Minh hoạ màn hình bước 4 của TidyTV">
       <rect class="ph-bg" x="2" y="2" width="296" height="416" rx="22"/>
       <text x="18" y="36" class="ph-title">TidyTV — dọn TV &amp; cài Launcher</text>
       <text x="18" y="58" class="ph-step">Bước 4/5: Cài launcher làm màn hình chính</text>
@@ -213,14 +221,13 @@
       <text x="18" y="342" class="ph-txt">✓ Launcher đã là màn hình chính của TV</text>
     </svg>
   </div>
-  <p class="cap">Màn hình Bước 4: chỉ tích ô Google TV khi đúng loại TV</p>
-  <div class="warn"><b>Riêng Google TV:</b> sau bước này <b>đừng tắt Gỡ lỗi không dây</b> trên TV — đó là đường lui để khôi phục khi cần. Nút ⚙ cài đặt nhanh trên remote có thể không mở nữa (vào Cài đặt từ launcher mới vẫn bình thường). Nếu app kiểm tra thấy launcher mới chưa giành được nút Home, app sẽ tự bật lại launcher gốc để TV không bị mất màn hình chính.</div>
+  <p class="cap">Hình minh hoạ: màn hình Bước 4 — ô Google TV chỉ tích khi đúng loại TV</p>
+  <div class="warn"><b>Hai điều cần nhớ với Google TV:</b> (1) Sau bước này <b>đừng tắt Gỡ lỗi không dây</b> trên TV — đó là đường lui duy nhất để khôi phục khi cần. (2) Nút ⚙ (cài đặt nhanh) trên remote có thể không mở nữa vì nó do launcher gốc phụ trách; muốn vào Cài đặt thì vào từ launcher mới. Ngoài ra, khi TV cập nhật phần mềm lớn, hãng có thể tự bật lại launcher gốc — gặp lại thì mở TidyTV chạy lại Bước 4 là xong.</div>
 
-  <h2>Bước 5 — Xong! Và cách khôi phục khi cần</h2>
-  <p>Bấm nút Home là về màn hình chính mới. Từ đây bạn tuỳ biến tiếp ngay trong launcher: nhấn giữ một ô để sắp xếp ứng dụng, vào Cài đặt của launcher để đổi hình nền, đặt passcode/TOTP khoá trẻ em và bot Telegram (xem mục Cài đặt khoá trong launcher).</p>
-  <p>Muốn trả TV về nguyên trạng: mở lại TidyTV, kết nối như Bước 1, bấm <b>KHÔI PHỤC TV VỀ NHƯ CŨ</b> — app bật lại mọi ứng dụng đã tắt, trả lại launcher gốc và hiệu ứng mặc định.</p>
+  <h3>Bước 5: Xong</h3>
+  <p>Bấm nút Home trên remote. Giao diện mới hiện ra là hoàn tất: hàng ứng dụng dưới cùng, đồng hồ và lời chào phía trên. Từ đây mọi tuỳ biến làm ngay trong launcher: nhấn giữ một ô ứng dụng để di chuyển/thêm bớt, vào Cài đặt của launcher để đổi hình nền, đặt passcode và mã TOTP khoá trẻ em, gắn bot Telegram điều khiển từ xa nếu cần. Launcher tự kiểm tra bản mới mỗi ngày một lần và báo trong mục Cài đặt → Cập nhật phần mềm.</p>
   <div class="fig">
-    <svg viewBox="0 0 300 330" width="300" role="img" aria-label="Màn hình bước 5 của TidyTV">
+    <svg viewBox="0 0 300 330" width="300" role="img" aria-label="Minh hoạ màn hình bước 5 của TidyTV">
       <rect class="ph-bg" x="2" y="2" width="296" height="326" rx="22"/>
       <text x="18" y="36" class="ph-title">TidyTV — dọn TV &amp; cài Launcher</text>
       <text x="18" y="58" class="ph-step">Bước 5/5: Hoàn tất</text>
@@ -232,19 +239,31 @@
       <text x="150" y="218" class="ph-btntxt" text-anchor="middle">Ngắt kết nối, làm TV khác</text>
     </svg>
   </div>
-  <p class="cap">Màn hình Bước 5: khôi phục chỉ với một nút bấm</p>
+  <p class="cap">Hình minh hoạ: màn hình Bước 5</p>
 
-  <h2>Hỏi đáp nhanh</h2>
+  <h2>Muốn trả TV về như cũ</h2>
+  <p>Mở TidyTV, kết nối lại tới TV như Bước 1, rồi bấm <b>KHÔI PHỤC TV VỀ NHƯ CŨ</b> (nút này có ở cả Bước 2 và Bước 5). App bật lại đúng những ứng dụng nó đã tắt — ứng dụng nào vốn tắt từ trước nó không đụng vào — trả launcher gốc và tốc độ hiệu ứng về như cũ, xong đọc lại trạng thái TV để kiểm chứng chứ không báo khống. Lưu ý hai giới hạn thật: sổ khôi phục được lưu <b>trong app TidyTV trên thiết bị bạn đã dùng</b> (gắn theo từng TV) — xoá app hoặc đổi điện thoại là mất sổ, nên đừng xoá TidyTV ngay sau khi dọn xong; và bản sao lưu ghi trên TV (<code>/sdcard/TidyTV-sao-luu.txt</code>) chỉ là danh sách ứng dụng để đối chiếu, không tự khôi phục được.</p>
+
+  <h2>Kẹt ở đâu thì xem ở đó</h2>
   <ul>
-    <li><b>Bấm Kết nối mãi không được?</b> Kiểm tra: TV và điện thoại cùng Wi-Fi chưa; đã bật gỡ lỗi ADB chưa (mục "Gỡ lỗi USB" trên Android TV, "Gỡ lỗi không dây" trên Google TV); trên TV có hộp thoại "Cho phép gỡ lỗi" đang chờ bấm Cho phép không. TV đời mới: mã ghép nối chỉ dùng được 1 lần — ghép trượt thì mở lại màn hình ghép nối trên TV để lấy mã mới.</li>
-    <li><b>Không thấy mẫu TV của mình trong danh sách?</b> Chọn "Không dọn theo danh sách mẫu" ở Bước 2, bỏ qua phần dọn rác, vẫn cài được launcher bình thường.</li>
-    <li><b>Bấm Home vẫn về giao diện cũ?</b> Nếu là Google TV mà quên tích ô ở Bước 4, làm lại Bước 4 và tích ô đó. Nếu là Android TV, khi bấm Home TV có thể hỏi chọn màn hình chính — chọn TV Home.</li>
-    <li><b>Dọn xong TV có mất bảo hành / hỏng gì không?</b> App chỉ tắt ứng dụng (không xoá, không root), mọi thứ khôi phục lại nguyên trạng bằng nút Khôi phục.</li>
+    <li><b>Bấm Kết nối, app báo không kết nối được.</b> Theo thứ tự khả năng: hai thiết bị khác mạng Wi-Fi → sai IP (vào TV xem lại, IP có thể đã thay đổi sau khi router cấp lại) → chưa bật gỡ lỗi → hộp thoại "Cho phép gỡ lỗi" đang hiện trên TV mà chưa ai bấm. Một số router bật tính năng cách ly thiết bị (AP isolation) cũng chặn kiểu kết nối này — tắt nó đi hoặc dùng chung một băng tần Wi-Fi.</li>
+    <li><b>Ghép nối bằng mã báo thất bại.</b> Mã 6 số chỉ dùng được một lần và hết hạn nhanh. Thoát màn hình mã trên TV, mở lại để lấy mã mới, nhập ngay. Nhớ phân biệt cổng ghép nối với cổng kết nối như đã nói ở Việc 1.</li>
+    <li><b>Kết nối được nhưng app báo "TV không trả lời lệnh".</b> Hiếm gặp; thường là TV đang bận hoặc ADB bị treo. Chờ vài giây bấm lại, vẫn không được thì khởi động lại TV rồi kết nối lại từ đầu.</li>
+    <li><b>Không thấy mẫu TV của mình trong danh sách.</b> Chọn dòng "Không dọn theo danh sách mẫu" ở Bước 2. Bạn bỏ qua phần tắt app rác, phần cài launcher vẫn làm bình thường.</li>
+    <li><b>Bấm Home vẫn về giao diện cũ.</b> Nếu là Google TV: khả năng cao là quên tích ô Google TV ở Bước 4 — làm lại bước đó và tích ô. Nếu là Android TV: bấm Home, TV hỏi chọn màn hình chính thì chọn TV Home; hoặc vào Cài đặt → Ứng dụng → Ứng dụng mặc định → Màn hình chính và chọn ở đó.</li>
+    <li><b>Dọn xong mất một tính năng nào đó.</b> Ví dụ mất gợi ý nội dung, mất một app của hãng mà nhà bạn vẫn dùng. Mở TidyTV, kết nối lại và bấm Khôi phục — hoặc chỉ cần cài/bật lại riêng app đó từ CH Play. Vì app chỉ tắt chứ không xoá nên không mất dữ liệu gì.</li>
+  </ul>
+
+  <h2>Vài điều nên biết cho rõ</h2>
+  <ul>
+    <li>TidyTV không root máy, không xoá ứng dụng hệ thống, không đụng vào các gói lõi của Android, CH Play và dịch vụ Google. Mọi thay đổi đều nằm trong khả năng khôi phục.</li>
+    <li>Danh sách app rác theo từng mẫu TV tham khảo từ dữ liệu cộng đồng của dự án CleanYourTV (gathin23/cleanyourtv) — 158 mẫu, gồm nhiều dòng TCL, Xiaomi, Sony, Philips, Hisense… Mẫu nào chưa có trong danh sách thì app gợi ý mẫu gần nhất hoặc để bạn tự chọn.</li>
+    <li>Fire TV của Amazon thì khác: hệ điều hành của nó không cho thay màn hình chính, nên với Fire TV app chỉ hỗ trợ phần tắt app rác ở một số mẫu, không cài được launcher.</li>
   </ul>
 
   <footer>
     © 2026 Kiên Nguyễn • kienqb.is-a.dev<br>
-    TidyTV &amp; Launcher Mod bởi Kiên Nguyễn — danh sách app rác tham khảo cộng đồng CleanYourTV.
+    TidyTV &amp; Launcher Mod — Kiên Nguyễn. Danh sách app rác tham khảo cộng đồng CleanYourTV.
   </footer>
 </div>
 </body>
