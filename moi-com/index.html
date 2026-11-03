@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mời Kiên Một Bữa Cơm — Ủng hộ tuỳ tâm</title>
+<meta name="description" content="Mấy app miễn phí như TidyTV, TV Launcher mà giúp được bạn, thì mời mình bữa cơm nhé. Ủng hộ tuỳ tâm qua mã QR, ít nhiều đều quý.">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background: #fff9f1; color: #292524; line-height: 1.6;
+  }
+  .wrap { max-width: 620px; margin: 0 auto; padding: 28px 16px 40px; }
+  header { text-align: center; padding: 18px 0 6px; }
+  header .bowl { font-size: 54px; }
+  h1 { font-size: 29px; font-weight: 800; letter-spacing: -0.5px; margin-top: 6px; }
+  header p { color: #57534e; font-size: 15.5px; margin-top: 10px; }
+  header p b { color: #292524; }
+  .qrcard {
+    background: #fff; border: 1px solid #fde68a; border-radius: 20px;
+    padding: 22px 18px 18px; margin-top: 22px; text-align: center;
+    box-shadow: 0 8px 24px rgba(234, 88, 12, 0.08);
+  }
+  .qrcard img { width: min(300px, 82vw); height: auto; }
+  .holder { font-weight: 800; font-size: 17px; letter-spacing: 0.4px; margin-top: 12px; }
+  .acct { color: #57534e; font-size: 15px; margin-top: 2px; }
+  .acct b { color: #292524; font-variant-numeric: tabular-nums; }
+  .copybtn {
+    margin-top: 12px; border: 0; cursor: pointer; background: #ea580c; color: #fff;
+    font-size: 14.5px; font-weight: 700; padding: 10px 20px; border-radius: 999px;
+  }
+  .copybtn:active { background: #c2410c; }
+  .levels { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-top: 16px; }
+  .levels span {
+    background: #fff7ed; border: 1px solid #fed7aa; color: #9a3412;
+    font-size: 13px; font-weight: 700; border-radius: 999px; padding: 5px 12px;
+  }
+  .note { color: #78716c; font-size: 13px; margin-top: 12px; }
+  h2 { font-size: 19px; font-weight: 800; margin: 34px 0 4px; }
+  .sub { color: #78716c; font-size: 14px; }
+  .cards { display: grid; gap: 10px; margin-top: 14px; }
+  .card {
+    background: #fff; border: 1px solid #e7e5e4; border-radius: 16px; padding: 16px 18px;
+  }
+  .card h3 { font-size: 16px; font-weight: 800; margin-bottom: 4px; }
+  .card p { color: #57534e; font-size: 14.5px; }
+  .card a { color: #ea580c; font-weight: 700; text-decoration: none; }
+  .card .cta {
+    display: inline-block; margin-top: 10px; background: #fff7ed; border: 1px solid #fed7aa;
+    color: #9a3412; font-size: 13.5px; font-weight: 700; border-radius: 999px; padding: 6px 14px;
+    cursor: pointer;
+  }
+  details {
+    background: #fff; border: 1px solid #e7e5e4; border-radius: 14px;
+    padding: 13px 16px; margin-top: 9px;
+  }
+  summary { font-weight: 700; font-size: 15px; cursor: pointer; }
+  details p { color: #57534e; font-size: 14.5px; margin-top: 6px; }
+  footer { text-align: center; color: #a8a29e; font-size: 13px; margin-top: 38px; }
+  footer a { color: #78716c; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="bowl">🍚</div>
+    <h1>Mời Kiên một bữa cơm</h1>
+    <p>Mình làm mấy món đồ chơi miễn phí cho mọi người dùng: <b>TidyTV</b> dọn TV, <b>TV Launcher</b> màn hình chính cho TV, trang tra cứu chứng khoán… Ai dùng thấy đỡ được việc, vui thì mời mình bữa cơm. <b>Không vui thì thôi, app vẫn miễn phí như thường.</b></p>
+  </header>
+
+  <section class="qrcard">
+    <img src="qr.svg" alt="Mã QR chuyển khoản MB Bank của Nguyễn Trung Kiên">
+    <div class="holder">NGUYEN TRUNG KIEN</div>
+    <div class="acct">MB Bank · Số tài khoản <b id="acctNo">7373686686</b></div>
+    <button class="copybtn" id="copyAcct">Sao chép số tài khoản</button>
+    <div class="levels">
+      <span>20.000₫ · trà đá</span>
+      <span>35.000₫ · cơm phần</span>
+      <span>50.000₫ · cơm + cà phê</span>
+    </div>
+    <p class="note">Quét mã bằng app ngân hàng, nhập số tiền tuỳ tâm. Nội dung ghi gì cũng được, ghi “mời cơm” là mình biết.</p>
+  </section>
+
+  <h2>Ba điều mình giữ</h2>
+  <p class="sub">Trang này lập ra cho vui, nên có mấy điều nói rõ từ đầu.</p>
+  <div class="cards">
+    <div class="card">
+      <h3>Không kể khổ</h3>
+      <p>Mình làm app vì thích vọc, không phải vì khó khăn. Trang này chỉ là chỗ để ai quý thì gửi chút tấm lòng, tuyệt đối không có chuyện than nghèo kể khổ để xin tiền.</p>
+    </div>
+    <div class="card">
+      <h3>Ít nhiều đều quý</h3>
+      <p>5.000₫ ly trà đá hay một bữa cơm đầy đủ, mình cảm ơn như nhau. Có người chuyển khoản kèm câu “app hay lắm anh” — đọc còn sướng hơn tiền.</p>
+    </div>
+    <div class="card">
+      <h3>Có dư thì san sẻ</h3>
+      <p>Tiền ủng hộ trước hết để mình duy trì mấy dự án miễn phí và cà phê những đêm ngồi code. Nếu nhận được nhiều hơn nhu cầu, mình trích một phần gửi lại cho những người khó khăn hơn quanh mình.</p>
+    </div>
+  </div>
+
+  <h2>Chưa tiện chuyển khoản?</h2>
+  <p class="sub">Ủng hộ bằng cách khác cũng quý không kém.</p>
+  <div class="cards">
+    <div class="card">
+      <h3>🚕 Cần xe ở Quảng Bình</h3>
+      <p>Mình chạy xe dịch vụ, đi sân bay Đồng Hới, Phong Nha hay trong tỉnh cứ gọi <a href="tel:0787337373">0787.33.73.73</a> — ủng hộ bằng một cuốc xe là thiết thực nhất.</p>
+    </div>
+    <div class="card">
+      <h3>🦐 Ghé Hải Sản Hồng Lài</h3>
+      <p>Cửa hàng nhà mình ở biển Nhật Lệ, Đồng Hới: tôm hùm, ghẹ, cá mú tươi. Đặt hàng qua Zalo <a href="https://zalo.me/0865777073">0865.777.073</a>, giao toàn quốc.</p>
+    </div>
+    <div class="card">
+      <h3>📣 Chia sẻ trang này</h3>
+      <p>Gửi trang này cho bạn bè đang dùng TidyTV hay TV Launcher, để thêm người biết mà mời cơm cùng cho vui.</p>
+      <button class="cta" id="copyLink">Sao chép link trang</button>
+    </div>
+  </div>
+
+  <h2>Câu hỏi thường gặp</h2>
+  <details>
+    <summary>Không ủng hộ thì có dùng app tiếp được không?</summary>
+    <p>Được, thoải mái. Mọi app và trang mình làm đều miễn phí, không khoá tính năng, không phân biệt người ủng hộ hay không. Ủng hộ là tuỳ tâm 100%.</p>
+  </details>
+  <details>
+    <summary>Tiền ủng hộ được dùng vào việc gì?</summary>
+    <p>Cà phê và đồ ăn đêm lúc code, linh kiện điện tử để vọc dự án mới, và chi phí duy trì trang web. Toàn những thứ phục vụ lại cho các dự án miễn phí mọi người đang dùng.</p>
+  </details>
+  <details>
+    <summary>Lỡ chuyển nhầm số tiền thì sao?</summary>
+    <p>Nhắn Zalo 0865.777.073 cho mình, gửi kèm ảnh chụp giao dịch, mình kiểm tra rồi chuyển trả lại ngay. Nhầm lẫn là chuyện thường, không phải ngại.</p>
+  </details>
+  <details>
+    <summary>Sao không ghi sẵn số tiền trong mã QR?</summary>
+    <p>Vì tuỳ tâm mỗi người. Người có ít cho ít, người có nhiều cho nhiều, có người chỉ gửi 5.000₫ kèm lời chúc — cái nào mình cũng trân trọng như nhau.</p>
+  </details>
+
+  <footer>
+    Cảm ơn bạn đã ghé. 🍚<br>
+    <a href="https://kienqb.is-a.dev/">← Về trang dự án của Kiên</a>
+  </footer>
+
+</div>
+<script>
+  function copyText(text, btn, doneLabel) {
+    var old = btn.textContent;
+    function done() {
+      btn.textContent = doneLabel;
+      setTimeout(function () { btn.textContent = old; }, 2000);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done).catch(function () { fallback(); });
+    } else { fallback(); }
+    function fallback() {
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); done(); } catch (e) { /* bỏ qua */ }
+      document.body.removeChild(ta);
+    }
+  }
+  document.getElementById('copyAcct').addEventListener('click', function () {
+    copyText('7373686686', this, 'Đã chép số tài khoản ✓');
+  });
+  document.getElementById('copyLink').addEventListener('click', function () {
+    copyText('https://kienqb.is-a.dev/moi-com/', this, 'Đã chép link ✓');
+  });
+</script>
+</body>
+</html>
