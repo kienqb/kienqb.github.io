@@ -32,10 +32,13 @@
   }
   .copybtn:active { background: #c2410c; }
   .levels { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-top: 16px; }
-  .levels span {
-    background: #fff7ed; border: 1px solid #fed7aa; color: #9a3412;
-    font-size: 13px; font-weight: 700; border-radius: 999px; padding: 5px 12px;
+  .levels button {
+    background: #fff7ed; border: 1px solid #fed7aa; color: #9a3412; cursor: pointer;
+    font-size: 13px; font-weight: 700; border-radius: 999px; padding: 7px 13px;
+    font-family: inherit;
   }
+  .levels button.on { background: #ea580c; border-color: #ea580c; color: #fff; }
+  .levels button:active { background: #c2410c; border-color: #c2410c; color: #fff; }
   .note { color: #78716c; font-size: 13px; margin-top: 12px; }
   h2 { font-size: 19px; font-weight: 800; margin: 34px 0 4px; }
   .sub { color: #78716c; font-size: 14px; }
@@ -71,16 +74,17 @@
   </header>
 
   <section class="qrcard">
-    <img src="qr.svg" alt="Mã QR chuyển khoản MB Bank của Nguyễn Trung Kiên">
+    <img id="qrImg" src="qr.svg" alt="Mã QR chuyển khoản MB Bank của Nguyễn Trung Kiên">
     <div class="holder">NGUYEN TRUNG KIEN</div>
     <div class="acct">MB Bank · Số tài khoản <b id="acctNo">7373686686</b></div>
     <button class="copybtn" id="copyAcct">Sao chép số tài khoản</button>
     <div class="levels">
-      <span>20.000₫ · trà đá</span>
-      <span>35.000₫ · cơm phần</span>
-      <span>50.000₫ · cơm + cà phê</span>
+      <button type="button" class="lvl on" data-qr="qr.svg" data-label="">Tuỳ tâm</button>
+      <button type="button" class="lvl" data-qr="qr-20000.svg" data-label="20.000₫">20.000₫ · trà đá</button>
+      <button type="button" class="lvl" data-qr="qr-35000.svg" data-label="35.000₫">35.000₫ · cơm phần</button>
+      <button type="button" class="lvl" data-qr="qr-50000.svg" data-label="50.000₫">50.000₫ · cơm + cà phê</button>
     </div>
-    <p class="note">Quét mã bằng app ngân hàng, nhập số tiền tuỳ tâm. Nội dung ghi gì cũng được, ghi “mời cơm” là mình biết.</p>
+    <p class="note" id="qrNote">Đang chọn <b>tuỳ tâm</b>: quét mã bằng app ngân hàng rồi nhập số tiền bạn muốn. Bấm vào một mức ở trên là mã QR tự điền sẵn số tiền đó.</p>
   </section>
 
   <h2>Ba điều mình giữ</h2>
@@ -166,6 +170,21 @@
   });
   document.getElementById('copyLink').addEventListener('click', function () {
     copyText('https://kienqb.is-a.dev/moi-com/', this, 'Đã chép link ✓');
+  });
+  var qrImg = document.getElementById('qrImg');
+  var qrNote = document.getElementById('qrNote');
+  document.querySelectorAll('.lvl').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      document.querySelectorAll('.lvl').forEach(function (b) { b.classList.remove('on'); });
+      btn.classList.add('on');
+      qrImg.src = btn.getAttribute('data-qr');
+      var label = btn.getAttribute('data-label');
+      if (label) {
+        qrNote.innerHTML = 'Đang chọn <b>' + label + '</b>: quét mã là app ngân hàng tự điền sẵn số tiền này, chỉ việc xác nhận.';
+      } else {
+        qrNote.innerHTML = 'Đang chọn <b>tuỳ tâm</b>: quét mã bằng app ngân hàng rồi nhập số tiền bạn muốn. Bấm vào một mức ở trên là mã QR tự điền sẵn số tiền đó.';
+      }
+    });
   });
 </script>
 </body>
