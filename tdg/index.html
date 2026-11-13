@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>[TDG] The Demi God — Liên minh số 1 State 518 | Dark War: Survival</title>
+<meta name="description" content="Trang của liên minh [TDG] The Demi God trong game Dark War: Survival, State 518. Hạng 1 toàn state, tổng lực 70,0B, 91 thành viên. Đang tuyển quân từ 100M power.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0d11; --panel:#10151c; --panel2:#0d1117; --line:#232c38;
+    --text:#e8ecf1; --muted:#97a3b2; --gold:#e3a82b; --ember:#d2542a;
+    --green:#57b368;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text);font-family:"Be Vietnam Pro",system-ui,sans-serif;line-height:1.55}
+  a{color:var(--gold);text-decoration:none}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+  h1,h2,.disp{font-family:"Oswald","Be Vietnam Pro",sans-serif;text-transform:uppercase;letter-spacing:.02em}
+
+  /* ---------- top bar ---------- */
+  header{position:sticky;top:0;z-index:20;background:rgba(10,13,17,.94);border-bottom:1px solid var(--line)}
+  .bar{display:flex;align-items:center;gap:22px;height:58px}
+  .brand{font-family:"Oswald",sans-serif;font-weight:700;font-size:19px;color:var(--text);white-space:nowrap}
+  .brand b{color:var(--gold)}
+  .brand span{color:var(--muted);font-size:12px;font-weight:500;margin-left:8px;letter-spacing:.08em}
+  nav{margin-left:auto;display:flex;gap:20px;flex-wrap:wrap}
+  nav a{color:var(--muted);font-size:13.5px;font-weight:600}
+  nav a:hover{color:var(--text)}
+  @media (max-width:760px){ nav{display:none} }
+
+  /* ---------- hero ---------- */
+  .hero{border-bottom:1px solid var(--line);background:
+    radial-gradient(900px 340px at 85% -60px, rgba(210,84,42,.16), transparent 60%),
+    radial-gradient(700px 300px at 8% -40px, rgba(227,168,43,.10), transparent 60%), var(--panel2)}
+  .hero-in{padding:64px 0 46px}
+  .kicker{color:var(--gold);font-weight:700;font-size:13px;letter-spacing:.22em;text-transform:uppercase}
+  .hero h1{font-size:clamp(44px,8vw,84px);line-height:1.02;font-weight:700;margin:12px 0 6px}
+  .hero h1 .tag{color:var(--gold)}
+  .motto{font-family:"Oswald",sans-serif;font-size:clamp(19px,3.4vw,27px);color:var(--ember);text-transform:uppercase;letter-spacing:.06em}
+  .hero p.lead{max-width:640px;color:var(--muted);margin-top:14px;font-size:16.5px}
+  .cta{display:flex;gap:12px;margin-top:26px;flex-wrap:wrap}
+  .btn{display:inline-block;padding:12px 22px;border:1px solid var(--gold);color:#14100a;background:var(--gold);font-weight:700;font-size:15px;border-radius:4px}
+  .btn.ghost{background:transparent;color:var(--text);border-color:var(--line)}
+  .btn.ghost:hover{border-color:var(--gold);color:var(--gold)}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);background:var(--panel);margin:38px 0 52px}
+  .stat{padding:18px 20px;border-left:1px solid var(--line)}
+  .stat:first-child{border-left:none}
+  .stat .n{font-family:"Oswald",sans-serif;font-size:clamp(26px,4vw,38px);font-weight:700;line-height:1.05}
+  .stat .n em{font-style:normal;color:var(--gold)}
+  .stat .l{color:var(--muted);font-size:12.5px;text-transform:uppercase;letter-spacing:.1em;margin-top:4px}
+  @media (max-width:760px){ .stats{grid-template-columns:1fr 1fr} .stat:nth-child(3){border-left:none} .stat{border-top:1px solid var(--line)} .stat:nth-child(-n+2){border-top:none} }
+
+  /* ---------- sections ---------- */
+  section{padding:56px 0 8px}
+  .sec-head{display:flex;align-items:baseline;gap:14px;border-bottom:2px solid var(--line);padding-bottom:10px;margin-bottom:26px}
+  .sec-head h2{font-size:clamp(24px,4vw,32px);font-weight:600}
+  .sec-head .no{color:var(--ember);font-family:"Oswald",sans-serif;font-size:15px}
+  .sec-head .sub{margin-left:auto;color:var(--muted);font-size:13px}
+  @media (max-width:640px){ .sec-head .sub{display:none} }
+
+  .facts{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .fact{background:var(--panel);border:1px solid var(--line);padding:18px 20px;border-radius:4px}
+  .fact .n{font-family:"Oswald",sans-serif;font-size:27px;font-weight:600}
+  .fact .n em{font-style:normal;color:var(--gold)}
+  .fact .l{color:var(--muted);font-size:13px;margin-top:3px}
+  @media (max-width:760px){ .facts{grid-template-columns:1fr 1fr} }
+  @media (max-width:460px){ .facts{grid-template-columns:1fr} }
+
+  .leader{display:flex;gap:20px;align-items:center;background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--gold);padding:20px 22px;border-radius:4px;margin-bottom:14px;flex-wrap:wrap}
+  .avatar{width:64px;height:64px;border-radius:50%;background:#1a222d;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-family:"Oswald",sans-serif;font-size:24px;color:var(--gold);font-weight:700;flex:none}
+  .leader .who{flex:1;min-width:200px}
+  .leader .who .name{font-family:"Oswald",sans-serif;font-size:24px;font-weight:600}
+  .leader .who .role{color:var(--gold);font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+  .leader .nums{display:flex;gap:26px;flex-wrap:wrap}
+  .leader .nums div b{display:block;font-family:"Oswald",sans-serif;font-size:21px;font-weight:600}
+  .leader .nums div span{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.08em}
+
+  .tbl{overflow-x:auto;border:1px solid var(--line);background:var(--panel)}
+  table{width:100%;border-collapse:collapse;min-width:520px}
+  th,td{padding:12px 16px;text-align:left;font-size:15px;border-top:1px solid var(--line)}
+  th{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.1em;border-top:none;background:var(--panel2)}
+  td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+  tr.me td{background:rgba(227,168,43,.07)}
+  tr.me td:first-child{border-left:3px solid var(--gold)}
+  .rk{font-family:"Oswald",sans-serif;font-weight:700;color:var(--muted);width:44px}
+  tr.me .rk{color:var(--gold)}
+  .bar-cell{min-width:150px}
+  .pbar{height:7px;background:#1a222d;border-radius:2px;overflow:hidden}
+  .pbar i{display:block;height:100%;background:var(--gold)}
+  tr:not(.me) .pbar i{background:#4c5a6b}
+  .up{color:var(--green);font-weight:600}
+  .note{color:var(--muted);font-size:13.5px;margin-top:12px}
+  @media (max-width:640px){ .bar-cell{display:none} th.bar-cell{display:none} }
+
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media (max-width:760px){ .cols{grid-template-columns:1fr} }
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:22px}
+  .card h3{font-family:"Oswald",sans-serif;font-size:19px;font-weight:600;text-transform:uppercase;margin-bottom:12px}
+  .card ul{list-style:none}
+  .card li{padding:7px 0 7px 22px;position:relative;color:#cfd7e0;border-top:1px solid #1a222d}
+  .card li:first-child{border-top:none}
+  .card li::before{content:"▸";position:absolute;left:2px;color:var(--gold)}
+  .card li b{color:var(--text)}
+  .steps{counter-reset:st}
+  .steps li{padding-left:34px}
+  .steps li::before{counter-increment:st;content:counter(st);position:absolute;left:0;top:8px;width:22px;height:22px;border:1px solid var(--gold);color:var(--gold);border-radius:50%;font-size:12.5px;font-weight:700;display:flex;align-items:center;justify-content:center}
+  .slots{display:inline-block;background:rgba(87,179,104,.12);color:var(--green);border:1px solid rgba(87,179,104,.4);font-weight:700;font-size:13.5px;padding:4px 12px;border-radius:20px;margin-bottom:14px}
+
+  .events{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media (max-width:760px){ .events{grid-template-columns:1fr} }
+  .event{background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:20px 22px}
+  .event h3{font-family:"Oswald",sans-serif;font-size:18.5px;font-weight:600;text-transform:uppercase}
+  .event h3 span{color:var(--ember);margin-right:8px}
+  .event p{color:var(--muted);font-size:14.5px;margin-top:6px}
+
+  ol.rules{list-style:none;counter-reset:rl;background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:8px 22px}
+  ol.rules li{counter-increment:rl;padding:13px 0 13px 40px;position:relative;border-top:1px solid #1a222d;color:#cfd7e0}
+  ol.rules li:first-child{border-top:none}
+  ol.rules li::before{content:counter(rl,decimal-leading-zero);position:absolute;left:0;top:13px;font-family:"Oswald",sans-serif;color:var(--gold);font-weight:600}
+  ol.rules b{color:var(--text)}
+
+  footer{margin-top:64px;border-top:1px solid var(--line);background:var(--panel2)}
+  .foot{padding:28px 0 36px;color:var(--muted);font-size:13.5px;display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="#top"><b>[TDG]</b> THE DEMI GOD <span>STATE 518</span></a>
+    <nav>
+      <a href="#vi-the">Vị thế</a>
+      <a href="#thanh-vien">Thành viên</a>
+      <a href="#xep-hang">Xếp hạng</a>
+      <a href="#tuyen-quan">Tuyển quân</a>
+      <a href="#su-kien">Sự kiện</a>
+      <a href="#noi-quy">Nội quy</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero" id="top">
+  <div class="wrap hero-in">
+    <div class="kicker">Dark War: Survival · State 518</div>
+    <h1><span class="tag">[TDG]</span> The Demi God</h1>
+    <div class="motto">“Burn Baby Burn”</div>
+    <p class="lead">Liên minh đứng đầu State 518 — lực chiến áp đảo, đội hình 91 thành viên tinh nhuệ và một hive thống nhất. TDG không đông nhất state, nhưng mạnh nhất state.</p>
+    <div class="cta">
+      <a class="btn" href="#tuyen-quan">Xin vào liên minh</a>
+      <a class="btn ghost" href="#xep-hang">Xem bảng xếp hạng state</a>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="n"><em>#1</em> / 20</div><div class="l">Hạng tại State 518</div></div>
+      <div class="stat"><div class="n">70,0<em>B</em></div><div class="l">Tổng lực toàn liên minh</div></div>
+      <div class="stat"><div class="n">26,2<em>B</em></div><div class="l">Lực chiến (combat power)</div></div>
+      <div class="stat"><div class="n">91<em>/100</em></div><div class="l">Thành viên</div></div>
+    </div>
+  </div>
+</div>
+
+<main class="wrap">
+
+  <section id="vi-the">
+    <div class="sec-head"><span class="no">01</span><h2>Vị thế</h2><span class="sub">Số liệu Vantera, đọc ngày 11/11/2026</span></div>
+    <div class="facts">
+      <div class="fact"><div class="n"><em>#690</em></div><div class="l">Hạng toàn cầu trên 11.430 liên minh (theo tổng lực)</div></div>
+      <div class="fact"><div class="n">+21,3<em>B</em></div><div class="l">Khoảng cách tổng lực với liên minh hạng 2 của state</div></div>
+      <div class="fact"><div class="n">+0,3<em>%</em></div><div class="l">Tăng trưởng tổng lực trong tuần gần nhất vẫn giữ ngôi đầu</div></div>
+      <div class="fact"><div class="n">19/01/2026</div><div class="l">Ngày thành lập liên minh</div></div>
+      <div class="fact"><div class="n">X650 · Y450</div><div class="l">Trung tâm hive tại State 518 — thành viên tập trung một cụm</div></div>
+      <div class="fact"><div class="n">90<em>/100</em></div><div class="l">Điểm sức mạnh của State 518 trong nhóm state ngang sức (hạng 7/72)</div></div>
+    </div>
+  </section>
+
+  <section id="thanh-vien">
+    <div class="sec-head"><span class="no">02</span><h2>Chỉ huy &amp; trụ cột</h2><span class="sub">Xếp theo lực chiến cá nhân</span></div>
+    <div class="leader">
+      <div class="avatar">TY</div>
+      <div class="who">
+        <div class="role">Thủ lĩnh · R5</div>
+        <div class="name">TheYang</div>
+      </div>
+      <div class="nums">
+        <div><b>1,92B</b><span>Tổng lực</span></div>
+        <div><b>524M</b><span>Lực chiến</span></div>
+      </div>
+    </div>
+    <div class="tbl"><table>
+      <tr><th class="rk">#</th><th>Thành viên</th><th class="num">Lực chiến</th><th>Ghi chú</th></tr>
+      <tr class="me"><td class="rk">1</td><td><b>TheYing</b></td><td class="num">528M</td><td>Tay đấm số 1 của cả State 518</td></tr>
+      <tr><td class="rk">2</td><td>TheYang</td><td class="num">524M</td><td>Thủ lĩnh liên minh</td></tr>
+      <tr><td class="rk">3</td><td>SugarWay</td><td class="num">446M</td><td></td></tr>
+      <tr><td class="rk">4</td><td>YYBabies</td><td class="num">443M</td><td></td></tr>
+      <tr><td class="rk">5</td><td>OG Juno</td><td class="num">418M</td><td></td></tr>
+    </table></div>
+    <p class="note">Cả 91 thành viên đều có lực cá nhân trên 100M — không có “ghế trống” trong đội hình TDG.</p>
+  </section>
+
+  <section id="xep-hang">
+    <div class="sec-head"><span class="no">03</span><h2>Bảng xếp hạng State 518</h2><span class="sub">Top 5 / 20 liên minh, theo tổng lực</span></div>
+    <div class="tbl"><table>
+      <tr><th class="rk">#</th><th>Liên minh</th><th class="bar-cell">Tổng lực</th><th class="num">Tổng lực</th><th class="num">Thành viên</th><th class="num">Tuần này</th></tr>
+      <tr class="me"><td class="rk">1</td><td><b>[TDG] The Demi God</b></td><td class="bar-cell"><div class="pbar"><i style="width:100%"></i></div></td><td class="num"><b>70,0B</b></td><td class="num">91/100</td><td class="num up">+0,3%</td></tr>
+      <tr><td class="rk">2</td><td>[RUI.] RUIN</td><td class="bar-cell"><div class="pbar"><i style="width:69.6%"></i></div></td><td class="num">48,7B</td><td class="num">93/100</td><td class="num up">+0,5%</td></tr>
+      <tr><td class="rk">3</td><td>[BAMM] BAMM</td><td class="bar-cell"><div class="pbar"><i style="width:59.1%"></i></div></td><td class="num">41,4B</td><td class="num">100/100</td><td class="num up">+0,5%</td></tr>
+      <tr><td class="rk">4</td><td>[RED+] Rip . End . Doom</td><td class="bar-cell"><div class="pbar"><i style="width:31.1%"></i></div></td><td class="num">21,8B</td><td class="num">49/100</td><td class="num up">+0,6%</td></tr>
+      <tr><td class="rk">5</td><td>[s300] SPARTANS 300</td><td class="bar-cell"><div class="pbar"><i style="width:20.9%"></i></div></td><td class="num">14,6B</td><td class="num">46/100</td><td class="num up">+0,4%</td></tr>
+    </table></div>
+    <p class="note">Tổng lực chính xác của TDG: 69.997.660.798 · Lực chiến: 26.240.898.533. Nguồn: Vantera, dữ liệu đọc ngày 11/11/2026.</p>
+  </section>
+
+  <section id="tuyen-quan">
+    <div class="sec-head"><span class="no">04</span><h2>Tuyển quân</h2><span class="sub">Cán bộ duyệt từng đơn</span></div>
+    <span class="slots">Còn 9 chỗ trống (91/100)</span>
+    <div class="cols">
+      <div class="card">
+        <h3>Điều kiện gia nhập</h3>
+        <ul>
+          <li><b>Tổng lực từ 100M</b> trở lên — đây là mức tối thiểu, toàn bộ thành viên hiện tại đều trên mức này</li>
+          <li>Online mỗi ngày, tham gia đầy đủ sự kiện của liên minh</li>
+          <li>Sẵn sàng dời căn cứ về hive tại <b>X650 · Y450</b></li>
+          <li>Đánh trận theo điều phối của R4/R5, giữ kỷ luật giờ giấc khi có chiến sự</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Cách xin vào</h3>
+        <ul class="steps">
+          <li>Mở game Dark War: Survival, vào <b>State 518</b></li>
+          <li>Tìm liên minh theo tag <b>[TDG]</b> — The Demi God</li>
+          <li>Bấm <b>Apply / Xin gia nhập</b> và chờ cán bộ duyệt</li>
+        </ul>
+        <p class="note" style="margin-top:14px">Đơn được duyệt theo lực và mức độ hoạt động. Nếu chưa đủ 100M, cứ tiếp tục phát triển — TDG luôn để mắt tới những người chơi chăm chỉ trong state.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="su-kien">
+    <div class="sec-head"><span class="no">05</span><h2>Nhịp sự kiện</h2><span class="sub">Giờ cụ thể theo thông báo trong game</span></div>
+    <div class="events">
+      <div class="event"><h3><span>◆</span>State of Supremacy (SvS)</h3><p>Sự kiện đối đầu giữa các state — toàn liên minh lên khiên, tập kết và đánh theo lệnh R5. Đây là lúc TDG cần đủ mặt nhất.</p></div>
+      <div class="event"><h3><span>◆</span>Đối kháng liên minh</h3><p>Alliance Duel và các vòng đấu lực/sự kiện liên minh hằng tuần — điểm của từng thành viên cộng thẳng vào thành tích chung.</p></div>
+      <div class="event"><h3><span>◆</span>Chiếm thủ phủ</h3><p>Tranh quyền kiểm soát thủ phủ State 518. TDG giữ ngôi đầu state nên mọi đợt thủ phủ đều là trận phải thắng.</p></div>
+      <div class="event"><h3><span>◆</span>Rally &amp; nhiệm vụ mỗi ngày</h3><p>Rally boss, quyên góp công nghệ liên minh và nhiệm vụ ngày — phần việc nhỏ nhưng là nền của lực tăng đều +0,3% mỗi tuần.</p></div>
+    </div>
+  </section>
+
+  <section id="noi-quy">
+    <div class="sec-head"><span class="no">06</span><h2>Nội quy liên minh</h2></div>
+    <ol class="rules">
+      <li><b>Online mỗi ngày.</b> Vắng dài ngày phải báo trước cho R4/R5; mất tích không lý do sẽ bị mời ra để nhường chỗ cho người chơi tích cực.</li>
+      <li><b>Chiến sự nghe lệnh điều phối.</b> Khi có SvS, thủ phủ hay đối kháng liên minh, mọi người theo lệnh của R4/R5 — không tự ý phá đội hình.</li>
+      <li><b>Không đánh người nhà và liên minh thân hữu (NAP).</b> Xích mích trong state giải quyết qua cán bộ, không tự ý ra quân.</li>
+      <li><b>Về hive.</b> Căn cứ đặt tại cụm hive X650 · Y450 để hỗ trợ nhau kịp thời; ai ở ngoài cụm phải báo lý do.</li>
+      <li><b>Đóng góp mỗi ngày.</b> Quyên góp công nghệ liên minh và tham gia rally chung là nghĩa vụ của mọi thành viên.</li>
+      <li><b>Tôn trọng đồng đội.</b> Chat liên minh văn minh, không drama; bất đồng đưa lên R4/R5 xử lý.</li>
+    </ol>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div>© 2026 [TDG] The Demi God · State 518 — Trang do thành viên liên minh thực hiện.</div>
+    <div>Fan-made, không phải trang chính thức của Dark War: Survival. Số liệu: <a href="https://vantera.app/alliances/b931aec4f6f84fcda890c5c5e2428fbc" target="_blank" rel="noopener">Vantera</a> (11/11/2026).</div>
+  </div>
+</footer>
+
+</body>
+</html>
